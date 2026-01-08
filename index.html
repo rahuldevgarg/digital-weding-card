@@ -12,7 +12,7 @@
   --bg-dark:#12231c;
   --bg-mid:#2e4a3f;
   --bg-light:#f3efe8;
-  --accent:#c89b5c;
+  --accent:#d9a441;
   --text-dark:#1e1e1e;
 }
 
@@ -36,15 +36,7 @@ body{
   position:relative;
 }
 
-/* GOLD DUST CANVAS */
-#dust{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:1;
-}
-
-/* ARCH FRAME */
+/* ARCH */
 .arch{
   position:relative;
   width:min(92%,420px);
@@ -58,6 +50,32 @@ body{
   padding-top:1.6rem;
 }
 
+/* DIYA GLOW */
+.arch::before{
+  content:"";
+  position:absolute;
+  bottom:-30px;
+  left:50%;
+  width:220px;
+  height:160px;
+  transform:translateX(-50%);
+  background:
+    radial-gradient(ellipse at center,
+      rgba(217,164,65,.55) 0%,
+      rgba(217,164,65,.35) 25%,
+      rgba(217,164,65,.15) 45%,
+      transparent 70%);
+  filter:blur(12px);
+  animation:diyaGlow 4s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes diyaGlow{
+  0%,100%{opacity:.7;transform:translateX(-50%) scale(1)}
+  50%{opacity:1;transform:translateX(-50%) scale(1.05)}
+}
+
+/* TEXTURE */
 .arch::after{
   content:"";
   position:absolute;
@@ -98,7 +116,7 @@ body{
   opacity:.95;
 }
 
-/* TEXT SECTION */
+/* CONTENT */
 .section{
   padding:4.5rem 1.2rem;
   text-align:center;
@@ -128,7 +146,7 @@ body{
   line-height:1.6;
 }
 
-/* SCROLL ANIMATION */
+/* ANIMATION */
 [data-animate]{
   opacity:0;
   transform:translateY(26px);
@@ -147,18 +165,17 @@ footer{
   opacity:.6;
 }
 
-/* MOBILE-FIRST MICRO TWEAKS */
+/* MOBILE */
 @media(max-width:480px){
   .section{padding:3.5rem 1rem}
   .quote{margin-top:2.2rem}
 }
 
-/* PRINT STYLES */
+/* PRINT */
 @media print{
   body{background:white;color:black}
-  .hero,#dust{display:none}
+  .hero{display:none}
   .section{padding:3cm 2cm}
-  footer{opacity:1}
 }
 </style>
 </head>
@@ -166,8 +183,6 @@ footer{
 <body>
 
 <section class="hero">
-  <canvas id="dust"></canvas>
-
   <div class="arch" data-animate>
     <div class="label">SAVE THE DATE</div>
 
@@ -207,37 +222,6 @@ addEventListener("scroll",()=>{
     el.style.transform=`translateY(${scrollY*el.dataset.parallax}px)`
   })
 });
-
-/* GOLDEN DUST */
-const c=document.getElementById("dust"),ctx=c.getContext("2d");
-let w,h,p=[];
-function resize(){
-  w=c.width=innerWidth;
-  h=c.height=innerHeight;
-}
-resize();addEventListener("resize",resize);
-
-for(let i=0;i<80;i++){
-  p.push({
-    x:Math.random()*w,
-    y:Math.random()*h,
-    r:Math.random()*1.6+0.4,
-    s:Math.random()*0.3+0.1
-  });
-}
-
-(function draw(){
-  ctx.clearRect(0,0,w,h);
-  ctx.fillStyle="rgba(200,155,92,.6)";
-  p.forEach(d=>{
-    ctx.beginPath();
-    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
-    ctx.fill();
-    d.y-=d.s;
-    if(d.y<0)d.y=h;
-  });
-  requestAnimationFrame(draw);
-})();
 </script>
 
 </body>
