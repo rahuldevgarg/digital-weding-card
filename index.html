@@ -15,7 +15,68 @@
   --accent:#d9a441;
   --text-dark:#1e1e1e;
 }
+/* ===== TEXTURE OVERLAY ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("assets/texture.jpg");
+  opacity:0.08;
+  pointer-events:none;
+  z-index:999;
+}
 
+/* ===== MOUNTAINS COLORIZATION ===== */
+.mountains{
+  filter:
+    brightness(0.85)
+    sepia(0.25)
+    hue-rotate(85deg)
+    saturate(1.2);
+}
+
+/* ===== BIRDS ===== */
+.birds{
+  position:absolute;
+  top:18%;
+  left:10%;
+  width:120px;
+  opacity:0.35;
+  animation:birdsFloat 22s linear infinite;
+}
+
+@keyframes birdsFloat{
+  from{transform:translateX(-120px)}
+  to{transform:translateX(110vw)}
+}
+
+/* ===== FOG LAYER ===== */
+.fog{
+  position:absolute;
+  bottom:0;
+  left:-50%;
+  width:200%;
+  height:50%;
+  background:
+    radial-gradient(circle at 30% 60%,
+      rgba(255,255,255,.45),
+      rgba(255,255,255,.15),
+      transparent 70%);
+  filter:blur(28px);
+  animation:fogDrift 40s linear infinite;
+  pointer-events:none;
+  z-index:2;
+}
+
+@keyframes fogDrift{
+  from{transform:translateX(0)}
+  to{transform:translateX(50%)}
+}
+
+/* ===== PRINT SAFETY ===== */
+@media print{
+  body::before,.fog,.birds{display:none}
+}
 /* RESET */
 *{box-sizing:border-box}
 body{
@@ -223,14 +284,29 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <div class="arch" data-animate>
-    <div class="label">SAVE THE DATE</div>
+
+  <!-- Birds -->
+  <img src="assets/birds.svg" class="birds" alt="birds">
+
+  <!-- Fog -->
+  <div class="fog"></div>
+
+  <div class="bell" id="bell">
+    <!-- bell svg stays same -->
+  </div>
+
+  <div class="arch">
+    <div class="label" data-en="SAVE THE DATE" data-hi="तिथि सुरक्षित रखें"></div>
 
     <div class="couple">
       <img src="assets/couple.png" alt="Couple">
     </div>
 
-    <img src="assets/mountains.svg" class="mountains" data-parallax="0.14">
+    <!-- Mountains -->
+    <img src="assets/mountains.svg"
+         class="mountains"
+         data-parallax="0.12"
+         alt="mountains">
   </div>
 </section>
 
