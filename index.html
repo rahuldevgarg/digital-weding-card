@@ -26,6 +26,32 @@ body::before{
   z-index:999;
 }
 
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle {
+  position: fixed;
+  top: calc(env(safe-area-inset-top) + 14px);
+  right: 14px;
+  z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  border-radius: 22px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+  display: flex;
+  overflow: hidden;
+}
+
+.lang-toggle button {
+  border: none;
+  background: none;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.lang-toggle .active {
+  background: #d9a441;
+  color: white;
+}
 /* ===== MOUNTAINS COLORIZATION ===== */
 .mountains{
   filter:
@@ -36,43 +62,52 @@ body::before{
 }
 
 /* ===== BIRDS ===== */
-.birds{
-  position:absolute;
-  top:18%;
-  left:10%;
-  width:120px;
-  opacity:0.35;
-  animation:birdsFloat 22s linear infinite;
+.birds {
+  position: absolute;
+  top: 8%;
+  left: -10%;
+  width: 120%;
+  max-width: none;
+  opacity: 0.25;
+  z-index: 1;
+  animation: birdsDrift 30s linear infinite,
+             birdsWiggle 6s ease-in-out infinite;
 }
 
-@keyframes birdsFloat{
-  from{transform:translateX(-120px)}
-  to{transform:translateX(110vw)}
+@keyframes birdsDrift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(40%); }
+}
+
+@keyframes birdsWiggle {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%     { transform: translateY(-6px) rotate(1deg); }
 }
 
 /* ===== FOG LAYER ===== */
-.fog{
-  position:absolute;
-  bottom:0;
-  left:-50%;
-  width:200%;
-  height:50%;
-  background:
-    radial-gradient(circle at 30% 60%,
-      rgba(255,255,255,.45),
-      rgba(255,255,255,.15),
-      transparent 70%);
-  filter:blur(28px);
-  animation:fogDrift 40s linear infinite;
-  pointer-events:none;
-  z-index:2;
+.fog {
+  position: absolute;
+  bottom: -10%;
+  left: -50%;
+  width: 200%;
+  height: 60%;
+  background: radial-gradient(
+    circle at 30% 60%,
+    rgba(255,255,255,0.55),
+    rgba(255,255,255,0.25),
+    transparent 70%
+  );
+  filter: blur(32px);
+  opacity: 0.6;
+  z-index: 3;
+  animation: fogMove 45s linear infinite;
+  pointer-events: none;
 }
 
-@keyframes fogDrift{
-  from{transform:translateX(0)}
-  to{transform:translateX(50%)}
+@keyframes fogMove {
+  from { transform: translateX(0); }
+  to   { transform: translateX(50%); }
 }
-
 /* ===== PRINT SAFETY ===== */
 @media print{
   body::before,.fog,.birds{display:none}
@@ -112,25 +147,30 @@ body{
 }
 
 /* DIYA GLOW */
-.arch::before{
-  content:"";
-  position:absolute;
-  bottom:-30px;
-  left:50%;
-  width:220px;
-  height:160px;
-  transform:translateX(-50%);
-  background:radial-gradient(ellipse at center,
-    rgba(217,164,65,.55),
-    rgba(217,164,65,.25),
-    transparent 70%);
-  filter:blur(12px);
-  animation:diya 4s ease-in-out infinite;
+.diya {
+  position: absolute;
+  bottom: 22%;
+  left: 50%;
+  width: 260px;
+  height: 180px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 200, 90, 0.55),
+    rgba(255, 180, 60, 0.35),
+    rgba(255, 160, 40, 0.15),
+    transparent 70%
+  );
+  filter: blur(18px);
+  z-index: 4;
+  animation: diyaPulse 4s ease-in-out infinite;
+  pointer-events: none;
 }
-@keyframes diya{
-  0%,100%{opacity:.7;transform:translateX(-50%) scale(1)}
-  50%{opacity:1;transform:translateX(-50%) scale(1.05)}
-}
+
+@keyframes diyaPulse {
+  0%,100% { opacity: 0.65; transform: translateX(-50%) scale(1); }
+  50%     { opacity: 1;    transform: translateX(-50%) scale(1.08); }
+  }
 
 /* LABEL */
 .label{
@@ -290,7 +330,8 @@ footer{
 
   <!-- Fog -->
   <div class="fog"></div>
-
+  <!-- Diya -->
+  <div class="diya"></div>
   <div class="bell" id="bell">
     <!-- bell svg stays same -->
   </div>
@@ -341,7 +382,10 @@ footer{
     </a>
   </div>
 </section>
-
+<div class="lang-toggle">
+  <button id="en" class="active">EN</button>
+  <button id="hi">हिंदी</button>
+</div>
 <footer>
   With love · Save the Date
 </footer>
