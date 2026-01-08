@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Save the Date | Yash & Shrishti</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+<!-- Preconnect for fonts (LCP improvement) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Hind:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
@@ -15,104 +20,8 @@
   --accent:#d9a441;
   --text-dark:#1e1e1e;
 }
-/* ===== TEXTURE OVERLAY ===== */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:url("assets/texture.jpg");
-  opacity:0.08;
-  pointer-events:none;
-  z-index:999;
-}
 
-/* ===== LANGUAGE TOGGLE ===== */
-.lang-toggle {
-  position: fixed;
-  top: calc(env(safe-area-inset-top) + 14px);
-  right: 14px;
-  z-index: 1000;
-  background: rgba(255,255,255,0.92);
-  border-radius: 22px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
-  display: flex;
-  overflow: hidden;
-}
-
-.lang-toggle button {
-  border: none;
-  background: none;
-  padding: 8px 14px;
-  font-size: 0.85rem;
-  cursor: pointer;
-  color: #333;
-}
-
-.lang-toggle .active {
-  background: #d9a441;
-  color: white;
-}
-/* ===== MOUNTAINS COLORIZATION ===== */
-.mountains{
-  filter:
-    brightness(0.85)
-    sepia(0.25)
-    hue-rotate(85deg)
-    saturate(1.2);
-}
-
-/* ===== BIRDS ===== */
-.birds {
-  position: absolute;
-  top: 8%;
-  left: -10%;
-  width: 120%;
-  max-width: none;
-  opacity: 0.25;
-  z-index: 1;
-  animation: birdsDrift 30s linear infinite,
-             birdsWiggle 6s ease-in-out infinite;
-}
-
-@keyframes birdsDrift {
-  from { transform: translateX(0); }
-  to   { transform: translateX(40%); }
-}
-
-@keyframes birdsWiggle {
-  0%,100% { transform: translateY(0) rotate(0deg); }
-  50%     { transform: translateY(-6px) rotate(1deg); }
-}
-
-/* ===== FOG LAYER ===== */
-.fog {
-  position: absolute;
-  bottom: -10%;
-  left: -50%;
-  width: 200%;
-  height: 60%;
-  background: radial-gradient(
-    circle at 30% 60%,
-    rgba(255,255,255,0.55),
-    rgba(255,255,255,0.25),
-    transparent 70%
-  );
-  filter: blur(32px);
-  opacity: 0.6;
-  z-index: 3;
-  animation: fogMove 45s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes fogMove {
-  from { transform: translateX(0); }
-  to   { transform: translateX(50%); }
-}
-/* ===== PRINT SAFETY ===== */
-@media print{
-  body::before,.fog,.birds{display:none}
-}
-/* RESET */
+/* ================= RESET ================= */
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -122,17 +31,107 @@ body{
   overflow-x:hidden;
 }
 
-/* HERO */
+/* ================= TEXTURE ================= */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("assets/texture.jpg");
+  opacity:0.07;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* ================= LANGUAGE TOGGLE ================= */
+.lang-toggle{
+  position:fixed;
+  top:calc(env(safe-area-inset-top) + 14px);
+  right:14px;
+  z-index:1000;
+  background:rgba(255,255,255,.94);
+  border-radius:22px;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  display:flex;
+  overflow:hidden;
+}
+.lang-toggle button{
+  border:none;
+  background:none;
+  padding:8px 14px;
+  font-size:.85rem;
+  cursor:pointer;
+}
+.lang-toggle .active{
+  background:var(--accent);
+  color:#fff;
+}
+
+/* ================= HERO ================= */
 .hero{
+  position:relative;
   height:100vh;
   background:radial-gradient(circle at top,var(--bg-mid),var(--bg-dark));
   display:flex;
   align-items:center;
   justify-content:center;
-  position:relative;
+  z-index:2;
 }
 
-/* ARCH */
+/* ================= BIRDS ================= */
+.birds{
+  position:absolute;
+  top:8%;
+  left:-10%;
+  width:120%;
+  opacity:.25;
+  z-index:2;
+  animation:birdsDrift 32s linear infinite, birdsWiggle 6s ease-in-out infinite;
+}
+@keyframes birdsDrift{
+  from{transform:translateX(0)}
+  to{transform:translateX(40%)}
+}
+@keyframes birdsWiggle{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+
+/* ================= FOG ================= */
+.fog{
+  position:absolute;
+  bottom:-10%;
+  left:-50%;
+  width:200%;
+  height:60%;
+  background:radial-gradient(circle at 30% 60%,
+    rgba(255,255,255,.6),
+    rgba(255,255,255,.25),
+    transparent 70%);
+  filter:blur(32px);
+  opacity:.75;
+  z-index:3;
+  animation:fogMove 45s linear infinite;
+}
+@keyframes fogMove{
+  from{transform:translateX(0)}
+  to{transform:translateX(50%)}
+}
+
+/* ================= BELL ================= */
+.bell{
+  position:absolute;
+  top:18px;
+  left:50%;
+  transform-origin:top center;
+  transform:translateX(-50%);
+  z-index:6;
+}
+.bell svg{
+  width:36px;
+  fill:#e7c77a;
+}
+
+/* ================= ARCH ================= */
 .arch{
   position:relative;
   width:min(92%,420px);
@@ -141,88 +140,73 @@ body{
   border-radius:220px 220px 28px 28px;
   box-shadow:0 40px 90px rgba(0,0,0,.45);
   overflow:hidden;
-  z-index:2;
   text-align:center;
   padding-top:1.6rem;
+  z-index:4;
 }
 
-/* DIYA GLOW */
-.diya {
-  position: absolute;
-  bottom: 22%;
-  left: 50%;
-  width: 260px;
-  height: 180px;
-  transform: translateX(-50%);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 200, 90, 0.55),
-    rgba(255, 180, 60, 0.35),
-    rgba(255, 160, 40, 0.15),
-    transparent 70%
-  );
-  filter: blur(18px);
-  z-index: 4;
-  animation: diyaPulse 4s ease-in-out infinite;
-  pointer-events: none;
+/* ================= DIYA ================= */
+.diya{
+  position:absolute;
+  bottom:22%;
+  left:50%;
+  width:260px;
+  height:180px;
+  transform:translateX(-50%);
+  background:radial-gradient(ellipse at center,
+    rgba(255,200,90,.55),
+    rgba(255,180,60,.35),
+    rgba(255,160,40,.15),
+    transparent 70%);
+  filter:blur(18px);
+  z-index:5;
+  animation:diyaPulse 4s ease-in-out infinite;
+}
+@keyframes diyaPulse{
+  0%,100%{opacity:.65;transform:translateX(-50%) scale(1)}
+  50%{opacity:1;transform:translateX(-50%) scale(1.08)}
 }
 
-@keyframes diyaPulse {
-  0%,100% { opacity: 0.65; transform: translateX(-50%) scale(1); }
-  50%     { opacity: 1;    transform: translateX(-50%) scale(1.08); }
-  }
-
-/* LABEL */
-.label{
-  font-family:'Cormorant Garamond',serif;
-  letter-spacing:.25em;
-  font-size:.85rem;
-  color:#e7d7b4;
-}
-
-/* COUPLE */
+/* ================= COUPLE ================= */
 .couple{
   position:absolute;
   bottom:0;
   width:100%;
   display:flex;
   justify-content:center;
-  z-index:3;
+  z-index:6;
 }
 .couple img{width:96%}
 
-/* MOUNTAINS */
+/* ================= MOUNTAINS ================= */
 .mountains{
   position:absolute;
   bottom:-8px;
   left:-10%;
   width:120%;
-  z-index:2;
+  z-index:4;
   opacity:.95;
+  filter:brightness(.85) sepia(.25) hue-rotate(85deg) saturate(1.2);
 }
 
-/* SECTIONS */
+/* ================= TEXT ================= */
 .section{
   padding:4.5rem 1.2rem;
   text-align:center;
 }
-
 .names{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(2.4rem,6vw,3.6rem);
 }
-
 .sub{
   letter-spacing:.18em;
   margin-top:.6rem;
 }
-
 .date{
   margin-top:1.1rem;
   font-size:1.05rem;
   opacity:.8;
 }
-
 .quote{
   max-width:720px;
   margin:2.8rem auto 0;
@@ -231,31 +215,16 @@ body{
   line-height:1.6;
 }
 
-/* DIVIDER */
+/* ================= RSVP ================= */
 .divider{
   height:120px;
-  background:linear-gradient(to bottom,
-    var(--bg-light),
-    #e8e1d5);
+  background:linear-gradient(to bottom,var(--bg-light),#e8e1d5);
 }
-
-/* RSVP */
 .rsvp{
   background:#e8e1d5;
   padding:4.5rem 1.2rem;
   text-align:center;
 }
-
-.rsvp h2{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,5vw,2.8rem);
-}
-
-.rsvp p{
-  margin-top:1rem;
-  opacity:.8;
-}
-
 .actions{
   margin-top:2.5rem;
   display:flex;
@@ -263,42 +232,17 @@ body{
   gap:1rem;
   align-items:center;
 }
-
 .actions a{
   text-decoration:none;
   padding:1rem 2.6rem;
   border-radius:40px;
-  font-size:1rem;
   transition:.2s ease;
 }
+.confirm{background:var(--accent);color:#fff}
+.regret{border:1px solid var(--accent);color:var(--accent)}
+.actions a:hover{transform:scale(1.04)}
 
-.confirm{
-  background:var(--accent);
-  color:white;
-}
-
-.regret{
-  border:1px solid var(--accent);
-  color:var(--accent);
-  background:transparent;
-}
-
-.actions a:hover{
-  transform:scale(1.04);
-}
-
-/* ANIMATION */
-[data-animate]{
-  opacity:0;
-  transform:translateY(26px);
-  transition:opacity .9s ease,transform .9s ease;
-}
-[data-animate].in{
-  opacity:1;
-  transform:none;
-}
-
-/* FOOTER */
+/* ================= FOOTER ================= */
 footer{
   padding:2rem;
   text-align:center;
@@ -306,15 +250,10 @@ footer{
   opacity:.6;
 }
 
-/* MOBILE */
-@media(max-width:480px){
-  .section,.rsvp{padding:3.5rem 1rem}
-}
-
-/* PRINT */
+/* ================= PRINT ================= */
 @media print{
-  .hero,.divider,.rsvp{display:none}
-  body{background:white;color:black}
+  .hero,.divider,.rsvp,.lang-toggle{display:none}
+  body{background:#fff;color:#000}
   .section{padding:3cm 2cm}
 }
 </style>
@@ -322,86 +261,84 @@ footer{
 
 <body>
 
-<!-- HERO -->
+<div class="lang-toggle">
+  <button id="en" class="active">EN</button>
+  <button id="hi">हिंदी</button>
+</div>
+
 <section class="hero">
-
-  <!-- Birds -->
-  <img src="assets/birds.svg" class="birds" alt="birds">
-
-  <!-- Fog -->
+  <img src="assets/birds.svg" class="birds" alt="">
   <div class="fog"></div>
-  <!-- Diya -->
-  <div class="diya"></div>
+
   <div class="bell" id="bell">
-    <!-- bell svg stays same -->
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2c-3 0-5 2-5 5v3c0 1-1 2-2 3v1h14v-1c-1-1-2-2-2-3V7c0-3-2-5-5-5z"/>
+    </svg>
   </div>
 
   <div class="arch">
     <div class="label" data-en="SAVE THE DATE" data-hi="तिथि सुरक्षित रखें"></div>
 
+    <div class="diya"></div>
+
     <div class="couple">
-      <img src="assets/couple.png" alt="Couple">
+      <img src="assets/couple.png" alt="">
     </div>
 
-    <!-- Mountains -->
-    <img src="assets/mountains.svg"
-         class="mountains"
-         data-parallax="0.12"
-         alt="mountains">
+    <img src="assets/mountains.svg" class="mountains" alt="">
   </div>
 </section>
 
-<!-- MAIN CONTENT -->
-<section class="section" data-animate>
+<section class="section">
   <div class="names">Yash & Shrishti</div>
-  <div class="sub">ARE GETTING MARRIED</div>
-  <div class="date">10th February 2026</div>
-
-  <div class="quote">
-    Beneath mountain skies and sacred vows,<br>
-    two journeys become one.
-  </div>
+  <div class="sub" data-en="ARE GETTING MARRIED" data-hi="विवाह बंधन में बंध रहे हैं"></div>
+  <div class="date" data-en="10th February 2026" data-hi="10 फ़रवरी 2026"></div>
+  <div class="quote"
+       data-en="Beneath mountain skies and sacred vows, two journeys become one."
+       data-hi="पर्वतों की छाया में, दो जीवन एक हो रहे हैं।"></div>
 </section>
 
 <div class="divider"></div>
 
-<!-- RSVP -->
-<section class="rsvp" data-animate>
-  <h2>Kindly Respond</h2>
-  <p>Your presence means the world to us</p>
+<section class="rsvp">
+  <h2 data-en="Kindly Respond" data-hi="कृपया उत्तर दें"></h2>
+  <p data-en="Your presence means the world to us"
+     data-hi="आपकी उपस्थिति हमारे लिए अमूल्य है"></p>
 
   <div class="actions">
-    <a class="confirm"
-       href="https://wa.me/919999999999?text=We%20will%20be%20there">
+    <a class="confirm" href="https://wa.me/919999999999?text=We%20will%20be%20there">
       Joyfully Accept
     </a>
-
-    <a class="regret"
-       href="https://wa.me/919999999999?text=Sorry%2C%20we%20cannot%20attend">
+    <a class="regret" href="https://wa.me/919999999999?text=Sorry%2C%20we%20cannot%20attend">
       Send Regrets
     </a>
   </div>
 </section>
-<div class="lang-toggle">
-  <button id="en" class="active">EN</button>
-  <button id="hi">हिंदी</button>
-</div>
+
 <footer>
   With love · Save the Date
 </footer>
 
 <script>
-/* Fade-in */
-const io=new IntersectionObserver(e=>{
-  e.forEach(x=>x.isIntersecting&&x.target.classList.add("in"))
-},{threshold:.15});
-document.querySelectorAll("[data-animate]").forEach(el=>io.observe(el));
+/* Language switch */
+function setLang(lang){
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    el.textContent = el.dataset[lang];
+  });
+  en.classList.toggle("active",lang==="en");
+  hi.classList.toggle("active",lang==="hi");
+}
+en.onclick=()=>setLang("en");
+hi.onclick=()=>setLang("hi");
+setLang("en");
 
-/* Parallax */
+/* Bell sway */
+let lastY=0;
 addEventListener("scroll",()=>{
-  document.querySelectorAll("[data-parallax]").forEach(el=>{
-    el.style.transform=`translateY(${scrollY*el.dataset.parallax}px)`
-  })
+  const dy=scrollY-lastY;
+  bell.style.transform=
+    `translateX(-50%) rotate(${Math.max(-6,Math.min(6,dy))}deg)`;
+  lastY=scrollY;
 });
 </script>
 
