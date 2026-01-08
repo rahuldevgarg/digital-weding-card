@@ -282,6 +282,49 @@ footer{
   body{background:#fff;color:#000}
   .section{padding:3cm 2cm}
 }
+/* ===== PRINT BACK PAGE ===== */
+.print-back{
+  display:none;
+}
+
+@media print{
+  body{
+    background:#fff;
+    color:#000;
+  }
+
+  .print-back{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    page-break-before:always;
+    text-align:center;
+  }
+
+  .print-back h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:28pt;
+    margin-bottom:12px;
+  }
+
+  .print-sub{
+    font-size:12pt;
+    margin-bottom:24px;
+    opacity:.8;
+  }
+
+  #qr svg{
+    width:160px;
+    height:160px;
+  }
+
+  .qr-text{
+    font-size:10pt;
+    margin-top:10px;
+  }
+}
 </style>
 </head>
 
@@ -348,7 +391,18 @@ footer{
 <footer>
   With love · Save the Date
 </footer>
+<!-- PRINT BACK PAGE -->
+<section class="print-back">
+  <h2>Yash & Shrishti</h2>
+  <p class="print-sub">Scan to view details & RSVP</p>
 
+  <div id="qr-container">
+    <div id="qr"></div>
+    <div class="qr-text" id="qr-url"></div>
+  </div>
+</section>
+
+  
 <script>
 /* Language switch */
 function setLang(lang){
