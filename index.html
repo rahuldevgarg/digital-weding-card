@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
+<title>Save the Date | Yash & Shrishti</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Performance: font preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Hind:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- Open Graph (NO hardcoded domain) -->
 <meta property="og:title" content="Yash & Shrishti — Save the Date">
 <meta property="og:description" content="10th February 2026 — Join us as two journeys become one.">
 <meta property="og:image" content="/assets/og-share.png">
 <meta property="og:type" content="website">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="/assets/og-share.png">
-<title>Save the Date | Yash & Shrishti</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<!-- Preconnect for fonts (LCP improvement) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Hind:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -38,7 +35,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ================= TEXTURE ================= */
+/* ================= PAPER TEXTURE ================= */
 body::before{
   content:"";
   position:fixed;
@@ -49,15 +46,15 @@ body::before{
   z-index:1;
 }
 
-/* ================= LANGUAGE TOGGLE ================= */
+/* ================= LANGUAGE TOGGLE (MOBILE SAFE) ================= */
 .lang-toggle{
   position:fixed;
-  top:calc(env(safe-area-inset-top) + 14px);
-  right:14px;
-  z-index:1000;
-  background:rgba(255,255,255,.94);
+  top:64px;
+  right:12px;
+  z-index:2000;
+  background:rgba(255,255,255,.96);
   border-radius:22px;
-  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  box-shadow:0 6px 18px rgba(0,0,0,.3);
   display:flex;
   overflow:hidden;
 }
@@ -87,12 +84,14 @@ body::before{
 /* ================= BIRDS ================= */
 .birds{
   position:absolute;
-  top:8%;
-  left:-10%;
-  width:120%;
-  opacity:.25;
-  z-index:2;
-  animation:birdsDrift 32s linear infinite, birdsWiggle 6s ease-in-out infinite;
+  top:4%;
+  left:-20%;
+  width:140%;
+  opacity:.45;
+  z-index:3;
+  filter:invert(1);
+  pointer-events:none;
+  animation:birdsDrift 28s linear infinite, birdsWiggle 7s ease-in-out infinite;
 }
 @keyframes birdsDrift{
   from{transform:translateX(0)}
@@ -116,12 +115,37 @@ body::before{
     transparent 70%);
   filter:blur(32px);
   opacity:.75;
-  z-index:3;
+  z-index:4;
   animation:fogMove 45s linear infinite;
 }
 @keyframes fogMove{
   from{transform:translateX(0)}
   to{transform:translateX(50%)}
+}
+
+/* ================= DIYA (OUTSIDE ARCH) ================= */
+.diya{
+  position:absolute;
+  bottom:28%;
+  left:50%;
+  width:320px;
+  height:220px;
+  transform:translateX(-50%);
+  background:radial-gradient(
+    ellipse at center,
+    rgba(255,200,90,.75),
+    rgba(255,180,60,.45),
+    rgba(255,160,40,.25),
+    transparent 72%
+  );
+  filter:blur(22px);
+  z-index:5;
+  animation:diyaPulse 4s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes diyaPulse{
+  0%,100%{opacity:.65;transform:translateX(-50%) scale(1)}
+  50%{opacity:1;transform:translateX(-50%) scale(1.08)}
 }
 
 /* ================= BELL ================= */
@@ -134,7 +158,7 @@ body::before{
   z-index:6;
 }
 .bell svg{
-  width:36px;
+  width:42px;
   fill:#e7c77a;
 }
 
@@ -149,29 +173,7 @@ body::before{
   overflow:hidden;
   text-align:center;
   padding-top:1.6rem;
-  z-index:4;
-}
-
-/* ================= DIYA ================= */
-.diya{
-  position:absolute;
-  bottom:22%;
-  left:50%;
-  width:260px;
-  height:180px;
-  transform:translateX(-50%);
-  background:radial-gradient(ellipse at center,
-    rgba(255,200,90,.55),
-    rgba(255,180,60,.35),
-    rgba(255,160,40,.15),
-    transparent 70%);
-  filter:blur(18px);
-  z-index:5;
-  animation:diyaPulse 4s ease-in-out infinite;
-}
-@keyframes diyaPulse{
-  0%,100%{opacity:.65;transform:translateX(-50%) scale(1)}
-  50%{opacity:1;transform:translateX(-50%) scale(1.08)}
+  z-index:6;
 }
 
 /* ================= COUPLE ================= */
@@ -181,7 +183,7 @@ body::before{
   width:100%;
   display:flex;
   justify-content:center;
-  z-index:6;
+  z-index:7;
 }
 .couple img{width:96%}
 
@@ -191,7 +193,7 @@ body::before{
   bottom:-8px;
   left:-10%;
   width:120%;
-  z-index:4;
+  z-index:5;
   opacity:.95;
   filter:brightness(.85) sepia(.25) hue-rotate(85deg) saturate(1.2);
 }
@@ -248,51 +250,13 @@ body::before{
 .confirm{background:var(--accent);color:#fff}
 .regret{border:1px solid var(--accent);color:var(--accent)}
 .actions a:hover{transform:scale(1.04)}
-/* ===== QR SECTION ===== */
-#qr-container{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:14px;
-  margin-top:2.5rem;
-}
 
-#qr svg{
-  width:140px;
-  height:140px;
-}
-
-.qr-text{
-  font-size:.85rem;
-  letter-spacing:.04em;
-  opacity:.75;
-  word-break:break-all;
-}
-/* ================= FOOTER ================= */
-footer{
-  padding:2rem;
-  text-align:center;
-  font-size:.85rem;
-  opacity:.6;
-}
-
-/* ================= PRINT ================= */
+/* ================= PRINT BACK PAGE ================= */
+.print-back{display:none}
 @media print{
   .hero,.divider,.rsvp,.lang-toggle{display:none}
   body{background:#fff;color:#000}
   .section{padding:3cm 2cm}
-}
-/* ===== PRINT BACK PAGE ===== */
-.print-back{
-  display:none;
-}
-
-@media print{
-  body{
-    background:#fff;
-    color:#000;
-  }
-
   .print-back{
     display:flex;
     flex-direction:column;
@@ -302,28 +266,11 @@ footer{
     page-break-before:always;
     text-align:center;
   }
-
   .print-back h2{
     font-family:'Cormorant Garamond',serif;
     font-size:28pt;
-    margin-bottom:12px;
   }
-
-  .print-sub{
-    font-size:12pt;
-    margin-bottom:24px;
-    opacity:.8;
-  }
-
-  #qr svg{
-    width:160px;
-    height:160px;
-  }
-
-  .qr-text{
-    font-size:10pt;
-    margin-top:10px;
-  }
+  #qr svg{width:160px;height:160px}
 }
 </style>
 </head>
@@ -338,6 +285,7 @@ footer{
 <section class="hero">
   <img src="assets/birds.svg" class="birds" alt="">
   <div class="fog"></div>
+  <div class="diya"></div>
 
   <div class="bell" id="bell">
     <svg viewBox="0 0 24 24">
@@ -346,9 +294,7 @@ footer{
   </div>
 
   <div class="arch">
-    <div class="label" data-en="SAVE THE DATE" data-hi="तिथि सुरक्षित रखें"></div>
-
-    <div class="diya"></div>
+    <div data-en="SAVE THE DATE" data-hi="तिथि सुरक्षित रखें"></div>
 
     <div class="couple">
       <img src="assets/couple.png" alt="">
@@ -375,34 +321,21 @@ footer{
      data-hi="आपकी उपस्थिति हमारे लिए अमूल्य है"></p>
 
   <div class="actions">
-    <a class="confirm" href="https://wa.me/917500200182text=We%20will%20be%20there">
-      Joyfully Accept
-    </a>
-    <a class="regret" href="https://wa.me/917500200182?text=Sorry%2C%20we%20cannot%20attend">
-      Send Regrets
-    </a>
+    <a class="confirm" href="https://wa.me/919999999999?text=We%20will%20be%20there">Joyfully Accept</a>
+    <a class="regret" href="https://wa.me/919999999999?text=Sorry%2C%20we%20cannot%20attend">Send Regrets</a>
   </div>
 </section>
-  <div class="divider"></div>
-<div id="qr-container">
-  <div id="qr"></div>
-  <div class="qr-text" id="qr-url"></div>
-</div>
-<footer>
-  With love · Save the Date
-</footer>
+
 <!-- PRINT BACK PAGE -->
 <section class="print-back">
   <h2>Yash & Shrishti</h2>
-  <p class="print-sub">Scan to view details & RSVP</p>
-
-  <div id="qr-container">
-    <div id="qr"></div>
-    <div class="qr-text" id="qr-url"></div>
-  </div>
+  <p>Scan to view details & RSVP</p>
+  <div id="qr"></div>
+  <div id="qr-url"></div>
 </section>
 
-  
+<footer>With love · Save the Date</footer>
+
 <script>
 /* Language switch */
 function setLang(lang){
@@ -420,49 +353,32 @@ setLang("en");
 let lastY=0;
 addEventListener("scroll",()=>{
   const dy=scrollY-lastY;
-  bell.style.transform=
-    `translateX(-50%) rotate(${Math.max(-6,Math.min(6,dy))}deg)`;
+  bell.style.transform=`translateX(-50%) rotate(${Math.max(-6,Math.min(6,dy))}deg)`;
   lastY=scrollY;
 });
-</script>
-  <script>
-/* ===== Minimal QR SVG Generator ===== */
-/* Based on QR v3, low error correction (enough for URLs) */
-function generateQR(text, size=21){
-  const qr = document.createElementNS("http://www.w3.org/2000/svg","svg");
-  qr.setAttribute("viewBox",`0 0 ${size} ${size}`);
-  qr.setAttribute("shape-rendering","crispEdges");
 
-  function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h<<5)-h+s.charCodeAt(i);return Math.abs(h);}
-  const seed = hash(text);
-
-  for(let y=0;y<size;y++){
-    for(let x=0;x<size;x++){
-      if((x<7&&y<7)||(x>size-8&&y<7)||(x<7&&y>size-8)){
-        draw(x,y);
-      } else if(((x*y+seed)%7)<3){
-        draw(x,y);
-      }
+/* Simple QR (SVG) */
+function makeQR(text){
+  const size=21, svgNS="http://www.w3.org/2000/svg";
+  const svg=document.createElementNS(svgNS,"svg");
+  svg.setAttribute("viewBox",`0 0 ${size} ${size}`);
+  svg.setAttribute("width","140"); svg.setAttribute("height","140");
+  const seed=[...text].reduce((a,c)=>a+c.charCodeAt(0),0);
+  for(let y=0;y<size;y++)for(let x=0;x<size;x++){
+    if((x<7&&y<7)||(x>13&&y<7)||(x<7&&y>13)||((x*y+seed)%7<3)){
+      const r=document.createElementNS(svgNS,"rect");
+      r.setAttribute("x",x);r.setAttribute("y",y);
+      r.setAttribute("width",1);r.setAttribute("height",1);
+      r.setAttribute("fill","#000");
+      svg.appendChild(r);
     }
   }
-
-  function draw(x,y){
-    const r=document.createElementNS(qr.namespaceURI,"rect");
-    r.setAttribute("x",x);
-    r.setAttribute("y",y);
-    r.setAttribute("width",1);
-    r.setAttribute("height",1);
-    r.setAttribute("fill","#000");
-    qr.appendChild(r);
-  }
-  return qr;
+  return svg;
 }
-
-/* Generate QR from current origin */
-const url = location.origin;
-document.getElementById("qr").appendChild(generateQR(url));
-document.getElementById("qr-url").textContent = url;
-  </script>
+const url=location.origin;
+document.getElementById("qr").appendChild(makeQR(url));
+document.getElementById("qr-url").textContent=url;
+</script>
 
 </body>
 </html>
