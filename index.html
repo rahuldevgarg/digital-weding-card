@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Yash & Shrishti | Save the Date</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#2f4f43">
 <!-- Fonts: Royal Serif + Soft Human -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,8 +12,8 @@
 
 <meta property="og:title" content="Yash & Shrishti — Save the Date">
 <meta property="og:description" content="With blessings, love, and mountain skies — 10th February 2026">
-<meta property="og:image" content="https://yashwithshrishti.xeniosrahi.com/assets/og-share.png">
-<meta property="og:image:type" content="image/png">
+<meta property="og:image" content="https://yashwithshrishti.xeniosrahi.com/assets/og-share.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
@@ -94,10 +94,14 @@ body::before{
   top:8%;
   left:-20%;
   width:140%;
+  transform:scale(1.2);
   opacity:.18;        /* was .45 */
   filter:none;        /* remove invert */
   z-index:1;          /* push behind everything */
 }
+  @media(max-width:768px){
+  .birds{opacity:.12}
+  }
 @keyframes birdsDrift{from{transform:translateX(0)}to{transform:translateX(45%)}}
 @keyframes birdsWiggle{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
@@ -211,7 +215,10 @@ body::before{
   justify-content:center;
   z-index:7;
 }
-.couple img{width:96%}
+.couple img{
+  width:96%;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,.35));
+}
 
 /* ===== MOUNTAINS ===== */
 .mountains{
@@ -621,25 +628,23 @@ footer{
 <footer>
   💗 With love · Save the Date • © Yash & Shrishti 2026
 </footer>
-
 <script>
-/* Language switch */
 function setLang(lang){
   document.querySelectorAll("[data-en]").forEach(el=>{
-  if(!el.textContent.trim()) el.textContent = el.dataset.en;
-});
-  en.classList.toggle("active",lang==="en");
-  hi.classList.toggle("active",lang==="hi");
-}
-en.onclick=()=>setLang("en");
-hi.onclick=()=>setLang("hi");
-setLang("en");
+    const value = el.getAttribute(`data-${lang}`);
+    if(value) el.textContent = value;
+  });
 
-/* Animate on view */
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>e.isIntersecting && e.target.classList.add("in"));
-},{threshold:.15});
-document.querySelectorAll("[data-animate]").forEach(el=>io.observe(el));
+  document.getElementById("en").classList.toggle("active", lang==="en");
+  document.getElementById("hi").classList.toggle("active", lang==="hi");
+}
+
+// Bind safely
+document.getElementById("en").addEventListener("click",()=>setLang("en"));
+document.getElementById("hi").addEventListener("click",()=>setLang("hi"));
+
+// Default
+setLang("en");
 </script>
 
 </body>
