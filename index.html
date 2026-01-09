@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Yash & Shrishti | Save the Date</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="theme-color" content="#2f4f43">
 <!-- Fonts: Royal Serif + Soft Human -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,8 @@
 
 <meta property="og:title" content="Yash & Shrishti — Save the Date">
 <meta property="og:description" content="With blessings, love, and mountain skies — 10th February 2026">
-<meta property="og:image" content="https://github.com/rahuldevgarg/digital-weding-card/blob/3dafe062f60db986e8717a2a341d9d62b74a38fa/assets/og-share.png">
+<meta property="og:image"
+      content="https://raw.githubusercontent.com/rahuldevgarg/digital-weding-card/main/assets/og-share.png">
   <meta property="og:type" content="website" />
     <meta property="og:url" content="https://yashwithshrishti.xeniosrahi.com/#" />
 
@@ -121,21 +122,30 @@ body::before{
 
 /* ===== DIYA GLOW ===== */
 
-
 /* ===== FLOATING GLITTER ===== */
 .glitter{
   position:absolute;
   width:6px;
   height:6px;
   border-radius:50%;
-  background:radial-gradient(circle,var(--gold-soft),transparent 70%);/* ===== DIYA GLOW (FIXED FOR MOBILE) ===== */
+  background:radial-gradient(circle,var(--gold-soft),transparent 70%);
+  box-shadow:0 0 12px rgba(242,210,139,.9);
+  opacity:.6;
+  animation:glitterFloat 10s linear infinite;
+}
+
+@keyframes glitterFloat{
+  from{transform:translateY(0)}
+  to{transform:translateY(-120vh)}
+}
+
+/* ===== DIYA GLOW (FIXED FOR MOBILE) ===== */
 .diya{
   position:absolute;
   bottom:28%;
   left:50%;
   width:360px;
   height:260px;
-
   background:radial-gradient(
     ellipse at center,
     rgba(255,215,120,.9),
@@ -143,33 +153,19 @@ body::before{
     rgba(255,150,40,.3),
     transparent 72%
   );
-
   filter:blur(26px);
-
-  /* 🔑 THESE ARE THE FIX */
   transform:translateX(-50%) translateZ(0);
   will-change:transform, opacity;
   isolation:isolate;
-
-  z-index:6; /* MUST be above fog & glitter */
+  z-index:6;
   opacity:.85;
-
   animation:diyaPulse 4.5s ease-in-out infinite;
   pointer-events:none;
 }
-  box-shadow:0 0 12px rgba(242,210,139,.9);
-  opacity:.6;
-  animation:glitterFloat 10s linear infinite;
-}
-  @keyframes diyaPulse{
-  0%,100%{
-    opacity:.6;
-    transform:translateX(-50%) scale(1);
-  }
-  50%{
-    opacity:1;
-    transform:translateX(-50%) scale(1.12);
-  }
+
+@keyframes diyaPulse{
+  0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}
+  50%{opacity:1;transform:translateX(-50%) scale(1.12)}
 }
 /* ===== ARCH ===== */
 .arch{
@@ -514,9 +510,9 @@ footer{
      data-hi="दीये की लौ संग, हमारे जीवन की नई शुरुआत">
   </div>
 
-  <div class="glitter" style="left:20%;animation-delay:0s"></div>
-  <div class="glitter" style="left:55%;animation-delay:3s"></div>
-  <div class="glitter" style="left:78%;animation-delay:6s"></div>
+  <div class="glitter" style="left:15%;animation-delay:1s;opacity:.4"></div>
+<div class="glitter" style="left:45%;animation-delay:4s;opacity:.6"></div>
+<div class="glitter" style="left:75%;animation-delay:7s;opacity:.3"></div>
 
   <div class="arch">
     <div class="label" data-en="SAVE THE DATE" data-hi="तिथि सुरक्षित रखें"></div>
@@ -570,19 +566,13 @@ footer{
 
   
 
-  <div class="ceremony-details">
-
-    <div class="ceremony-line"
-         data-en="Bharat & Dinner"
-         data-hi="भारत एवं रात्रि भोज">
-    </div>
 
     <div class="event-title">Bharat & Dinner</div>
 <div class="event-time"
      data-en="Commencing from 7:00 PM onwards"
      data-hi="सायं 7:00 बजे से आरंभ"></div>
 
-  </div>
+  
 
   <div class="venue-card">
 
@@ -622,8 +612,8 @@ footer{
 /* Language switch */
 function setLang(lang){
   document.querySelectorAll("[data-en]").forEach(el=>{
-    el.textContent = el.dataset[lang];
-  });
+  if(!el.textContent.trim()) el.textContent = el.dataset.en;
+});
   en.classList.toggle("active",lang==="en");
   hi.classList.toggle("active",lang==="hi");
 }
