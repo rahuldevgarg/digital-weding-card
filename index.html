@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yash & Shrishti | Save the Date</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Fonts: Royal Serif + Soft Human -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Hind:wght@300;400&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<meta property="og:title" content="Yash & Shrishti — Save the Date">
+<meta property="og:description" content="With blessings, love, and mountain skies — 10th February 2026">
+<meta property="og:image" content="/assets/og-share.png">
+
+<style>
+:root{
+  --green-dark:#0f1f19;
+  --green-mid:#2f4f43;
+  --paper:#f4efe7;
+  --gold:#d9a441;
+  --gold-soft:#f2d28b;
+  --ink:#1e1e1e;
+}
+
+/* ===== RESET ===== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Hind',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* ===== PAPER TEXTURE ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("assets/texture.jpg");
+  opacity:.09;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle{
+  position:fixed;
+  top:64px;
+  right:12px;
+  z-index:2000;
+  background:rgba(255,255,255,.95);
+  border-radius:22px;
+  box-shadow:0 8px 22px rgba(0,0,0,.25);
+  display:flex;
+}
+.lang-toggle button{
+  border:none;
+  background:none;
+  padding:8px 14px;
+  font-size:.85rem;
+  cursor:pointer;
+}
+.lang-toggle .active{
+  background:var(--gold);
+  color:#fff;
+}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  min-height:100vh;
+  background:radial-gradient(circle at top,var(--green-mid),var(--green-dark));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* ===== BIRDS ===== */
+.birds{
+  position:absolute;
+  top:5%;
+  left:-25%;
+  width:150%;
+  opacity:.45;
+  filter:invert(1);
+  z-index:2;
+  animation:birdsDrift 36s linear infinite,
+            birdsWiggle 8s ease-in-out infinite;
+}
+@keyframes birdsDrift{from{transform:translateX(0)}to{transform:translateX(45%)}}
+@keyframes birdsWiggle{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ===== FOG ===== */
+.fog{
+  position:absolute;
+  bottom:-12%;
+  left:-50%;
+  width:200%;
+  height:60%;
+  background:radial-gradient(circle at 30% 60%,
+    rgba(255,255,255,.55),
+    rgba(255,255,255,.25),
+    transparent 70%);
+  filter:blur(38px);
+  opacity:.75;
+  z-index:3;
+  animation:fogMove 60s linear infinite;
+}
+@keyframes fogMove{from{transform:translateX(0)}to{transform:translateX(60%)}}
+
+/* ===== DIYA GLOW ===== */
+.diya{
+  position:absolute;
+  bottom:28%;
+  left:50%;
+  width:360px;
+  height:260px;
+  transform:translateX(-50%);
+  background:radial-gradient(
+    ellipse at center,
+    rgba(255,215,120,.85),
+    rgba(255,185,80,.45),
+    rgba(255,150,40,.25),
+    transparent 72%);
+  filter:blur(26px);
+  z-index:4;
+  animation:diyaPulse 4.5s ease-in-out infinite;
+}
+@keyframes diyaPulse{
+  0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}
+  50%{opacity:1;transform:translateX(-50%) scale(1.12)}
+}
+
+/* ===== FLOATING GLITTER ===== */
+.glitter{
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:radial-gradient(circle,var(--gold-soft),transparent 70%);
+  box-shadow:0 0 12px rgba(242,210,139,.9);
+  opacity:.6;
+  animation:glitterFloat 10s linear infinite;
+}
+@keyframes glitterFloat{
+  from{transform:translateY(40px);opacity:0}
+  20%{opacity:.6}
+  to{transform:translateY(-260px);opacity:0}
+}
+
+/* ===== ARCH ===== */
+.arch{
+  position:relative;
+  width:min(92%,420px);
+  aspect-ratio:3/4;
+  background:linear-gradient(180deg,#203a30,#0f1f19);
+  border-radius:220px 220px 32px 32px;
+  box-shadow:0 60px 120px rgba(0,0,0,.55);
+  overflow:hidden;
+  text-align:center;
+  padding-top:1.6rem;
+  z-index:6;
+}
+.arch::before{
+  content:"";
+  position:absolute;
+  inset:-18px;
+  border-radius:240px 240px 40px 40px;
+  background:radial-gradient(circle at top,
+    rgba(255,215,140,.28),
+    transparent 60%);
+  z-index:-1;
+}
+
+/* ===== LABEL ===== */
+.label{
+  font-family:'Playfair Display',serif;
+  letter-spacing:.35em;
+  font-size:.8rem;
+  color:#f0dfb7;
+}
+
+/* ===== COUPLE ===== */
+.couple{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  z-index:7;
+}
+.couple img{width:96%}
+
+/* ===== MOUNTAINS ===== */
+.mountains{
+  position:absolute;
+  bottom:-10px;
+  left:-10%;
+  width:120%;
+  z-index:5;
+  opacity:.95;
+  filter:brightness(.85) sepia(.25) hue-rotate(85deg) saturate(1.2);
+}
+
+/* ===== CONTENT ===== */
+.section{
+  padding:5.5rem 1.6rem;
+  text-align:center;
+  background:
+    radial-gradient(120% 40% at 50% 0%,
+      rgba(0,0,0,.03),
+      transparent 70%),
+    var(--paper);
+}
+.names{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,6vw,4rem);
+  color:#1c1c1c;
+}
+.sub{
+  font-family:'Hind',sans-serif;
+  letter-spacing:.28em;
+  margin-top:.9rem;
+  color:#6a5c3d;
+}
+.date{
+  margin-top:1.4rem;
+  font-size:1.1rem;
+  color:#7a6a44;
+}
+.quote{
+  max-width:760px;
+  margin:3.5rem auto 0;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.7rem,4vw,2.2rem);
+  line-height:1.7;
+  color:#2a2a2a;
+}
+
+/* ===== DIVIDER ===== */
+.divider{
+  height:160px;
+  background:linear-gradient(to bottom,var(--paper),#e7dfd2);
+}
+
+/* ===== WISH SECTION ===== */
+.wishes{
+  background:linear-gradient(to bottom,#efe6d6,#e7dfd2);
+  padding:5.5rem 1.6rem;
+  text-align:center;
+}
+.wishes h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5vw,3rem);
+  margin-bottom:1rem;
+}
+.wishes p{
+  max-width:720px;
+  margin:0 auto 2.8rem;
+  font-size:1.05rem;
+  color:#5c5136;
+}
+
+/* ===== SEND WISHES BUTTON ===== */
+.send-wishes{
+  display:inline-block;
+  text-decoration:none;
+  padding:1.1rem 3.2rem;
+  border-radius:50px;
+  background:
+    radial-gradient(circle at top,var(--gold-soft),var(--gold));
+  color:#fff;
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;
+  letter-spacing:.06em;
+  box-shadow:0 12px 30px rgba(217,164,65,.45);
+  transition:.3s ease;
+}
+.send-wishes:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 18px 40px rgba(217,164,65,.6);
+}
+
+/* ===== ANIMATION ===== */
+[data-animate]{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .9s ease, transform .9s ease;
+}
+[data-animate].in{
+  opacity:1;
+  transform:none;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  padding:2rem;
+  text-align:center;
+  font-size:.85rem;
+  opacity:.6;
+}
+
+/* ===== PRINT ===== */
+@media print{
+  body::before,.hero,.divider,.wishes,.lang-toggle{display:none}
+  body{background:#fff;color:#000}
+  .section{padding:3cm 2cm}
+}
+</style>
+</head>
+
+<body>
+
+<div class="lang-toggle">
+  <button id="en" class="active">EN</button>
+  <button id="hi">हिंदी</button>
+</div>
+
+<section class="hero">
+  <img src="assets/birds.svg" class="birds" alt="">
+  <div class="fog"></div>
+  <div class="diya"></div>
+
+  <div class="glitter" style="left:20%;animation-delay:0s"></div>
+  <div class="glitter" style="left:55%;animation-delay:3s"></div>
+  <div class="glitter" style="left:78%;animation-delay:6s"></div>
+
+  <div class="arch">
+    <div class="label" data-en="SAVE THE DATE" data-hi="तिथि सुरक्षित रखें"></div>
+
+    <div class="couple">
+      <img src="assets/couple.png" alt="">
+    </div>
+
+    <img src="assets/mountains.svg" class="mountains" alt="">
+  </div>
+</section>
+
+<section class="section" data-animate>
+  <div class="names">Yash & Shrishti</div>
+  <div class="sub" data-en="ARE UNITING THEIR LIVES" data-hi="अपने जीवन का आरंभ कर रहे हैं"></div>
+  <div class="date" data-en="10th February 2026" data-hi="10 फ़रवरी 2026"></div>
+
+  <div class="quote"
+       data-en="With the blessings of our families and the grace of the mountains, we invite you to witness the beginning of our forever."
+       data-hi="परिवार के आशीर्वाद और पर्वतों की छाया में, हम अपने नए जीवन की शुरुआत कर रहे हैं।"></div>
+</section>
+
+<div class="divider"></div>
+
+<section class="wishes" data-animate>
+  <h2 data-en="Send Your Blessings" data-hi="अपना आशीर्वाद दें"></h2>
+  <p data-en="Your love, prayers, and warm wishes will travel with us into this new chapter."
+     data-hi="आपका प्रेम, प्रार्थनाएँ और शुभकामनाएँ हमारे नए जीवन का हिस्सा बनेंगी।"></p>
+
+  <a class="send-wishes"
+     href="https://wa.me/919999999999?text=Sending%20you%20our%20love%20and%20blessings%20on%20your%20beautiful%20journey">
+     Send Wishes
+  </a>
+</section>
+
+<footer>
+  With love · Save the Date
+</footer>
+
+<script>
+/* Language switch */
+function setLang(lang){
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    el.textContent = el.dataset[lang];
+  });
+  en.classList.toggle("active",lang==="en");
+  hi.classList.toggle("active",lang==="hi");
+}
+en.onclick=()=>setLang("en");
+hi.onclick=()=>setLang("hi");
+setLang("en");
+
+/* Animate on view */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>e.isIntersecting && e.target.classList.add("in"));
+},{threshold:.15});
+document.querySelectorAll("[data-animate]").forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
