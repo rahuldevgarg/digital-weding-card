@@ -3,181 +3,268 @@
 <head>
 <meta charset="UTF-8">
 <title>Yash & Shrishti | Save the Date</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1f3d32">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Playfair+Display:wght@500;700&family=Hind:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Playfair+Display:wght@500;600&family=Hind:wght@300;400&display=swap" rel="stylesheet">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Yash & Shrishti — Save the Date">
-<meta property="og:description" content="With divine grace and family blessings · 10 February 2026">
-<meta property="og:image" content="/assets/og-share.png">
+<meta property="og:description" content="Festival of love with royal grace · 10 February 2026">
+<meta property="og:image" content="/assets/og-share.jpg">
 <meta property="og:type" content="website">
+<meta property="og:url" content="">
 
 <style>
 :root{
- --green:#1f3d32;
- --paper:#f5efe6;
- --gold:#d9a441;
- --ink:#222;
+  --paper:#f6f1e8;
+  --green:#1e3a32;
+  --gold:#d9a441;
+  --gold-soft:#f2d28b;
+  --ink:#1f1f1f;
 }
 *{box-sizing:border-box}
 body{
- margin:0;
- font-family:'Hind',sans-serif;
- background:var(--paper);
- color:var(--ink);
+  margin:0;
+  font-family:'Hind',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
 }
+img{max-width:100%;display:block}
+
+/* Language Toggle */
+.lang{
+  position:fixed;
+  top:14px;
+  right:14px;
+  z-index:999;
+  background:#fff;
+  border-radius:24px;
+  display:flex;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.lang button{
+  border:0;
+  background:none;
+  padding:8px 16px;
+  font-family:'Playfair Display',serif;
+  cursor:pointer;
+}
+.lang .active{
+  background:var(--gold);
+  color:#fff;
+}
+
+/* HERO */
 .hero{
- min-height:100vh;
- background:linear-gradient(180deg,#25483b,#10241d);
- display:flex;
- align-items:center;
- justify-content:center;
- position:relative;
- overflow:hidden;
+  min-height:100vh;
+  background:linear-gradient(180deg,#23463c,#0f1f19);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
 }
-.hero::after{
- content:"";
- position:absolute;
- inset:0;
- background:radial-gradient(circle at center,transparent 40%,rgba(0,0,0,.4));
-}
-.birds{
- position:absolute;
- inset:0;
- background:url('assets/birds.svg') center/120% no-repeat;
- opacity:.15;
-}
-.arch{
- position:relative;
- width:360px;
- max-width:90%;
- background:linear-gradient(180deg,#2f5a4b,#112820);
- border-radius:200px 200px 30px 30px;
- padding:2rem 1rem 0;
- text-align:center;
- box-shadow:0 40px 80px rgba(0,0,0,.5);
- z-index:2;
-}
-.arch h1{
- font-family:'Playfair Display',serif;
- color:#f3e2b8;
- letter-spacing:.25em;
- font-size:.9rem;
- margin-bottom:1rem;
-}
-.couple img{
- width:100%;
- filter:drop-shadow(0 20px 40px rgba(0,0,0,.4));
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("assets/birds.svg") center/140% no-repeat;
+  opacity:.18;
 }
 .diya{
- position:absolute;
- bottom:15%;
- left:50%;
- width:280px;
- height:200px;
- transform:translateX(-50%);
- background:radial-gradient(ellipse at center,rgba(255,200,90,.9),rgba(255,160,40,.4),transparent 70%);
- filter:blur(25px);
- animation:pulse 4s ease-in-out infinite;
+  position:absolute;
+  bottom:18%;
+  left:50%;
+  width:320px;
+  height:220px;
+  transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(255,200,90,.9),rgba(255,170,60,.45),transparent 70%);
+  filter:blur(24px);
+  animation:pulse 4s ease-in-out infinite;
 }
 @keyframes pulse{
- 0%,100%{opacity:.6}
- 50%{opacity:1}
+  0%,100%{opacity:.6}
+  50%{opacity:1}
 }
+.arch{
+  position:relative;
+  width:min(420px,92%);
+  aspect-ratio:3/4;
+  background:linear-gradient(#2a4c40,#13241d);
+  border-radius:220px 220px 32px 32px;
+  box-shadow:0 40px 90px rgba(0,0,0,.5);
+  text-align:center;
+  padding-top:1.4rem;
+}
+.label{
+  font-family:'Playfair Display',serif;
+  letter-spacing:.3em;
+  color:var(--gold-soft);
+  font-size:.8rem;
+}
+.couple{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+.mountains{
+  position:absolute;
+  bottom:-10px;
+  left:-10%;
+  width:120%;
+  opacity:.9;
+  filter:brightness(.8) sepia(.3) hue-rotate(80deg);
+}
+
+/* SECTION */
 .section{
- padding:5rem 1.5rem;
- text-align:center;
+  padding:5rem 1.6rem;
+  text-align:center;
 }
 .names{
- font-family:'Playfair Display',serif;
- font-size:3rem;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,6vw,3.8rem);
 }
 .sub{
- letter-spacing:.3em;
- color:#6d5b2c;
- margin-top:.6rem;
+  letter-spacing:.25em;
+  margin-top:.8rem;
+  color:#6b5b38;
+}
+.date{
+  margin-top:1.2rem;
+  color:#7a6a44;
 }
 .quote{
- max-width:700px;
- margin:3rem auto;
- font-family:'Cormorant Garamond',serif;
- font-size:1.8rem;
- line-height:1.6;
+  max-width:720px;
+  margin:3rem auto 0;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,4vw,2.1rem);
+  line-height:1.7;
 }
-.card{
- background:rgba(255,255,255,.6);
- border-radius:20px;
- padding:2.5rem 2rem;
- max-width:520px;
- margin:0 auto;
- box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+/* FAMILY */
+.family{
+  margin:3rem 0;
 }
-.card h2{
- font-family:'Playfair Display',serif;
- font-size:1.8rem;
- margin-bottom:1rem;
+.child{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;
 }
-.card p{
- line-height:1.7;
+.parents{
+  font-family:'Cormorant Garamond',serif;
+  margin-top:.4rem;
+  color:#5c5136;
+}
+
+/* VENUE */
+.venue{
+  max-width:520px;
+  margin:3rem auto 0;
+  background:rgba(255,255,255,.6);
+  padding:2.4rem;
+  border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,.1);
 }
 .map{
- margin-top:1.5rem;
- display:inline-block;
- text-decoration:none;
- color:var(--gold);
- font-family:'Playfair Display',serif;
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  margin-top:1.4rem;
+  text-decoration:none;
+  color:var(--gold);
+  font-family:'Playfair Display',serif;
 }
+
+/* FOOTER */
 footer{
- text-align:center;
- padding:2rem;
- opacity:.6;
- font-size:.85rem;
+  padding:2rem;
+  text-align:center;
+  font-size:.85rem;
+  opacity:.7;
 }
 </style>
 </head>
 
 <body>
 
+<div class="lang">
+  <button id="en" class="active">EN</button>
+  <button id="hi">हिंदी</button>
+</div>
+
 <section class="hero">
- <div class="birds"></div>
- <div class="diya"></div>
- <div class="arch">
-   <h1>SAVE THE DATE</h1>
-   <div class="couple">
-     <img src="assets/couple.png" alt="Yash & Shrishti">
-   </div>
- </div>
+  <div class="diya"></div>
+  <div class="arch">
+    <div class="label" data-en="SAVE THE DATE" data-hi="तिथि सुरक्षित रखें"></div>
+    <div class="couple">
+      <img src="assets/couple.png" alt="Couple">
+    </div>
+    <img src="assets/mountains.svg" class="mountains" alt="">
+  </div>
 </section>
 
 <section class="section">
- <div class="names">Yash & Shrishti</div>
- <div class="sub">ARE UNITING THEIR LIVES</div>
- <div class="quote">
- With the blessings of our families and divine grace,<br>
- we invite you to celebrate the beginning of our forever.
- </div>
+  <div class="names">Yash & Shrishti</div>
+  <div class="sub" data-en="ARE UNITING THEIR LIVES" data-hi="अपने जीवन का शुभारंभ"></div>
+  <div class="date" data-en="10 February 2026" data-hi="10 फ़रवरी 2026"></div>
+  <div class="quote"
+    data-en="With divine grace and family blessings, we invite you to celebrate the beginning of our forever."
+    data-hi="ईश्वर की कृपा एवं परिवार के आशीर्वाद के साथ, हमारे नए जीवन की शुरुआत में आपका स्वागत है।">
+  </div>
 </section>
 
 <section class="section">
- <div class="card">
-   <h2>Bharat & Dinner</h2>
-   <p>Commencing from <strong>7:00 PM onwards</strong></p>
-   <h2 style="margin-top:2rem">Venue</h2>
-   <p>
-     <strong>Singhal Banquet & Farms</strong><br>
-     Near Shri Dronacharya Degree College<br>
-     F1 Race Track · Dankaur · Greater Noida
-   </p>
-   <a class="map" href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">📍 Open in Google Maps</a>
- </div>
+  <div class="family">
+    <div class="child">Yash Goyal</div>
+    <div class="parents"
+      data-en="Shri. Pawan Goyal · Smt. Archna Goyal"
+      data-hi="श्री पवन गोयल · श्रीमती अर्चना गोयल"></div>
+  </div>
+
+  <div class="family">
+    <div class="child">Shrishti Tayal</div>
+    <div class="parents"
+      data-en="Shri. Sanjay Tayal · Smt. Manju Tayal"
+      data-hi="श्री संजय तायल · श्रीमती मंजू तायल"></div>
+  </div>
+
+  <div class="quote"
+    data-en="Bharat & Dinner · From 7:00 PM onwards"
+    data-hi="भारत एवं रात्रि भोज · सायं 7 बजे से">
+  </div>
+
+  <div class="venue">
+    <div class="child">Singhal Banquet & Farms</div>
+    <div class="parents"
+      data-en="Near Shri Dronacharya Degree College · F1 Race Track · Dankaur · Greater Noida"
+      data-hi="श्री द्रोणाचार्य डिग्री कॉलेज के पास · एफ1 रेस ट्रैक · दनकौर · ग्रेटर नोएडा">
+    </div>
+    <a class="map" href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">📍 Open in Google Maps</a>
+  </div>
 </section>
 
 <footer>
- 💛 With love · Save the Date · Yash & Shrishti 2026
+  💗 With love · Save the Date · Yash & Shrishti 2026
 </footer>
+
+<script>
+function setLang(l){
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    el.textContent = el.dataset[l];
+  });
+  en.classList.toggle("active",l==="en");
+  hi.classList.toggle("active",l==="hi");
+}
+en.onclick=()=>setLang("en");
+hi.onclick=()=>setLang("hi");
+setLang("en");
+</script>
 
 </body>
 </html>
