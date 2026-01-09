@@ -380,7 +380,29 @@ body::before{
   margin-bottom:.8rem;
   color:#1c1c1c;
 }
+/* ===== MAP LINK ===== */
+.map-link{
+  margin-top:1.6rem;
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  text-decoration:none;
+  font-family:'Playfair Display',serif;
+  font-size:1rem;
+  color:var(--gold);
+  letter-spacing:.04em;
+  transition:.25s ease;
+}
 
+.map-link:hover{
+  transform:translateY(-2px);
+  color:#b88b2f;
+}
+
+.map-icon{
+  font-size:1.2rem;
+  filter:drop-shadow(0 0 6px rgba(217,164,65,.4));
+}
 .venue-address{
   font-family:'Cormorant Garamond',serif;
   font-size:1.2rem;
@@ -483,8 +505,8 @@ footer{
     <div class="parent-block">
       <div class="child-name">Yash Goyal</div>
       <div class="parent-names"
-           data-en="Shri. Pawan Goyal<br>Smt. Archna Goyal"
-           data-hi="श्री पवन गोयल<br>श्रीमती अर्चना गोयल">
+           data-en="Shri. Pawan Goyal · Smt. Archna Goyal"
+data-hi="श्री पवन गोयल · श्रीमती अर्चना गोयल">
       </div>
     </div>
 
@@ -493,8 +515,8 @@ footer{
     <div class="parent-block">
       <div class="child-name">Shrishti Tayal</div>
       <div class="parent-names"
-           data-en="Shri. Sanjay Tayal<br>Smt. Manju Tayal"
-           data-hi="श्री संजय टायल<br>श्रीमती मंजू टायल">
+           data-en="Shri. Sanjay Tayal • Smt. Manju Tayal"
+           data-hi="श्री संजय तायल • श्रीमती मंजू तायल">
       </div>
     </div>
 
@@ -529,6 +551,14 @@ footer{
          data-en="Near Shri Dronacharya Degree College<br>&amp; F1 Race Track, Dankaur<br>Greater Noida"
          data-hi="श्री द्रोणाचार्य डिग्री कॉलेज के पास<br>एवं एफ1 रेस ट्रैक, दनकौर<br>ग्रेटर नोएडा">
     </div>
+    <a class="map-link"
+   href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8"
+   target="_blank"
+   rel="noopener">
+  <span class="map-icon">📍</span>
+  <span data-en="Open in Google Maps"
+        data-hi="गूगल मैप्स पर देखें"></span>
+    </a>
 
   </div>
 
@@ -537,7 +567,7 @@ footer{
 
 
 <footer>
-  With love · Save the Date
+  💗 With love · Save the Date • © Yash & Shrishti 2026
 </footer>
 
 <script>
