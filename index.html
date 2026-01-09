@@ -116,27 +116,7 @@ body::before{
 @keyframes fogMove{from{transform:translateX(0)}to{transform:translateX(60%)}}
 
 /* ===== DIYA GLOW ===== */
-.diya{
-  position:absolute;
-  bottom:28%;
-  left:50%;
-  width:360px;
-  height:260px;
-  transform:translateX(-50%);
-  background:radial-gradient(
-    ellipse at center,
-    rgba(255,215,120,.85),
-    rgba(255,185,80,.45),
-    rgba(255,150,40,.25),
-    transparent 72%);
-  filter:blur(26px);
-  z-index:4;
-  animation:diyaPulse 4.5s ease-in-out infinite;
-}
-@keyframes diyaPulse{
-  0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}
-  50%{opacity:1;transform:translateX(-50%) scale(1.12)}
-}
+
 
 /* ===== FLOATING GLITTER ===== */
 .glitter{
@@ -144,17 +124,49 @@ body::before{
   width:6px;
   height:6px;
   border-radius:50%;
-  background:radial-gradient(circle,var(--gold-soft),transparent 70%);
+  background:radial-gradient(circle,var(--gold-soft),transparent 70%);/* ===== DIYA GLOW (FIXED FOR MOBILE) ===== */
+.diya{
+  position:absolute;
+  bottom:28%;
+  left:50%;
+  width:360px;
+  height:260px;
+
+  background:radial-gradient(
+    ellipse at center,
+    rgba(255,215,120,.9),
+    rgba(255,185,80,.55),
+    rgba(255,150,40,.3),
+    transparent 72%
+  );
+
+  filter:blur(26px);
+
+  /* 🔑 THESE ARE THE FIX */
+  transform:translateX(-50%) translateZ(0);
+  will-change:transform, opacity;
+  isolation:isolate;
+
+  z-index:6; /* MUST be above fog & glitter */
+  opacity:.85;
+
+  animation:diyaPulse 4.5s ease-in-out infinite;
+  pointer-events:none;
+}
   box-shadow:0 0 12px rgba(242,210,139,.9);
   opacity:.6;
   animation:glitterFloat 10s linear infinite;
 }
-@keyframes glitterFloat{
-  from{transform:translateY(40px);opacity:0}
-  20%{opacity:.6}
-  to{transform:translateY(-260px);opacity:0}
+  @keyframes diyaPulse{
+  0%,100%{
+    opacity:.6;
+    transform:translateX(-50%) scale(1);
+  }
+  50%{
+    opacity:1;
+    transform:translateX(-50%) scale(1.12);
+  }
 }
-
 /* ===== ARCH ===== */
 .arch{
   position:relative;
@@ -178,7 +190,11 @@ body::before{
     transparent 60%);
   z-index:-1;
 }
-
+.birds   { z-index:2; }
+.fog     { z-index:3; }
+.glitter { z-index:4; }
+.diya    { z-index:6; }
+.arch    { z-index:7; }
 /* ===== LABEL ===== */
 .label{
   font-family:'Playfair Display',serif;
