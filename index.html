@@ -267,7 +267,110 @@ body::before{
   font-size:1.05rem;
   color:#5c5136;
 }
+/* ===== CEREMONY SECTION ===== */
+.ceremony{
+  background:
+    radial-gradient(120% 40% at 50% 0%,
+      rgba(217,164,65,.08),
+      transparent 70%),
+    var(--paper);
+}
 
+/* Title */
+.ceremony-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,4vw,2.4rem);
+  margin-bottom:3rem;
+  color:#2a2a2a;
+}
+
+/* Parents layout */
+.parents{
+  display:flex;
+  flex-direction:column;
+  gap:2.5rem;
+  align-items:center;
+  margin-bottom:4rem;
+}
+
+.parent-block{
+  text-align:center;
+}
+
+.child-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;
+  color:#1c1c1c;
+  margin-bottom:.6rem;
+}
+
+.parent-names{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;
+  line-height:1.7;
+  color:#5a4f35;
+}
+
+/* Separator */
+.separator{
+  font-size:1.4rem;
+  color:var(--gold);
+  opacity:.8;
+}
+
+/* Ceremony details */
+.ceremony-details{
+  margin-bottom:4rem;
+}
+
+.ceremony-line{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  margin-bottom:.5rem;
+}
+
+.ceremony-time{
+  font-size:1rem;
+  letter-spacing:.08em;
+  color:#6a5c3d;
+}
+
+/* Venue card */
+.venue-card{
+  max-width:520px;
+  margin:0 auto;
+  padding:2.6rem 2rem;
+  border-radius:18px;
+  background:
+    linear-gradient(to bottom,
+      rgba(255,255,255,.6),
+      rgba(255,255,255,.35));
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.08),
+    inset 0 0 0 1px rgba(217,164,65,.25);
+}
+
+.venue-label{
+  font-family:'Playfair Display',serif;
+  letter-spacing:.2em;
+  font-size:.85rem;
+  margin-bottom:1rem;
+  color:#8a7a4a;
+}
+
+.venue-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;
+  margin-bottom:.8rem;
+  color:#1c1c1c;
+}
+
+.venue-address{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;
+  line-height:1.6;
+  color:#5c5136;
+}
 /* ===== SEND WISHES BUTTON ===== */
 .send-wishes{
   display:inline-block;
@@ -352,7 +455,68 @@ footer{
        data-en="With the blessings of our families and the grace of the mountains, we invite you to witness the beginning of our forever."
        data-hi="परिवार के आशीर्वाद और पर्वतों की छाया में, हम अपने नए जीवन की शुरुआत कर रहे हैं।"></div>
 </section>
+<section class="ceremony section" data-animate>
 
+  <div class="ceremony-title"
+       data-en="With the blessings of our families"
+       data-hi="परिवार के स्नेह एवं आशीर्वाद के साथ">
+  </div>
+
+  <div class="parents">
+
+    <div class="parent-block">
+      <div class="child-name">Yash Goyal</div>
+      <div class="parent-names"
+           data-en="Shri. Pawan Goyal<br>Smt. Archna Goyal"
+           data-hi="श्री पवन गोयल<br>श्रीमती अर्चना गोयल">
+      </div>
+    </div>
+
+    <div class="separator">❦</div>
+
+    <div class="parent-block">
+      <div class="child-name">Shrishti Tayal</div>
+      <div class="parent-names"
+           data-en="Shri. Sanjay Tayal<br>Smt. Manju Tayal"
+           data-hi="श्री संजय टायल<br>श्रीमती मंजू टायल">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ceremony-details">
+
+    <div class="ceremony-line"
+         data-en="Bharat & Dinner"
+         data-hi="भारत एवं रात्रि भोज">
+    </div>
+
+    <div class="ceremony-time"
+         data-en="From 7:00 PM onwards"
+         data-hi="सायं 7:00 बजे से">
+    </div>
+
+  </div>
+
+  <div class="venue-card">
+
+    <div class="venue-label"
+         data-en="Venue"
+         data-hi="स्थान">
+    </div>
+
+    <div class="venue-name">
+      Singhal Banquet &amp; Farms
+    </div>
+
+    <div class="venue-address"
+         data-en="Near Shri Dronacharya Degree College<br>&amp; F1 Race Track, Dankaur<br>Greater Noida"
+         data-hi="श्री द्रोणाचार्य डिग्री कॉलेज के पास<br>एवं एफ1 रेस ट्रैक, दनकौर<br>ग्रेटर नोएडा">
+    </div>
+
+  </div>
+
+</section>
 <div class="divider"></div>
 
 
