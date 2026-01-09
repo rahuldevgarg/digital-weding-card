@@ -4,12 +4,25 @@
 <meta charset="UTF-8">
 <title>Yash & Shrishti | Festival Royale</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Open Graph / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yash & Shrishti | Save the Date">
+<meta property="og:description" content="With divine grace and family blessings, we invite you to celebrate the beginning of our forever.">
+<meta property="og:image" content="https://yashwithshrishti.xeniosrahi.com/assets/og-image.jpeg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="" id="og-url">
 
+<!-- Twitter fallback -->
+<meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Hind:wght@300;400;500&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
+<script>
+  document.getElementById("og-url").setAttribute("content", location.origin);
+</script>
 <style>
 /* ================== VARIABLES ================== */
 :root{
@@ -140,6 +153,28 @@ h1{
   text-decoration:none;
   font-family:'Playfair Display';
 }
+.lang-toggle{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:2000;
+  display:flex;
+  background:#fff;
+  border-radius:24px;
+  box-shadow:0 8px 22px rgba(0,0,0,.25);
+  overflow:hidden;
+}
+.lang-toggle button{
+  border:none;
+  background:none;
+  padding:8px 14px;
+  font-family:'Playfair Display',serif;
+  cursor:pointer;
+}
+.lang-toggle button.active{
+  background:var(--gold);
+  color:#fff;
+                                     }
 
 /* ================== FOOTER ================== */
 footer{
@@ -151,7 +186,10 @@ footer{
 </head>
 
 <body>
-
+<div class="lang-toggle">
+  <button data-lang="en" class="active">EN</button>
+  <button data-lang="hi">हिंदी</button>
+</div>
 <!-- TORAN -->
 <div class="toran">
 <svg viewBox="0 0 1000 80" preserveAspectRatio="none">
@@ -173,28 +211,43 @@ footer{
 
 <!-- INVITE -->
 <section>
-  <div class="subtitle">WITH DIVINE GRACE & FAMILY BLESSINGS</div>
-  <h1>Yash & Shrishti</h1>
-  <div class="quote">
-    With the blessings of our families and the glow of sacred lamps,<br>
-    we invite you to celebrate the beginning of our forever.
+  <div class="subtitle"
+       data-en="WITH DIVINE GRACE & FAMILY BLESSINGS"
+       data-hi="परिवार के स्नेह एवं ईश्वर की कृपा से">
+  </div>
+
+  <h1 data-en="Yash & Shrishti"
+      data-hi="यश एवं सृष्टि">
+  </h1>
+
+  <div class="quote"
+       data-en="With the blessings of our families and the glow of sacred lamps, we invite you to celebrate the beginning of our forever."
+       data-hi="परिवार के आशीर्वाद और दीयों की पावन ज्योति के साथ, हम आपको अपने नए जीवन की शुरुआत का साक्षी बनने हेतु आमंत्रित करते हैं।">
   </div>
 </section>
 
 <!-- EVENT -->
 <section>
-  <h1>Bharat & Dinner</h1>
-  <div class="subtitle">From 7:00 PM onwards</div>
+<h1 data-en="Bharat & Dinner"
+    data-hi="भारत एवं रात्रि भोज">
+</h1>
+
+<div class="subtitle"
+     data-en="Commencing from 7:00 PM onwards"
+     data-hi="सायं 7:00 बजे से आरंभ">
+</div>
 </section>
 
 <!-- VENUE -->
 <section>
   <div class="card">
-    <h1>Singhal Banquet & Farms</h1>
-    <p>Near Shri Dronacharya Degree College<br>F1 Race Track · Dankaur · Greater Noida</p>
-    <a class="map" href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">
-      📍 Open in Google Maps
-    </a>
+    <h1 data-en="Singhal Banquet & Farms"
+    data-hi="सिंघल बैंक्वेट एंड फार्म्स">
+</h1>
+
+<p data-en="Near Shri Dronacharya Degree College · F1 Race Track · Dankaur · Greater Noida"
+   data-hi="श्री द्रोणाचार्य डिग्री कॉलेज के पास · एफ1 रेस ट्रैक · दनकौर · ग्रेटर नोएडा">
+</p>
   </div>
 </section>
 
@@ -203,6 +256,20 @@ footer{
 </footer>
 
 <script>
+const buttons = document.querySelectorAll(".lang-toggle button");
+
+function setLang(lang){
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    el.textContent = el.dataset[lang];
+  });
+  buttons.forEach(b=>b.classList.toggle("active", b.dataset.lang===lang));
+}
+
+buttons.forEach(btn=>{
+  btn.addEventListener("click",()=>setLang(btn.dataset.lang));
+});
+
+setLang("en");
 /* PETALS */
 function petal(){
   const p=document.createElement('div');
