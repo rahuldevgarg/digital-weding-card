@@ -2,268 +2,227 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Yash & Shrishti | Save the Date</title>
+<title>Yash & Shrishti | Festival Royale</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Playfair+Display:wght@500;600&family=Hind:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Hind:wght@300;400;500&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Yash & Shrishti — Save the Date">
-<meta property="og:description" content="Festival of love with royal grace · 10 February 2026">
-<meta property="og:image" content="/assets/og-share.jpg">
-<meta property="og:type" content="website">
-<meta property="og:url" content="">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
 <style>
+/* ================== VARIABLES ================== */
 :root{
-  --paper:#f6f1e8;
-  --green:#1e3a32;
+  --green:#163a2f;
+  --paper:#f6efe4;
   --gold:#d9a441;
-  --gold-soft:#f2d28b;
+  --rose:#c94b4b;
   --ink:#1f1f1f;
 }
+
+/* ================== BASE ================== */
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:'Hind',sans-serif;
   background:var(--paper);
   color:var(--ink);
+  font-family:'Hind',sans-serif;
+  overflow-x:hidden;
 }
-img{max-width:100%;display:block}
+section{position:relative;padding:5rem 1.5rem;text-align:center}
 
-/* Language Toggle */
-.lang{
+/* ================== TORAN ================== */
+.toran{
   position:fixed;
-  top:14px;
-  right:14px;
-  z-index:999;
-  background:#fff;
-  border-radius:24px;
-  display:flex;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  top:0;
+  left:0;
+  width:100%;
+  height:80px;
+  z-index:1000;
+  pointer-events:none;
 }
-.lang button{
-  border:0;
-  background:none;
-  padding:8px 16px;
-  font-family:'Playfair Display',serif;
-  cursor:pointer;
-}
-.lang .active{
-  background:var(--gold);
-  color:#fff;
-}
+.toran svg{width:100%;height:100%}
 
-/* HERO */
+/* ================== HERO ================== */
 .hero{
   min-height:100vh;
-  background:linear-gradient(180deg,#23463c,#0f1f19);
+  background:radial-gradient(circle at top,#285a4a,#0f241c);
   display:flex;
   align-items:center;
   justify-content:center;
-  position:relative;
   overflow:hidden;
 }
-.hero::before{
-  content:"";
+.mountains{
+  position:absolute;
+  bottom:0;
+  width:120%;
+  opacity:.9;
+}
+.fog{
   position:absolute;
   inset:0;
-  background:url("assets/birds.svg") center/140% no-repeat;
-  opacity:.18;
+  background:radial-gradient(circle at 50% 70%,rgba(255,255,255,.35),transparent 60%);
+  filter:blur(40px);
 }
+.arch{
+  position:relative;
+  width:320px;
+  height:480px;
+  background:linear-gradient(#234c3d,#122b22);
+  border-radius:200px 200px 40px 40px;
+  box-shadow:0 40px 100px rgba(0,0,0,.6);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+}
+.arch img{width:90%;z-index:2}
+.save{position:absolute;top:30px;font-family:'Playfair Display';letter-spacing:.3em;color:#f3ddb0}
+
+/* ================== DIYA ================== */
 .diya{
   position:absolute;
   bottom:18%;
   left:50%;
-  width:320px;
-  height:220px;
+  width:260px;
+  height:180px;
   transform:translateX(-50%);
-  background:radial-gradient(circle,rgba(255,200,90,.9),rgba(255,170,60,.45),transparent 70%);
-  filter:blur(24px);
-  animation:pulse 4s ease-in-out infinite;
+  background:radial-gradient(circle,rgba(255,200,120,.9),rgba(255,160,60,.5),transparent 70%);
+  filter:blur(30px);
+  animation:pulse 4s infinite ease-in-out;
 }
 @keyframes pulse{
-  0%,100%{opacity:.6}
-  50%{opacity:1}
-}
-.arch{
-  position:relative;
-  width:min(420px,92%);
-  aspect-ratio:3/4;
-  background:linear-gradient(#2a4c40,#13241d);
-  border-radius:220px 220px 32px 32px;
-  box-shadow:0 40px 90px rgba(0,0,0,.5);
-  text-align:center;
-  padding-top:1.4rem;
-}
-.label{
-  font-family:'Playfair Display',serif;
-  letter-spacing:.3em;
-  color:var(--gold-soft);
-  font-size:.8rem;
-}
-.couple{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  display:flex;
-  justify-content:center;
-}
-.mountains{
-  position:absolute;
-  bottom:-10px;
-  left:-10%;
-  width:120%;
-  opacity:.9;
-  filter:brightness(.8) sepia(.3) hue-rotate(80deg);
+  0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}
+  50%{opacity:1;transform:translateX(-50%) scale(1.15)}
 }
 
-/* SECTION */
-.section{
-  padding:5rem 1.6rem;
-  text-align:center;
+/* ================== PETALS ================== */
+.petal{
+  position:fixed;
+  top:-40px;
+  width:16px;
+  height:16px;
+  background:radial-gradient(circle at 30% 30%,#ffb6c1,#c94b4b);
+  border-radius:60% 40% 60% 40%;
+  pointer-events:none;
+  z-index:999;
 }
-.names{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2.6rem,6vw,3.8rem);
+
+/* ================== CONTENT ================== */
+h1{
+  font-family:'Playfair Display';
+  font-size:3rem;
 }
-.sub{
-  letter-spacing:.25em;
-  margin-top:.8rem;
-  color:#6b5b38;
-}
-.date{
-  margin-top:1.2rem;
-  color:#7a6a44;
+.subtitle{
+  letter-spacing:.3em;
+  color:var(--gold);
 }
 .quote{
-  max-width:720px;
-  margin:3rem auto 0;
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.6rem,4vw,2.1rem);
-  line-height:1.7;
+  font-family:'Cormorant Garamond';
+  font-size:1.8rem;
+  max-width:700px;
+  margin:2rem auto;
 }
 
-/* FAMILY */
-.family{
-  margin:3rem 0;
-}
-.child{
-  font-family:'Playfair Display',serif;
-  font-size:2rem;
-}
-.parents{
-  font-family:'Cormorant Garamond',serif;
-  margin-top:.4rem;
-  color:#5c5136;
-}
-
-/* VENUE */
-.venue{
-  max-width:520px;
-  margin:3rem auto 0;
+/* ================== VENUE ================== */
+.card{
   background:rgba(255,255,255,.6);
-  padding:2.4rem;
-  border-radius:18px;
+  padding:2.5rem;
+  border-radius:20px;
   box-shadow:0 20px 50px rgba(0,0,0,.1);
+  max-width:520px;
+  margin:0 auto;
 }
 .map{
   display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  margin-top:1.4rem;
-  text-decoration:none;
+  gap:.6rem;
+  margin-top:1.5rem;
   color:var(--gold);
-  font-family:'Playfair Display',serif;
+  text-decoration:none;
+  font-family:'Playfair Display';
 }
 
-/* FOOTER */
+/* ================== FOOTER ================== */
 footer{
   padding:2rem;
-  text-align:center;
+  opacity:.6;
   font-size:.85rem;
-  opacity:.7;
 }
 </style>
 </head>
 
 <body>
 
-<div class="lang">
-  <button id="en" class="active">EN</button>
-  <button id="hi">हिंदी</button>
+<!-- TORAN -->
+<div class="toran">
+<svg viewBox="0 0 1000 80" preserveAspectRatio="none">
+<path d="M0,40 Q50,60 100,40 T200,40 T300,40 T400,40 T500,40 T600,40 T700,40 T800,40 T900,40 T1000,40" fill="none" stroke="#d9a441" stroke-width="4"/>
+</svg>
 </div>
 
+<!-- HERO -->
 <section class="hero">
+  <img src="assets/mountains.svg" class="mountains">
+  <div class="fog"></div>
   <div class="diya"></div>
+
   <div class="arch">
-    <div class="label" data-en="SAVE THE DATE" data-hi="तिथि सुरक्षित रखें"></div>
-    <div class="couple">
-      <img src="assets/couple.png" alt="Couple">
-    </div>
-    <img src="assets/mountains.svg" class="mountains" alt="">
+    <div class="save">SAVE THE DATE</div>
+    <img src="assets/couple.png">
   </div>
 </section>
 
-<section class="section">
-  <div class="names">Yash & Shrishti</div>
-  <div class="sub" data-en="ARE UNITING THEIR LIVES" data-hi="अपने जीवन का शुभारंभ"></div>
-  <div class="date" data-en="10 February 2026" data-hi="10 फ़रवरी 2026"></div>
-  <div class="quote"
-    data-en="With divine grace and family blessings, we invite you to celebrate the beginning of our forever."
-    data-hi="ईश्वर की कृपा एवं परिवार के आशीर्वाद के साथ, हमारे नए जीवन की शुरुआत में आपका स्वागत है।">
+<!-- INVITE -->
+<section>
+  <div class="subtitle">WITH DIVINE GRACE & FAMILY BLESSINGS</div>
+  <h1>Yash & Shrishti</h1>
+  <div class="quote">
+    With the blessings of our families and the glow of sacred lamps,<br>
+    we invite you to celebrate the beginning of our forever.
   </div>
 </section>
 
-<section class="section">
-  <div class="family">
-    <div class="child">Yash Goyal</div>
-    <div class="parents"
-      data-en="Shri. Pawan Goyal · Smt. Archna Goyal"
-      data-hi="श्री पवन गोयल · श्रीमती अर्चना गोयल"></div>
-  </div>
+<!-- EVENT -->
+<section>
+  <h1>Bharat & Dinner</h1>
+  <div class="subtitle">From 7:00 PM onwards</div>
+</section>
 
-  <div class="family">
-    <div class="child">Shrishti Tayal</div>
-    <div class="parents"
-      data-en="Shri. Sanjay Tayal · Smt. Manju Tayal"
-      data-hi="श्री संजय तायल · श्रीमती मंजू तायल"></div>
-  </div>
-
-  <div class="quote"
-    data-en="Bharat & Dinner · From 7:00 PM onwards"
-    data-hi="भारत एवं रात्रि भोज · सायं 7 बजे से">
-  </div>
-
-  <div class="venue">
-    <div class="child">Singhal Banquet & Farms</div>
-    <div class="parents"
-      data-en="Near Shri Dronacharya Degree College · F1 Race Track · Dankaur · Greater Noida"
-      data-hi="श्री द्रोणाचार्य डिग्री कॉलेज के पास · एफ1 रेस ट्रैक · दनकौर · ग्रेटर नोएडा">
-    </div>
-    <a class="map" href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">📍 Open in Google Maps</a>
+<!-- VENUE -->
+<section>
+  <div class="card">
+    <h1>Singhal Banquet & Farms</h1>
+    <p>Near Shri Dronacharya Degree College<br>F1 Race Track · Dankaur · Greater Noida</p>
+    <a class="map" href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">
+      📍 Open in Google Maps
+    </a>
   </div>
 </section>
 
 <footer>
-  💗 With love · Save the Date · Yash & Shrishti 2026
+💛 With love · Save the Date · Yash & Shrishti 2026
 </footer>
 
 <script>
-function setLang(l){
-  document.querySelectorAll("[data-en]").forEach(el=>{
-    el.textContent = el.dataset[l];
+/* PETALS */
+function petal(){
+  const p=document.createElement('div');
+  p.className='petal';
+  p.style.left=Math.random()*100+'vw';
+  document.body.appendChild(p);
+  gsap.to(p,{
+    y:window.innerHeight+100,
+    x:'+=50',
+    rotation:360,
+    duration:8+Math.random()*4,
+    ease:'none',
+    onComplete:()=>p.remove()
   });
-  en.classList.toggle("active",l==="en");
-  hi.classList.toggle("active",l==="hi");
 }
-en.onclick=()=>setLang("en");
-hi.onclick=()=>setLang("hi");
-setLang("en");
+setInterval(petal,700);
+
+/* GSAP REVEALS */
+gsap.registerPlugin(ScrollTrigger);
+gsap.from("section",{opacity:0,y:60,stagger:.2,scrollTrigger:{trigger:"section",start:"top 80%"}});
 </script>
 
 </body>
