@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yash & Shrishti | Save the Date</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f3d32">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Playfair+Display:wght@500;700&family=Hind:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Yash & Shrishti — Save the Date">
+<meta property="og:description" content="With divine grace and family blessings · 10 February 2026">
+<meta property="og:image" content="/assets/og-share.png">
+<meta property="og:type" content="website">
+
+<style>
+:root{
+ --green:#1f3d32;
+ --paper:#f5efe6;
+ --gold:#d9a441;
+ --ink:#222;
+}
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:'Hind',sans-serif;
+ background:var(--paper);
+ color:var(--ink);
+}
+.hero{
+ min-height:100vh;
+ background:linear-gradient(180deg,#25483b,#10241d);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ position:relative;
+ overflow:hidden;
+}
+.hero::after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:radial-gradient(circle at center,transparent 40%,rgba(0,0,0,.4));
+}
+.birds{
+ position:absolute;
+ inset:0;
+ background:url('assets/birds.svg') center/120% no-repeat;
+ opacity:.15;
+}
+.arch{
+ position:relative;
+ width:360px;
+ max-width:90%;
+ background:linear-gradient(180deg,#2f5a4b,#112820);
+ border-radius:200px 200px 30px 30px;
+ padding:2rem 1rem 0;
+ text-align:center;
+ box-shadow:0 40px 80px rgba(0,0,0,.5);
+ z-index:2;
+}
+.arch h1{
+ font-family:'Playfair Display',serif;
+ color:#f3e2b8;
+ letter-spacing:.25em;
+ font-size:.9rem;
+ margin-bottom:1rem;
+}
+.couple img{
+ width:100%;
+ filter:drop-shadow(0 20px 40px rgba(0,0,0,.4));
+}
+.diya{
+ position:absolute;
+ bottom:15%;
+ left:50%;
+ width:280px;
+ height:200px;
+ transform:translateX(-50%);
+ background:radial-gradient(ellipse at center,rgba(255,200,90,.9),rgba(255,160,40,.4),transparent 70%);
+ filter:blur(25px);
+ animation:pulse 4s ease-in-out infinite;
+}
+@keyframes pulse{
+ 0%,100%{opacity:.6}
+ 50%{opacity:1}
+}
+.section{
+ padding:5rem 1.5rem;
+ text-align:center;
+}
+.names{
+ font-family:'Playfair Display',serif;
+ font-size:3rem;
+}
+.sub{
+ letter-spacing:.3em;
+ color:#6d5b2c;
+ margin-top:.6rem;
+}
+.quote{
+ max-width:700px;
+ margin:3rem auto;
+ font-family:'Cormorant Garamond',serif;
+ font-size:1.8rem;
+ line-height:1.6;
+}
+.card{
+ background:rgba(255,255,255,.6);
+ border-radius:20px;
+ padding:2.5rem 2rem;
+ max-width:520px;
+ margin:0 auto;
+ box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+.card h2{
+ font-family:'Playfair Display',serif;
+ font-size:1.8rem;
+ margin-bottom:1rem;
+}
+.card p{
+ line-height:1.7;
+}
+.map{
+ margin-top:1.5rem;
+ display:inline-block;
+ text-decoration:none;
+ color:var(--gold);
+ font-family:'Playfair Display',serif;
+}
+footer{
+ text-align:center;
+ padding:2rem;
+ opacity:.6;
+ font-size:.85rem;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+ <div class="birds"></div>
+ <div class="diya"></div>
+ <div class="arch">
+   <h1>SAVE THE DATE</h1>
+   <div class="couple">
+     <img src="assets/couple.png" alt="Yash & Shrishti">
+   </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="names">Yash & Shrishti</div>
+ <div class="sub">ARE UNITING THEIR LIVES</div>
+ <div class="quote">
+ With the blessings of our families and divine grace,<br>
+ we invite you to celebrate the beginning of our forever.
+ </div>
+</section>
+
+<section class="section">
+ <div class="card">
+   <h2>Bharat & Dinner</h2>
+   <p>Commencing from <strong>7:00 PM onwards</strong></p>
+   <h2 style="margin-top:2rem">Venue</h2>
+   <p>
+     <strong>Singhal Banquet & Farms</strong><br>
+     Near Shri Dronacharya Degree College<br>
+     F1 Race Track · Dankaur · Greater Noida
+   </p>
+   <a class="map" href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">📍 Open in Google Maps</a>
+ </div>
+</section>
+
+<footer>
+ 💛 With love · Save the Date · Yash & Shrishti 2026
+</footer>
+
+</body>
+</html>
