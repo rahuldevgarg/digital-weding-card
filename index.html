@@ -58,6 +58,8 @@ body::before{
   border-radius:22px;
   box-shadow:0 8px 22px rgba(0,0,0,.25);
   display:flex;
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(217,164,65,.35);
 }
 .lang-toggle button{
   border:none;
@@ -65,6 +67,8 @@ body::before{
   padding:8px 14px;
   font-size:.85rem;
   cursor:pointer;
+  font-family:'Cormorant Garamond',serif;
+  letter-spacing:.12em;
 }
 .lang-toggle .active{
   background:var(--gold);
@@ -404,10 +408,11 @@ body::before{
   filter:drop-shadow(0 0 6px rgba(217,164,65,.4));
 }
 .venue-address{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.2rem;
-  line-height:1.6;
-  color:#5c5136;
+  margin-top:1rem;
+  font-size:1rem;
+  line-height:1.7;
+  letter-spacing:.04em;
+  opacity:.85;
 }
 /* ===== SEND WISHES BUTTON ===== */
 .send-wishes{
@@ -428,7 +433,34 @@ body::before{
   transform:translateY(-3px) scale(1.05);
   box-shadow:0 18px 40px rgba(217,164,65,.6);
 }
+.shloka{
+  margin:2.2rem auto 1.4rem;
+  font-family:'Hind',sans-serif;
+  font-size:1.05rem;
+  letter-spacing:.22em;
+  color:var(--gold);
+  text-transform:uppercase;
+}
+  .family{
+  margin:3.2rem 0;
+}
 
+.child-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.1rem;
+  margin-bottom:.6rem;
+}
+.ritual-line{
+  margin-top:1.8rem;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;
+  color:#b88b2f;
+}
+.parents{
+  font-size:1rem;
+  letter-spacing:.06em;
+  opacity:.8;
+}
 /* ===== ANIMATION ===== */
 [data-animate]{
   opacity:0;
@@ -439,7 +471,16 @@ body::before{
   opacity:1;
   transform:none;
 }
+.event-title{
+  font-size:1.8rem;
+  margin-top:3rem;
+}
 
+.event-time{
+  margin-top:.6rem;
+  letter-spacing:.12em;
+  opacity:.8;
+}
 /* ===== FOOTER ===== */
 footer{
   padding:2rem;
@@ -468,6 +509,10 @@ footer{
   <img src="assets/birds.svg" class="birds" alt="">
   <div class="fog"></div>
   <div class="diya"></div>
+  <div class="ritual-line"
+     data-en="As the diya glows, our journey begins"
+     data-hi="दीये की लौ संग, हमारे जीवन की नई शुरुआत">
+  </div>
 
   <div class="glitter" style="left:20%;animation-delay:0s"></div>
   <div class="glitter" style="left:55%;animation-delay:3s"></div>
@@ -485,6 +530,10 @@ footer{
 </section>
 
 <section class="section" data-animate>
+  <div class="shloka"
+     data-en="With divine grace and family blessings"
+     data-hi="शुभ विवाह के पावन अवसर पर">
+  </div>
   <div class="names">Yash & Shrishti</div>
   <div class="sub" data-en="ARE UNITING THEIR LIVES" data-hi="अपने जीवन का आरंभ कर रहे हैं"></div>
   <div class="date" data-en="10th February 2026" data-hi="10 फ़रवरी 2026"></div>
@@ -500,27 +549,26 @@ footer{
        data-hi="परिवार के स्नेह एवं आशीर्वाद के साथ">
   </div>
 
-  <div class="parents">
+  
 
-    <div class="parent-block">
-      <div class="child-name">Yash Goyal</div>
-      <div class="parent-names"
-           data-en="Shri. Pawan Goyal · Smt. Archna Goyal"
-data-hi="श्री पवन गोयल · श्रीमती अर्चना गोयल">
-      </div>
+    <div class="family">
+  <div class="child-name">Yash Goyal</div>
+  <div class="parents"
+       data-en="Shri. Pawan Goyal · Smt. Archna Goyal"
+       data-hi="श्री पवन गोयल · श्रीमती अर्चना गोयल"></div>
     </div>
 
     <div class="separator">❦</div>
 
-    <div class="parent-block">
-      <div class="child-name">Shrishti Tayal</div>
-      <div class="parent-names"
+    <div class="family">
+  <div class="child-name">Shrishti Tayal</div>
+      <div class="parents"
            data-en="Shri. Sanjay Tayal • Smt. Manju Tayal"
            data-hi="श्री संजय तायल • श्रीमती मंजू तायल">
       </div>
     </div>
 
-  </div>
+  
 
   <div class="ceremony-details">
 
@@ -529,10 +577,10 @@ data-hi="श्री पवन गोयल · श्रीमती अर्�
          data-hi="भारत एवं रात्रि भोज">
     </div>
 
-    <div class="ceremony-time"
-         data-en="From 7:00 PM onwards"
-         data-hi="सायं 7:00 बजे से">
-    </div>
+    <div class="event-title">Bharat & Dinner</div>
+<div class="event-time"
+     data-en="Commencing from 7:00 PM onwards"
+     data-hi="सायं 7:00 बजे से आरंभ"></div>
 
   </div>
 
@@ -548,8 +596,8 @@ data-hi="श्री पवन गोयल · श्रीमती अर्�
     </div>
 
     <div class="venue-address"
-         data-en="Near Shri Dronacharya Degree College<br>&amp; F1 Race Track, Dankaur<br>Greater Noida"
-         data-hi="श्री द्रोणाचार्य डिग्री कॉलेज के पास<br>एवं एफ1 रेस ट्रैक, दनकौर<br>ग्रेटर नोएडा">
+     data-en="Near Shri Dronacharya Degree College · F1 Race Track · Dankaur · Greater Noida"
+     data-hi="श्री द्रोणाचार्य डिग्री कॉलेज के पास · एफ1 रेस ट्रैक · दनकौर · ग्रेटर नोएडा">
     </div>
     <a class="map-link"
    href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8"
