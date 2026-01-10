@@ -389,7 +389,97 @@ body.hi .editorial-copy{
   font-size:24px;
   margin:24px 0;
 }
+.venue-card{
+  max-width:640px;
+  margin:0 auto;
+  padding:48px 32px;
+  background:#fff;
+  border-radius:24px;
+  box-shadow:0 20px 40px rgba(0,0,0,.06);
+}
 
+.venue-kicker{
+  font-family:"Hind",sans-serif;
+  font-size:12px;
+  letter-spacing:.32em;
+  color:var(--gold);
+}
+
+.venue-address{
+  font-size:18px;
+  line-height:1.6;
+}
+
+.map-button{
+  display:inline-block;
+  margin-top:24px;
+  padding:14px 28px;
+  border-radius:999px;
+  background:var(--gold);
+  color:#fff;
+  text-decoration:none;
+  font-family:"Hind",sans-serif;
+  letter-spacing:.18em;
+}
+.invocation-inner{
+  max-width:720px;
+  margin:0 auto;
+}
+
+.invocation-kicker{
+  font-family:"Hind",sans-serif;
+  font-size:12px;
+  letter-spacing:.32em;
+  color:var(--gold);
+  margin-bottom:24px;
+}
+
+.invocation-names{
+  font-size:42px;
+  margin:0;
+}
+
+.invocation-sub{
+  font-family:"Hind",sans-serif;
+  letter-spacing:.28em;
+  margin:12px 0 24px;
+}
+
+.invocation-date{
+  font-size:18px;
+  color:#7a6a4a;
+  margin-bottom:40px;
+}
+
+.invocation-body{
+  font-size:22px;
+  line-height:1.8;
+  margin:0 auto;
+      }
+.qr-wrap{
+  margin-top:36px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.event-time{
+  font-family:"Hind",sans-serif;
+  letter-spacing:.22em;
+  font-size:14px;
+  color:#6f6a5c;
+      }
+.qr-wrap canvas{
+  width:140px;
+  height:140px;
+}
+
+.qr-caption{
+  margin-top:12px;
+  font-family:"Hind",sans-serif;
+  font-size:12px;
+  letter-spacing:.24em;
+  color:var(--gold);
+}
 /* EVENT */
 .event h2{
   font-size:32px;
@@ -537,22 +627,42 @@ footer{
 
   </div>
 </section>
-<!-- INVOCATION -->
-<section class="section invocation">
-  <svg class="om" viewBox="0 0 200 200">
-    <path d="M40 110 C40 40 160 40 160 110 C160 150 110 160 80 140 C100 170 60 180 40 150"/>
-  </svg>
+<section class="section invocation fade-in">
+  <div class="invocation-inner">
 
-  <div class="shubh-title">शुभ विवाह</div>
+    <p class="invocation-kicker" data-lang="en">
+      WITH DIVINE GRACE AND FAMILY BLESSINGS
+    </p>
+    <p class="invocation-kicker" data-lang="hi">
+      ईश्वर की कृपा एवं परिवार के आशीर्वाद से
+    </p>
 
-  <div class="shloka" data-lang="en">
-    With sacred lamps aglow and blessings all around,<br>
-    we invite you to celebrate the beginning of our forever.
-  </div>
+    <h2 class="invocation-names">Yash & Shrishti</h2>
 
-  <div class="shloka" data-lang="hi">
-    दीपों की पावन ज्योति और परिवार के आशीर्वाद के साथ,<br>
-    हम आपको हमारे नए जीवन के आरंभ का साक्षी बनने हेतु आमंत्रित करते हैं।
+    <p class="invocation-sub" data-lang="en">
+      are uniting their lives
+    </p>
+    <p class="invocation-sub" data-lang="hi">
+      अपने जीवन का आरंभ कर रहे हैं
+    </p>
+
+    <p class="invocation-date" data-lang="en">
+      10th February 2026
+    </p>
+    <p class="invocation-date" data-lang="hi">
+      10 फ़रवरी 2026
+    </p>
+
+    <p class="invocation-body" data-lang="en">
+      With the blessings of our families and the grace of the mountains,
+      we invite you to witness the beginning of our forever.
+    </p>
+
+    <p class="invocation-body" data-lang="hi">
+      परिवार के आशीर्वाद और पर्वतों की छाया में,
+      हम अपने नए जीवन की शुरुआत कर रहे हैं।
+    </p>
+
   </div>
 </section>
 
@@ -577,6 +687,17 @@ footer{
 </section>
 
 <!-- EVENT -->
+      <section class="section event fade-in">
+  <h2 data-lang="en">Bharat & Dinner</h2>
+  <h2 data-lang="hi">भारत एवं रात्रि भोज</h2>
+
+  <p class="event-time" data-lang="en">
+    10 February 2026 · From 7:00 PM onwards
+  </p>
+  <p class="event-time" data-lang="hi">
+    10 फ़रवरी 2026 · सायं 7 बजे से
+  </p>
+      </section>
 <section class="section event compact">
   <h2 data-lang="en">Bharat & Dinner</h2>
   <h2 data-lang="hi">भारत एवं रात्रि भोज</h2>
@@ -585,20 +706,34 @@ footer{
 </section>
 
 <!-- VENUE -->
-<section class="section venue">
-  <h2 data-lang="en">Venue</h2>
-  <h2 data-lang="hi">स्थान</h2>
+<section class="section venue fade-in">
 
-  <p>
-    Singhal Banquet & Farms<br>
-    Near Shri Dronacharya Degree College<br>
-    F1 Race Track · Dankaur · Greater Noida
-  </p>
-  <p>
-    <a href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">
+  <div class="venue-card">
+
+    <p class="venue-kicker" data-lang="en">Venue</p>
+    <p class="venue-kicker" data-lang="hi">स्थान</p>
+
+    <h3>Singhal Banquet & Farms</h3>
+
+    <p class="venue-address">
+      Near Shri Dronacharya Degree College · F1 Race Track<br>
+      Dankaur · Greater Noida
+    </p>
+
+    <a class="map-button"
+       href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8"
+       target="_blank">
       📍 Open in Google Maps
     </a>
-  </p>
+
+    <!-- QR -->
+    <div class="qr-wrap">
+      <canvas id="venueQR"></canvas>
+      <p class="qr-caption" data-lang="en">Scan for directions</p>
+      <p class="qr-caption" data-lang="hi">दिशा हेतु स्कैन करें</p>
+    </div>
+
+  </div>
 </section>
 
 <footer>
