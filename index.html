@@ -6,7 +6,11 @@
   <title>Hero Section</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+</script>
   <style>
     /* Image oval */
     /* ========================= */
@@ -172,6 +176,16 @@
   z-index:1;
   }
     @media print{
+  .w-hero-ornate{
+    opacity:1;
+  }
+
+  .w-hero-ornate rect,
+  .w-hero-ornate path{
+    stroke-width:1.2;
+  }
+      }
+    @media print{
 
   :root{
     --royal-gold: #b08a2e; /* deeper foil tone */
@@ -203,8 +217,37 @@
     box-shadow:none !important;
     filter:none !important;
   }
+    }
+      .w-hero-ornate{
+  position:absolute;
+  inset:12px;
+  width:calc(100% - 24px);
+  height:calc(100% - 24px);
+  z-index:1;
+  pointer-events:none;
+  opacity:0.75;
+}
+
+/* Mobile breathing room */
+@media(max-width:768px){
+  .w-hero-ornate{
+    inset:8px;
+    opacity:0.65;
+  }
   }
   </style>
+  <script>
+gsap.fromTo(
+  ".w-hero-ornate path, .w-hero-ornate rect",
+  { strokeDasharray: 800, strokeDashoffset: 800 },
+  {
+    strokeDashoffset: 0,
+    duration: 2.4,
+    ease: "power1.out",
+    stagger: 0.08
+  }
+);
+  </script>
   <script>
 gsap.set(
   [
@@ -253,6 +296,94 @@ gsap.timeline({ delay: 0.2 })
 
 <body>
 <section class="w-hero">
+  <svg
+  class="w-hero-ornate"
+  viewBox="0 0 1000 1400"
+  preserveAspectRatio="none"
+  aria-hidden="true"
+>
+  <defs>
+    <!-- Gold gradient -->
+    <linearGradient id="rajGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3d98b"/>
+      <stop offset="50%" stop-color="#c9a24d"/>
+      <stop offset="100%" stop-color="#9f7c2f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer frame -->
+  <rect
+    x="28"
+    y="28"
+    width="944"
+    height="1344"
+    rx="90"
+    ry="90"
+    fill="none"
+    stroke="url(#rajGold)"
+    stroke-width="4"
+  />
+
+  <!-- Inner echo -->
+  <rect
+    x="52"
+    y="52"
+    width="896"
+    height="1296"
+    rx="78"
+    ry="78"
+    fill="none"
+    stroke="url(#rajGold)"
+    stroke-width="1.6"
+    opacity="0.6"
+  />
+
+  <!-- Corner motifs -->
+  <g stroke="url(#rajGold)" fill="none" stroke-width="2">
+    <!-- Top-left -->
+    <path d="M90 180
+             C120 120 180 120 210 180
+             C180 150 120 150 90 180Z"/>
+
+    <!-- Top-right -->
+    <path d="M910 180
+             C880 120 820 120 790 180
+             C820 150 880 150 910 180Z"/>
+
+    <!-- Bottom-left -->
+    <path d="M90 1220
+             C120 1280 180 1280 210 1220
+             C180 1250 120 1250 90 1220Z"/>
+
+    <!-- Bottom-right -->
+    <path d="M910 1220
+             C880 1280 820 1280 790 1220
+             C820 1250 880 1250 910 1220Z"/>
+  </g>
+
+  <!-- Mid-side lotus accents -->
+  <g stroke="url(#rajGold)" fill="none" stroke-width="1.8" opacity="0.7">
+    <!-- Top -->
+    <path d="M500 70
+             C520 90 560 90 580 70
+             C560 80 520 80 500 70Z"/>
+
+    <!-- Bottom -->
+    <path d="M500 1330
+             C520 1310 560 1310 580 1330
+             C560 1320 520 1320 500 1330Z"/>
+
+    <!-- Left -->
+    <path d="M70 700
+             C90 720 90 760 70 780
+             C80 760 80 720 70 700Z"/>
+
+    <!-- Right -->
+    <path d="M930 700
+             C910 720 910 760 930 780
+             C920 760 920 720 930 700Z"/>
+  </g>
+  </svg>
   <svg class="w-hero-emboss" viewBox="0 0 100 100" preserveAspectRatio="none">
   <defs>
     <linearGradient id="embossLight" x1="0" y1="0" x2="1" y2="1">
