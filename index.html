@@ -63,344 +63,406 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
-    <style>
-        :root {
-            --green: #0f3b32;
-            --paper: #f7f0e4;
-            --gold: #d4a74f;
-            --ink: #1f1f1f;
-        }
+    
+    
+<style>
+:root{
+  --green:#0f3b32;
+  --paper:#f7f0e4;
+  --gold:#d4a74f;
+  --soft:#f1d48a;
+  --ink:#1e1e1e;
+}
 
-        * {
-            box-sizing: border-box
-        }
+*{box-sizing:border-box}
 
-        body {
-            margin: 0;
-            font-family: "Cormorant Garamond", serif;
-            background: var(--paper);
-            color: var(--ink);
-            overflow-x: hidden;
-        }
+body{
+  margin:0;
+  font-family:"Cormorant Garamond",serif;
+  background:var(--paper);
+  color:var(--ink);
+  overflow-x:hidden;
+}
 
-        /* ========================= */
-        /* LANGUAGE */
-        /* ========================= */
-        [data-lang] {
-            display: none
-        }
+/* Language handling */
+[data-lang]{display:none}
+body.en [data-lang="en"]{display:block}
+body.hi [data-lang="hi"]{display:block}
 
-        body.en [data-lang="en"] {
-            display: block
-        }
+/* Toggle */
+.lang-toggle{
+  position:fixed;
+  top:12px;
+  right:12px;
+  z-index:100;
+  background:#fff;
+  border-radius:999px;
+  display:flex;
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+}
+.lang-toggle button{
+  border:0;
+  background:none;
+  padding:8px 14px;
+  font-size:14px;
+  cursor:pointer;
+}
+.lang-toggle .active{
+  background:var(--gold);
+  color:#fff;
+}
 
-        body.hi [data-lang="hi"] {
-            display: block
-        }
+/* HERO */
+.hero{
+  position:relative;
+  height:100svh;
+  background:linear-gradient(#0e3a31,#134a3e);
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("assets/texture.png");
+  opacity:.15;
+}
 
-        .lang-toggle {
-            position: fixed;
-            top: 14px;
-            right: 14px;
-            z-index: 99;
-            display: flex;
-            background: #fff;
-            border-radius: 999px;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, .25);
-        }
+.birds{
+  position:absolute;
+  inset:0;
+  background:url("assets/birds.svg") center/1200px repeat;
+  opacity:.18;
+}
 
-        .lang-toggle button {
-            border: 0;
-            background: none;
-            padding: 8px 16px;
-            font-size: 14px;
-            cursor: pointer;
-        }
+.mountains{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:24vh;
+  background:url("assets/mountains.svg") bottom center/cover no-repeat;
+}
 
-        .lang-toggle .active {
-            background: var(--gold);
-            color: #fff;
-        }
+/* Mandala */
+.mandala{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:420px;
+  height:420px;
+  transform:translate(-50%,-50%);
+  opacity:.14;
+}
+.mandala circle{
+  fill:none;
+  stroke:var(--soft);
+  stroke-width:1;
+  stroke-dasharray:600;
+  stroke-dashoffset:600;
+}
 
-        /* ========================= */
-        /* HERO */
-        /* ========================= */
-        .hero {
-            position: relative;
-            height: 100svh;
-            background: linear-gradient(#0e3a31, #134a3e);
-            overflow: hidden;
-        }
+/* Diya */
+.diya{
+  position:absolute;
+  bottom:22%;
+  left:50%;
+  transform:translateX(-50%);
+  width:260px;
+  height:260px;
+}
+.diya-aura{
+  position:absolute;
+  inset:-45%;
+  background:radial-gradient(circle,rgba(255,200,120,.35),transparent 70%);
+  filter:blur(45px);
+}
+.diya-glow{
+  position:absolute;
+  inset:12%;
+  background:radial-gradient(circle,rgba(255,170,80,.9),transparent 65%);
+  filter:blur(24px);
+}
+.diya-flame{
+  position:absolute;
+  left:50%;
+  top:32%;
+  width:28px;
+  height:44px;
+  transform:translateX(-50%);
+  background:radial-gradient(ellipse,#fff3c4,#ffae42 60%,transparent 70%);
+  border-radius:50% 50% 60% 60%;
+}
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url("/assets/texture.png");
-            opacity: .15;
-        }
+/* Couple */
+.couple{
+  position:absolute;
+  bottom:20%;
+  left:50%;
+  transform:translateX(-50%);
+  width:300px;
+  z-index:4;
+}
+.couple img{width:100%}
 
-        .birds {
-            position: absolute;
-            inset: 0;
-            background: url("/assets/birds.svg") center/1200px repeat;
-            opacity: .18;
-        }
+/* Hero text */
+.hero-text{
+  position:absolute;
+  top:12%;
+  width:100%;
+  text-align:center;
+  color:#fff;
+}
+.hero-text h1{
+  font-size:42px;
+  margin:0;
+}
+.hero-text p{
+  letter-spacing:.22em;
+  margin:6px 0;
+}
 
-        .mandala {
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            width: 420px;
-            opacity: .16;
-        }
+/* ===== INTRO PROSE (MISSING BLOCK) ===== */
+.intro-prose{
+  position:relative;
+  padding:96px 16px 88px;
+  background:var(--paper);
+}
+.intro-prose::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("assets/texture.png");
+  opacity:.1;
+}
+.intro-inner{
+  max-width:720px;
+  margin:0 auto;
+  text-align:center;
+}
+.intro-names{
+  font-size:40px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+.intro-strap{
+  font-family:"Hind",sans-serif;
+  font-size:12px;
+  letter-spacing:.32em;
+  color:var(--gold);
+  margin-bottom:18px;
+}
+.intro-date{
+  font-family:"Hind",sans-serif;
+  font-size:14px;
+  letter-spacing:.14em;
+  margin-bottom:40px;
+}
+.intro-copy{
+  font-size:22px;
+  line-height:1.9;
+  max-width:560px;
+  margin:0 auto;
+}
 
-        .mandala circle {
-            fill: none;
-            stroke: var(--gold);
-            stroke-width: 1;
-            stroke-dasharray: 600;
-            stroke-dashoffset: 600;
-        }
+/* Sections */
+.section{
+  padding:120px 16px;
+  text-align:center;
+}
 
-        .hero-text {
-            position: absolute;
-            top: 12%;
-            width: 100%;
-            text-align: center;
-            color: #fff;
-            z-index: 3;
-        }
+/* Invocation */
+.invocation{
+  background:radial-gradient(circle, rgba(212,167,79,.12), transparent 70%);
+}
+.om{
+  width:140px;
+  margin:0 auto 24px;
+}
+.om path{
+  fill:none;
+  stroke:var(--gold);
+  stroke-width:3;
+  stroke-dasharray:600;
+  stroke-dashoffset:600;
+}
+.shubh-title{
+  font-size:32px;
+  letter-spacing:.18em;
+  color:var(--gold);
+}
+.shloka{
+  max-width:640px;
+  margin:40px auto 0;
+  font-size:22px;
+  line-height:1.8;
+}
 
-        .hero-text h1 {
-            font-size: clamp(36px, 6vw, 48px);
-            margin: 0;
-        }
+/* Family */
+.family h2{font-size:30px}
+.family .person{margin:28px 0}
+.family .divider{
+  color:var(--gold);
+  font-size:24px;
+  margin:24px 0;
+}
 
-        .hero-text p {
-            letter-spacing: .22em;
-            margin: 8px 0;
-        }
+/* Event */
+.event h2{font-size:32px}
+.event p{letter-spacing:.14em}
 
-        .diya {
-            position: absolute;
-            bottom: 22%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 260px;
-            z-index: 2;
-        }
+/* Venue */
+.venue a{
+  color:var(--gold);
+  text-decoration:none;
+}
 
-        .diya::before {
-            content: "";
-            position: absolute;
-            inset: -40%;
-            background: radial-gradient(circle, rgba(255, 190, 90, .35), transparent 70%);
-            filter: blur(48px);
-        }
+/* Footer */
+footer{
+  padding:60px 16px;
+  text-align:center;
+  font-size:14px;
+}
 
-        .couple {
-            position: absolute;
-            bottom: 18%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            z-index: 4;
-        }
-
-        .couple img {
-            width: 100%
-        }
-
-        .mountains {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 22vh;
-            background: url("/assets/mountains.svg") bottom center/cover no-repeat;
-        }
-
-        /* ========================= */
-        /* SECTIONS */
-        /* ========================= */
-        .section {
-            padding: 80px 16px;
-            text-align: center;
-        }
-
-        .invocation {
-            background: radial-gradient(circle at center, rgba(212, 167, 79, .12), transparent 70%);
-        }
-
-        .shubh {
-            font-size: 28px;
-            letter-spacing: .18em;
-            color: var(--gold);
-        }
-
-        .shloka {
-            max-width: 640px;
-            margin: 32px auto 0;
-            font-size: 20px;
-            line-height: 1.8;
-        }
-
-        /* FAMILY */
-        .family .person {
-            margin: 20px 0
-        }
-
-        .family .divider {
-            color: var(--gold);
-            font-size: 24px;
-            margin: 16px 0;
-        }
-
-        /* EVENT */
-        .event p {
-            letter-spacing: .12em
-        }
-
-        /* VENUE */
-        .venue a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        /* FOOTER */
-        footer {
-            padding: 48px 16px;
-            font-size: 14px;
-            opacity: .7;
-        }
-
-        /* MOBILE */
-        @media(max-width:768px) {
-            .section {
-                padding: 56px 16px
-            }
-
-            .hero-text {
-                top: 14%
-            }
-        }
-    </style>
+/* Mobile */
+@media(max-width:600px){
+  .intro-prose{padding:72px 16px}
+  .intro-names{font-size:34px}
+  .intro-copy{font-size:20px}
+}
+</style>
 </head>
 
 <body class="en">
 
-    <div class="lang-toggle">
-        <button id="enBtn" class="active">EN</button>
-        <button id="hiBtn">हिंदी</button>
-    </div>
+<div class="lang-toggle">
+  <button id="enBtn" class="active">EN</button>
+  <button id="hiBtn">हिंदी</button>
+</div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="birds"></div>
+<!-- HERO -->
+<section class="hero">
+  <div class="birds"></div>
 
-        <svg class="mandala" viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="80" />
-            <circle cx="100" cy="100" r="60" />
-            <circle cx="100" cy="100" r="40" />
-        </svg>
+  <svg class="mandala" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="80"/>
+    <circle cx="100" cy="100" r="60"/>
+    <circle cx="100" cy="100" r="40"/>
+  </svg>
 
-        <div class="hero-text">
-            <p data-lang="en">SAVE THE DATE</p>
-            <p data-lang="hi">तिथि सुरक्षित रखें</p>
-            <h1>Yash & Shrishti</h1>
-            <p data-lang="en">10 February 2026</p>
-            <p data-lang="hi">10 फ़रवरी 2026</p>
-        </div>
+  <div class="diya">
+    <div class="diya-aura"></div>
+    <div class="diya-glow"></div>
+    <div class="diya-flame"></div>
+  </div>
 
-        <div class="diya"></div>
+  <div class="hero-text">
+    <p data-lang="en">SAVE THE DATE</p>
+    <p data-lang="hi">तिथि सुरक्षित रखें</p>
+    <h1>Yash & Shrishti</h1>
+    <p data-lang="en">10 February 2026</p>
+    <p data-lang="hi">10 फ़रवरी 2026</p>
+  </div>
 
-        <div class="couple">
-            <img src="/assets/couple.png" alt="">
-        </div>
+  <div class="couple">
+    <img src="assets/couple.png" alt="">
+  </div>
 
-        <div class="mountains"></div>
-    </section>
+  <div class="mountains"></div>
+</section>
 
-    <!-- INVOCATION -->
-    <section class="section invocation">
-        <div class="shubh">शुभ विवाह</div>
+<!-- INTRO PROSE -->
+<section class="intro-prose">
+  <div class="intro-inner">
+    <h1 class="intro-names">Yash &amp; Shrishti</h1>
 
-        <div class="shloka" data-lang="en">
-            With sacred lamps aglow and blessings all around,<br>
-            we invite you to celebrate the beginning of our forever.
-        </div>
+    <p class="intro-strap" data-lang="en">ARE UNITING THEIR LIVES</p>
+    <p class="intro-strap" data-lang="hi">अपने जीवन का आरंभ कर रहे हैं</p>
 
-        <div class="shloka" data-lang="hi">
-            दीपों की पावन ज्योति और परिवार के आशीर्वाद के साथ,<br>
-            हम आपको हमारे नए जीवन के आरंभ का साक्षी बनने हेतु आमंत्रित करते हैं।
-        </div>
-    </section>
+    <p class="intro-date" data-lang="en">10th February 2026</p>
+    <p class="intro-date" data-lang="hi">10 फ़रवरी 2026</p>
 
-    <!-- FAMILY -->
-    <section class="section family">
-        <h2 data-lang="en">With the blessings of our families</h2>
-        <h2 data-lang="hi">परिवार के स्नेह एवं आशीर्वाद के साथ</h2>
+    <p class="intro-copy" data-lang="en">
+      With the blessings of our families and the grace of the mountains,
+      we invite you to witness the beginning of our forever.
+    </p>
 
-        <div class="person">
-            <strong>Yash Goyal</strong><br>
-            <span data-lang="en">Son of Shri Pawan Goyal & Smt. Archna Goyal</span>
-            <span data-lang="hi">श्री पवन गोयल एवं श्रीमती अर्चना गोयल के सुपुत्र</span>
-        </div>
+    <p class="intro-copy" data-lang="hi">
+      परिवार के आशीर्वाद और पर्वतों की छाया में,<br>
+      हम अपने नए जीवन की शुरुआत कर रहे हैं।
+    </p>
+  </div>
+</section>
 
-        <div class="divider">❦</div>
+<!-- INVOCATION -->
+<section class="section invocation">
+  <svg class="om" viewBox="0 0 200 200">
+    <path d="M40 110 C40 40 160 40 160 110 C160 150 110 160 80 140 C100 170 60 180 40 150"/>
+  </svg>
+  <div class="shubh-title">शुभ विवाह</div>
+</section>
 
-        <div class="person">
-            <strong>Shrishti Tayal</strong><br>
-            <span data-lang="en">Daughter of Shri Sanjay Tayal & Smt. Manju Tayal</span>
-            <span data-lang="hi">श्री संजय तायल एवं श्रीमती मंजू तायल की सुपुत्री</span>
-        </div>
-    </section>
+<!-- FAMILY -->
+<section class="section family">
+  <h2 data-lang="en">With the blessings of our families</h2>
+  <h2 data-lang="hi">परिवार के स्नेह एवं आशीर्वाद के साथ</h2>
 
-    <!-- EVENT -->
-    <section class="section event">
-        <h2 data-lang="en">Bharat & Dinner</h2>
-        <h2 data-lang="hi">भारत एवं रात्रि भोज</h2>
-        <p data-lang="en">10 February 2026 · From 7:00 PM onwards</p>
-        <p data-lang="hi">10 फ़रवरी 2026 · सायं 7 बजे से</p>
-    </section>
+  <div class="person">
+    <strong>Yash Goyal</strong><br>
+    <span data-lang="en">Son of Shri Pawan Goyal &amp; Smt. Archna Goyal</span>
+    <span data-lang="hi">श्री पवन गोयल एवं श्रीमती अर्चना गोयल के सुपुत्र</span>
+  </div>
 
-    <!-- VENUE -->
-    <section class="section venue">
-        <h2 data-lang="en">Venue</h2>
-        <h2 data-lang="hi">स्थान</h2>
-        <p>
-            Singhal Banquet & Farms<br>
-            Near Shri Dronacharya Degree College · F1 Race Track<br>
-            Dankaur · Greater Noida
-        </p>
-        <a href="https://maps.app.goo.gl/QQESQLd4RyqD1LF8" target="_blank">
-            📍 Open in Google Maps
-        </a>
-    </section>
+  <div class="divider">❦</div>
 
-    <footer>
-        <span data-lang="en">With love · Shubh Vivah · Yash & Shrishti</span>
-        <span data-lang="hi">स्नेह सहित · शुभ विवाह · यश एवं सृष्टि</span>
-    </footer>
+  <div class="person">
+    <strong>Shrishti Tayal</strong><br>
+    <span data-lang="en">Daughter of Shri Sanjay Tayal &amp; Smt. Manju Tayal</span>
+    <span data-lang="hi">श्री संजय तायल एवं श्रीमती मंजू तायल की सुपुत्री</span>
+  </div>
+</section>
 
-    <script>
-                                                                                                                                                                                                                                                                                                                                                                        const enBtn=document.getElementById("enBtn");
-                                                                                                                                                                                                                                                                                                                                                                        const hiBtn=document.getElementById("hiBtn");
+<!-- EVENT -->
+<section class="section event">
+  <h2 data-lang="en">Bharat & Dinner</h2>
+  <h2 data-lang="hi">भारत एवं रात्रि भोज</h2>
+  <p data-lang="en">10 February 2026 · From 7:00 PM onwards</p>
+  <p data-lang="hi">10 फ़रवरी 2026 · सायं 7 बजे से</p>
+</section>
 
-                                                                                                                                                                                                                                                                                                                                                                        function setLang(l){
-                                                                                                                                                                                                                                                                                                                                                                          document.body.className=l;
-                                                                                                                                                                                                                                                                                                                                                                            enBtn.classList.toggle("active",l==="en");
-                                                                                                                                                                                                                                                                                                                                                                              hiBtn.classList.toggle("active",l==="hi");
-                                                                                                                                                                                                                                                                                                                                                                                localStorage.setItem("lang",l);
-                                                                                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                                                                                                enBtn.onclick=()=>setLang("en");
-                                                                                                                                                                                                                                                                                                                                                                                hiBtn.onclick=()=>setLang("hi");
-                                                                                                                                                                                                                                                                                                                                                                                setLang(localStorage.getItem("lang")||"en");
+<!-- VENUE -->
+<section class="section venue">
+  <h2 data-lang="en">Venue</h2>
+  <h2 data-lang="hi">स्थान</h2>
+  <p>
+    Singhal Banquet & Farms<br>
+    Near Shri Dronacharya Degree College<br>
+    F1 Race Track · Dankaur · Greater Noida
+  </p>
+</section>
 
-                                                                                                                                                                                                                                                                                                                                                                                gsap.to(".mandala circle",{strokeDashoffset:0,stagger:.6,duration:4});
-                                                                                                                                                                                                                                                                                                                                                                                gsap.to(".mandala",{rotation:360,repeat:-1,duration:120,ease:"none"});
-    </script>
+<footer>
+  <span data-lang="en">With love · Save the Date · © Yash & Shrishti 2026</span>
+  <span data-lang="hi">स्नेह सहित · तिथि सुरक्षित रखें · © यश एवं सृष्टि 2026</span>
+</footer>
+
+<script>
+const enBtn=document.getElementById("enBtn");
+const hiBtn=document.getElementById("hiBtn");
+
+function switchLang(lang){
+  document.body.className=lang;
+  localStorage.setItem("lang",lang);
+  enBtn.classList.toggle("active",lang==="en");
+  hiBtn.classList.toggle("active",lang==="hi");
+}
+enBtn.onclick=()=>switchLang("en");
+hiBtn.onclick=()=>switchLang("hi");
+switchLang(localStorage.getItem("lang")||"en");
+
+gsap.to(".mandala circle",{strokeDashoffset:0,duration:5,stagger:.6});
+gsap.to(".mandala",{rotation:360,repeat:-1,duration:90,ease:"none"});
+gsap.to(".diya-glow",{scale:1.15,yoyo:true,repeat:-1,duration:5});
+gsap.to(".diya-flame",{scaleY:1.15,yoyo:true,repeat:-1,duration:1.4});
+</script>
 
 </body>
-
 </html>
