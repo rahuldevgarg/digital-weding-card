@@ -82,7 +82,69 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => window.print(), 600);
   }
     </script>
-    
+    <style>
+        /* ============================= */
+/* INVOCATION GAP FIX — FINAL */
+/* ============================= */
+
+/* Kill inherited vertical bloat */
+.section.invocation {
+  padding-top: 40px !important;
+  padding-bottom: 48px !important;
+}
+
+/* Control spacing via ONE system only */
+.invocation-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px !important;
+}
+
+/* Remove hidden margin stacking */
+.invocation-inner > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Fine-tune specific offenders */
+.invocation-date,
+.intro-date {
+  margin-top: 8px !important;
+  margin-bottom: 0 !important;
+}
+
+.invocation-sub {
+  margin: 6px 0 !important;
+}
+
+.invocation-names {
+  margin: 6px 0 !important;
+}
+
+/* Sanskrit + shloka tightening */
+.shloka {
+  margin-top: 12px !important;
+  margin-bottom: 12px !important;
+}
+
+/* Om symbol should hug content */
+.om-symbol,
+.om {
+  margin-bottom: 12px !important;
+}
+
+/* MOBILE — even tighter */
+@media (max-width: 768px) {
+  .section.invocation {
+    padding-top: 32px !important;
+    padding-bottom: 36px !important;
+  }
+
+  .invocation-inner {
+    gap: 8px !important;
+  }
+}
+    </style>
 <style>
 :root{
   --green:#0f3b32;
