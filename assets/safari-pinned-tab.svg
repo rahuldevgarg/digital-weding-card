@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+  preserveAspectRatio="xMidYMid meet">
+
+  <!-- Outer mandala ring -->
+  <circle cx="256" cy="256" r="220" fill="#000"/>
+
+  <!-- Inner cutout -->
+  <circle cx="256" cy="256" r="170" fill="#fff"/>
+
+  <!-- Diya base -->
+  <path
+    d="M136 300
+       C180 340, 332 340, 376 300
+       C340 318, 172 318, 136 300
+       Z"
+    fill="#000"/>
+
+  <!-- Diya bowl -->
+  <path
+    d="M176 300
+       C200 260, 312 260, 336 300
+       C304 292, 208 292, 176 300
+       Z"
+    fill="#000"/>
+
+  <!-- Flame -->
+  <path
+    d="M256 150
+       C230 190, 238 230, 256 250
+       C274 230, 282 190, 256 150
+       Z"
+    fill="#000"/>
+
+  <!-- Flame inner cut -->
+  <path
+    d="M256 175
+       C245 200, 248 220, 256 232
+       C264 220, 267 200, 256 175
+       Z"
+    fill="#fff"/>
+
+</svg>
