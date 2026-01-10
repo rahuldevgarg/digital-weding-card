@@ -60,10 +60,14 @@
   stroke-width: 7;
 }
 
-.w-hero-stroke-left{ left:12px; }
+.w-hero-stroke-left{ left:28px; }
 .w-hero-stroke-right{
-  right:12px;
+  right:28px;
   transform: scaleX(-1);
+}
+@media (min-width: 900px){
+  .w-hero-stroke-left{ left: 42px; }
+  .w-hero-stroke-right{ right: 42px; }
 }
 
 /* Layout */
@@ -103,19 +107,20 @@
   font-weight:400;
 }
 
-..w-hero-date{
-  margin-top:16px;
+.w-hero-date{
+  margin-top:18px;
   font-family:"Hind",sans-serif;
-  font-size:13px;
+  font-size:18px;
   letter-spacing:.28em;
   text-transform:uppercase;
   color:#7b6a45;
 }
 
 /* Image */
-..w-hero-media{
+.w-hero-media{
   display:flex;
   justify-content:center;
+  margin-top: 16px;
   }
     .w-hero-media::before{
   content:"";
@@ -136,9 +141,11 @@
   background:
     radial-gradient(circle at 50% 45%, #ffffff 0%, #f1eadf 70%);
   padding:14px;
+  transform: scale(0.96);
   box-shadow:
     0 40px 80px rgba(0,0,0,.22),
     inset 0 0 0 1px rgba(201,162,77,.6);
+  
 }
 
 .w-hero-oval img{
@@ -158,11 +165,107 @@
   color:#143c32;
   filter: drop-shadow(0 -6px 12px rgba(0,0,0,.25));
 }
+    .w-hero-emboss{
+  position:absolute;
+  inset:16px;
+  pointer-events:none;
+  z-index:1;
+  }
+    @media print{
+
+  :root{
+    --royal-gold: #b08a2e; /* deeper foil tone */
+  }
+
+  /* Foil simulation */
+  .w-hero-names,
+  .w-hero-date,
+  .w-hero-crest{
+    color: transparent !important;
+    background:
+      linear-gradient(
+        120deg,
+        #7a5b1e 0%,
+        #e8c872 25%,
+        #b08a2e 50%,
+        #f6e3a1 75%,
+        #7a5b1e 100%
+      );
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow:
+      0.4px 0.4px 0 rgba(0,0,0,.15);
+  }
+
+  /* Kill glow & shadows for clean print */
+  .w-hero-oval,
+  .w-hero-media::before{
+    box-shadow:none !important;
+    filter:none !important;
+  }
+  }
   </style>
+  <script>
+gsap.set(
+  [
+    ".w-hero-names",
+    ".w-hero-date",
+    ".w-hero-crest",
+    ".w-hero-oval",
+    ".w-hero-stroke",
+    ".w-hero-mountains"
+  ],
+  { opacity: 0 }
+);
+
+gsap.timeline({ delay: 0.2 })
+  .to(".w-hero-stroke", {
+    opacity: 1,
+    duration: 1.2,
+    ease: "power1.out"
+  })
+  .to(".w-hero-names", {
+    opacity: 1,
+    y: 0,
+    duration: 0.9,
+    ease: "power2.out"
+  }, "-=0.6")
+  .to(".w-hero-crest", {
+    opacity: 1,
+    duration: 0.6
+  }, "-=0.5")
+  .to(".w-hero-date", {
+    opacity: 1,
+    duration: 0.6
+  }, "-=0.4")
+  .to(".w-hero-oval", {
+    opacity: 1,
+    scale: 1,
+    duration: 1.1,
+    ease: "power2.out"
+  }, "-=0.7")
+  .to(".w-hero-mountains", {
+    opacity: 1,
+    duration: 1
+  }, "-=0.8");
+  </script>
 </head>
 
 <body>
 <section class="w-hero">
+  <svg class="w-hero-emboss" viewBox="0 0 100 100" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="embossLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="1.5" y="1.5" width="97" height="97"
+        fill="none"
+        stroke="url(#embossLight)"
+        stroke-width="0.8"/>
+  </svg>
   <div class="w-hero-bg"></div>
 
   <!-- Gold side strokes -->
