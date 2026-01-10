@@ -358,18 +358,18 @@ body.hi [data-lang="hi"]{display:block}
 }
 .om{
   width: 120px;
-  margin: 0 auto 18px;
+  margin: 0 auto 16px;
   display: block;
 }
 
 .om-stroke{
   fill: none;
   stroke: var(--gold);
-  stroke-width: 6;
+  stroke-width: 10;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
 }
 
 .om-bindu{
@@ -678,33 +678,31 @@ footer{
 
 <section class="section invocation fade-in">
 
-  <!-- OM -->
-  <svg class="om" viewBox="0 0 300 320" aria-label="Om Symbol">
-  <!-- Main Om body -->
-  <path class="om-stroke"
-    d="
-      M110 190
-      C60 180 40 130 70 95
-      C95 60 160 65 180 100
-      C200 130 180 165 145 170
-      C185 195 165 240 115 235
-      C75 230 60 200 70 180
-    " />
-
+  <svg class="om" viewBox="0 0 512 512" aria-label="Om Symbol">
   <!-- Upper crescent -->
-  <path class="om-stroke"
-    d="
-      M155 55
-      C190 45 220 65 225 95
-    " />
+  <path
+    d="M260 96
+       C320 70 380 95 400 140"
+    class="om-stroke"/>
 
   <!-- Bindu -->
-  <circle class="om-bindu" cx="235" cy="45" r="6"/>
-</svg>
+  <circle cx="330" cy="80" r="12" class="om-bindu"/>
+
+  <!-- Main Om body -->
+  <path
+    d="M210 210
+       C150 200 120 150 150 115
+       C185 75 270 95 285 135
+       C300 170 260 205 225 215
+       C300 230 310 330 230 350
+       C160 365 120 310 155 265
+       C170 245 190 230 210 210
+       Z"
+    class="om-stroke"/>
+  </svg>
         <!-- SHLOKA : SANSKRIT -->
   <div class="shloka shloka-sa">
-    दीपज्योतिर्मंगलं दिव्यं<br>
-    जीवनारम्भकारकम्
+    दीपज्योतिर्मंगलं दिव्यं जीवनारम्भकारकम्
   </div>
   <!-- SHUBH VIVAH -->
   <div class="shubh-vivah">
@@ -769,7 +767,7 @@ footer{
 
 
     <!-- Divider -->
-    <div class="ceremony-divider">❦</div>
+    <div class="family-sep">❦</div>
 
     <!-- Family -->
     <div class="family-block">
@@ -798,7 +796,7 @@ footer{
 
     <!-- Event -->
     <div class="event-block">
-      <h3 data-lang="en">Bharat &amp; Dinner</h3>
+      <h3 data-lang="en">Baarat &amp; Dinner</h3>
       <h3 data-lang="hi">भारत एवं रात्रि भोज</h3>
 
       <p class="event-time" data-lang="en">
@@ -889,13 +887,13 @@ window.addEventListener("scroll",()=>{
     <script>
 gsap.to(".om-stroke", {
   strokeDashoffset: 0,
-  duration: 3.2,
+  duration: 3,
   ease: "power1.out"
 });
 
 gsap.to(".om-bindu", {
   opacity: 1,
-  delay: 2.6,
+  delay: 2.4,
   duration: 0.6,
   ease: "power1.out"
 });
