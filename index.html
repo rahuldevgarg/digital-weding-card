@@ -62,7 +62,17 @@
     <!-- ========================= -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 
+<script>
+new QRious({
+  element: document.getElementById("venueQR"),
+  value: "https://maps.app.goo.gl/QQESQLd4RyqDg1LF8",
+  size: 140,
+  foreground: "#1f4f43",
+  background: "#ffffff"
+});
+</script>
     
     
 <style>
@@ -111,7 +121,93 @@ body.hi [data-lang="hi"]{display:block}
   background:var(--gold);
   color:#fff;
 }
+    .invocation-inner{
+  max-width:720px;
+  margin:0 auto;
+}
 
+.invocation-kicker{
+  font-family:"Hind",sans-serif;
+  font-size:12px;
+  letter-spacing:.32em;
+  color:var(--gold);
+  margin-bottom:24px;
+}
+
+.invocation-names{
+  font-size:42px;
+  margin:0;
+}
+
+.invocation-sub{
+  font-family:"Hind",sans-serif;
+  letter-spacing:.28em;
+  margin:12px 0 24px;
+}
+
+.invocation-date{
+  font-size:18px;
+  color:#7a6a4a;
+  margin-bottom:40px;
+}
+
+.invocation-body{
+  font-size:22px;
+  line-height:1.8;
+  margin:0 auto;
+}
+.venue-card{
+  max-width:640px;
+  margin:0 auto;
+  padding:48px 32px;
+  background:#fff;
+  border-radius:24px;
+  box-shadow:0 20px 40px rgba(0,0,0,.06);
+}
+
+.venue-kicker{
+  font-family:"Hind",sans-serif;
+  font-size:12px;
+  letter-spacing:.32em;
+  color:var(--gold);
+}
+
+.venue-address{
+  font-size:18px;
+  line-height:1.6;
+}
+
+.map-button{
+  display:inline-block;
+  margin-top:24px;
+  padding:14px 28px;
+  border-radius:999px;
+  background:var(--gold);
+  color:#fff;
+  text-decoration:none;
+  font-family:"Hind",sans-serif;
+  letter-spacing:.18em;
+}
+
+.qr-wrap{
+  margin-top:36px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.qr-wrap canvas{
+  width:140px;
+  height:140px;
+}
+
+.qr-caption{
+  margin-top:12px;
+  font-family:"Hind",sans-serif;
+  font-size:12px;
+  letter-spacing:.24em;
+  color:var(--gold);
+}
 /* HERO */
 .hero{
   position:relative;
@@ -328,6 +424,39 @@ footer{
   .intro-names{font-size:34px}
   .intro-copy{font-size:20px}
 }
+    @media print{
+
+  body{
+    background:#fff;
+    color:#000;
+  }
+
+  .hero,
+  .lang-toggle,
+  .petal{
+    display:none !important;
+  }
+
+  .section{
+    padding:48px 24px;
+    page-break-inside:avoid;
+  }
+
+  .venue-card{
+    box-shadow:none;
+    border:1px solid #ddd;
+  }
+
+  .map-button{
+    display:none;
+  }
+
+  .qr-wrap canvas{
+    width:120px;
+    height:120px;
+  }
+
+    }
 </style>
 </head>
 
@@ -392,18 +521,48 @@ footer{
   </div>
 </section>
 
-<!-- INVOCATION -->
-<section class="section invocation">
-  <svg class="om" viewBox="0 0 200 200">
-    <path d="M40 110 C40 40 160 40 160 110 C160 150 110 160 80 140 C100 170 60 180 40 150"/>
-  </svg>
-  <div class="shubh-title">शुभ विवाह</div>
+<section class="section invocation fade-in">
+  <div class="invocation-inner">
+
+    <p class="invocation-kicker" data-lang="en">
+      WITH DIVINE GRACE AND FAMILY BLESSINGS
+    </p>
+    <p class="invocation-kicker" data-lang="hi">
+      ईश्वर की कृपा एवं परिवार के आशीर्वाद से
+    </p>
+
+    <h2 class="invocation-names">Yash & Shrishti</h2>
+
+    <p class="invocation-sub" data-lang="en">
+      are uniting their lives
+    </p>
+    <p class="invocation-sub" data-lang="hi">
+      अपने जीवन का आरंभ कर रहे हैं
+    </p>
+
+    <p class="invocation-date" data-lang="en">
+      10th February 2026
+    </p>
+    <p class="invocation-date" data-lang="hi">
+      10 फ़रवरी 2026
+    </p>
+
+    <p class="invocation-body" data-lang="en">
+      With the blessings of our families and the grace of the god,
+      we invite you to witness the beginning of our forever.
+    </p>
+
+    <p class="invocation-body" data-lang="hi">
+      परिवार के आशीर्वाद और ईश्वर की कृपा से,
+      हम अपने नए जीवन की शुरुआत कर रहे हैं।
+    </p>
+
+  </div>
 </section>
 
 <!-- FAMILY -->
 <section class="section family">
-  <h2 data-lang="en">With the blessings of our families</h2>
-  <h2 data-lang="hi">परिवार के स्नेह एवं आशीर्वाद के साथ</h2>
+  
 
   <div class="person">
     <strong>Yash Goyal</strong><br>
@@ -419,7 +578,17 @@ footer{
     <span data-lang="hi">श्री संजय तायल एवं श्रीमती मंजू तायल की सुपुत्री</span>
   </div>
 </section>
+<section class="section event fade-in">
+  <h2 data-lang="en">Bharat & Dinner</h2>
+  <h2 data-lang="hi">भारत एवं रात्रि भोज</h2>
 
+  <p class="event-time" data-lang="en">
+    Commencing from 7:00 PM onwards
+  </p>
+  <p class="event-time" data-lang="hi">
+    सायं 7 बजे से
+  </p>
+</section>
 <!-- EVENT -->
 <section class="section event">
   <h2 data-lang="en">Bharat & Dinner</h2>
@@ -438,7 +607,35 @@ footer{
     F1 Race Track · Dankaur · Greater Noida
   </p>
 </section>
+<section class="section venue fade-in">
 
+  <div class="venue-card">
+
+    <p class="venue-kicker" data-lang="en">Venue</p>
+    <p class="venue-kicker" data-lang="hi">स्थान</p>
+
+    <h3>Singhal Banquet & Farms</h3>
+
+    <p class="venue-address">
+      Near Shri Dronacharya Degree College · F1 Race Track<br>
+      Dankaur · Greater Noida
+    </p>
+
+    <a class="map-button"
+       href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8"
+       target="_blank">
+      📍 Open in Google Maps
+    </a>
+
+    <!-- QR -->
+    <div class="qr-wrap">
+      <canvas id="venueQR"></canvas>
+      <p class="qr-caption" data-lang="en">Scan for directions</p>
+      <p class="qr-caption" data-lang="hi">दिशा हेतु स्कैन करें</p>
+    </div>
+
+  </div>
+</section>
 <footer>
   <span data-lang="en">With love · Save the Date · © Yash & Shrishti 2026</span>
   <span data-lang="hi">स्नेह सहित · तिथि सुरक्षित रखें · © यश एवं सृष्टि 2026</span>
