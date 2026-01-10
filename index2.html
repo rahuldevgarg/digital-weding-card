@@ -50,17 +50,66 @@ section{
 }
 .toggle .active{background:var(--gold);color:#fff;border-radius:30px}
 
-/* Hero */
-.hero{
-  background:linear-gradient(#234c3f,#16352c);
-  color:#fff;
-  padding-top:140px;
-  padding-bottom:200px;
-  overflow:hidden;
+/* ===== HERO ===== */
+.hero {
+  min-height: 100svh;              /* mobile-safe viewport */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
 }
-.hero h1{font-size:48px;letter-spacing:1px}
-.hero p{font-family:Poppins,sans-serif;opacity:.9}
 
+/* Stack hero content vertically */
+.hero-inner {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 5;
+}
+
+/* Title */
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  margin-bottom: .6rem;
+}
+
+/* Date */
+.hero-date {
+  font-size: .95rem;
+  letter-spacing: .14em;
+  opacity: .85;
+  margin-bottom: 1.2rem;
+}
+
+/* Couple container */
+.couple-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: .5rem;
+}
+
+/* Couple image */
+.couple-img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  display: block;
+}
+
+/* Pull couple UP slightly on mobile */
+@media (max-width: 768px) {
+  .couple-wrapper {
+    transform: translateY(-6vh);
+  }
+}
 /* Mountains */
 .mountains{
   position:absolute;bottom:0;left:0;width:100%;height:220px;
@@ -109,12 +158,43 @@ section{
 }
 
 /* Petals */
-.petal{
-  position:fixed;top:-40px;width:20px;height:28px;
-  pointer-events:none;z-index:10;
+.petal {
+  width: 14px;
+  height: 10px;
+  background: radial-gradient(circle at 30% 30%, #f3b3b3, #c74b4b);
+  border-radius: 60% 40% 60% 40%;
+  opacity: .85;
 }
 .petal svg path{fill:#e45b5b}
+@keyframes petalFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(120deg);
+  }
+}
+  @keyframes diyaPulse {
+  0%,100% { opacity:.6; }
+  50% { opacity:.9; }
+}
+.shubh path {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawShubh 4.5s ease forwards;
+}
 
+@keyframes drawShubh {
+  to { stroke-dashoffset: 0; }
+}
+.diya {
+  animation: diyaPulse 6s ease-in-out infinite;
+}
+
+.petal {
+  animation: petalFall linear infinite;
+  animation-duration: 18s; /* slow */
+  }
 /* Cards */
 .card{
   background:#fff;border-radius:24px;
@@ -135,6 +215,58 @@ footer{
   padding:40px;font-family:Poppins,sans-serif;
   color:#777;font-size:14px;
 }
+  .royal-section {
+  padding: 6rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.royal-invite {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+  opacity: .9;
+}
+
+/* Mandala bloom */
+.mandala {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 3rem;
+  background:
+    radial-gradient(circle at center,
+      rgba(217,164,65,.35),
+      transparent 70%);
+  border-radius: 50%;
+}
+
+/* Family section */
+.family h2 {
+  font-size: .95rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #caa44a;
+  margin-bottom: 3rem;
+}
+
+.person h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin-bottom: .4rem;
+}
+
+.person p {
+  opacity: .75;
+  letter-spacing: .04em;
+}
+
+.flourish {
+  margin: 3rem 0;
+  font-size: 1.6rem;
+  color: #d9a441;
+                             }
 </style>
 </head>
 
@@ -181,14 +313,31 @@ footer{
 
 </section>
 
-<section>
-<div class="card">
-<p data-en="With sacred lamps aglow and blessings all around, we invite you to celebrate the beginning of our forever."
-   data-hi="दीपों की उजास और परिवार के आशीर्वाद के साथ, हम आपको अपने जीवन के नए आरंभ का साक्षी बनने का आमंत्रण देते हैं।">
-With sacred lamps aglow and blessings all around, we invite you to celebrate the beginning of our forever.
-</p>
-</div>
+<section class="royal-section">
+  <div class="mandala"></div>
 
+  <p class="royal-invite">
+    With sacred lamps aglow and blessings all around,<br>
+    we invite you to celebrate the beginning of our forever.
+  </p>
+</section>
+
+<section class="royal-section family">
+  <h2>With the blessings of our families</h2>
+
+  <div class="person">
+    <h3>Yash Goyal</h3>
+    <p>Son of Shri Pawan Goyal &amp; Smt. Archna Goyal</p>
+  </div>
+
+  <div class="flourish">❦</div>
+
+  <div class="person">
+    <h3>Shrishti Tayal</h3>
+    <p>Daughter of Shri Sanjay Tayal &amp; Smt. Manju Tayal</p>
+  </div>
+</section>
+<section>
 <div class="card">
 <h2>Bharat & Dinner</h2>
 <p data-en="10th February 2026 · From 7:00 PM onwards"
