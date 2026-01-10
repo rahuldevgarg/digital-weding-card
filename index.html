@@ -211,35 +211,48 @@
             background: url("assets/mountains.svg") bottom center/cover no-repeat;
         }
         
+        /* Mandala - FIXED POSITIONING */
         .mandala {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: clamp(200px, 25vw, 420px);
-            height: clamp(200px, 25vw, 420px);
-            transform: translate(-50%, -50%);
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            width: clamp(200px, 25vw, 420px) !important;
+            height: clamp(200px, 25vw, 420px) !important;
+            transform: translate(-50%, -50%) !important;
             opacity: .14;
+            z-index: 3;
+        }
+        .mandala circle {
+            fill: none;
+            stroke: var(--soft);
+            stroke-width: 1;
+            stroke-dasharray: 600;
+            stroke-dashoffset: 600;
         }
         
+        /* Diya - FIXED */
         .diya {
-            position: absolute;
-            bottom: 22%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: clamp(180px, 22vw, 260px);
-            height: clamp(180px, 22vw, 260px);
+            position: absolute !important;
+            bottom: 22% !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: clamp(180px, 22vw, 260px) !important;
+            height: clamp(180px, 22vw, 260px) !important;
+            z-index: 5;
         }
-        .diya-aura { 
-            position: absolute; 
-            inset: -45%; 
+        .diya-aura {
+            position: absolute;
+            inset: -45%;
             background: radial-gradient(circle, rgba(255,200,120,.35), transparent 70%);
             filter: blur(clamp(1.5rem, 3vw, 2.8rem));
+            z-index: 5;
         }
-        .diya-glow { 
-            position: absolute; 
-            inset: 12%; 
+        .diya-glow {
+            position: absolute;
+            inset: 12%;
             background: radial-gradient(circle, rgba(255,170,80,.9), transparent 65%);
             filter: blur(1.5rem);
+            z-index: 6;
         }
         .diya-flame {
             position: absolute;
@@ -250,24 +263,34 @@
             transform: translateX(-50%);
             background: radial-gradient(ellipse, #fff3c4, #ffae42 60%, transparent 70%);
             border-radius: 50% 50% 60% 60%;
+            z-index: 7;
         }
         
+        /* Couple Image - FIXED */
         .couple {
-            position: absolute;
-            bottom: clamp(15%, 20%, 20%);
-            left: 50%;
-            transform: translateX(-50%);
-            width: clamp(200px, 28vw, 300px);
-            z-index: 4;
+            position: absolute !important;
+            bottom: clamp(15%, 20%, 20%) !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: clamp(200px, 28vw, 300px) !important;
+            z-index: 8 !important;
         }
-        .couple img { width: 100%; }
+        .couple img {
+            width: 100% !important;
+            height: auto;
+        }
         
+        /* Hero Text */
         .hero-text {
-            position: absolute;
-            top: clamp(8%, 12%, 12%);
-            width: 100%;
+            position: absolute !important;
+            top: clamp(8%, 12%, 12%) !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 90%;
+            max-width: 40rem;
             text-align: center;
             color: var(--gold);
+            z-index: 9 !important;
         }
         .hero-text h1 {
             font-size: clamp(2rem, 6vw, 3.5rem);
@@ -507,7 +530,7 @@
         </div>
         
         <!-- Hero Text -->
-        <div class="hero-text position-absolute text-center text-white px-3">
+        <div class="hero-text position-absolute text-center px-3">
             <p data-lang="en">SAVE THE DATE</p>
             <p data-lang="hi">तिथि सुरक्षित रखें</p>
             <h1 class="fw-semibold">Yash & Shrishti</h1>
@@ -517,7 +540,7 @@
         
         <!-- Couple -->
         <div class="couple position-absolute">
-            <img src="assets/couple.png" alt="Yash & Shrishti" class="img-fluid">
+            <img src="assets/couple.png" alt="Yash & Shrishti">
         </div>
         
     </section>
@@ -651,6 +674,7 @@
 
     <!-- Scripts -->
     <script>
+        gsap.registerPlugin(ScrollTrigger);
         // QR Code
         document.addEventListener("DOMContentLoaded", () => {
             const qrCanvas = document.getElementById("venueQR");
@@ -717,12 +741,13 @@
             .to("#om-fill", { opacity: 1, duration: 0.5 })
             .to("#om-stroke", { opacity: 0, duration: 0.3 });
         
-        // Hero Animations
+        /// HERO ANIMATIONS - NOW WORKING
         gsap.to(".mandala circle", { strokeDashoffset: 0, duration: 5, stagger: .6 });
         gsap.to(".mandala", { rotation: 360, repeat: -1, duration: 90, ease: "none" });
         gsap.to(".diya-glow", { scale: 1.15, yoyo: true, repeat: -1, duration: 5 });
         gsap.to(".diya-flame", { scaleY: 1.15, yoyo: true, repeat: -1, duration: 1.4 });
         
+    
         // ScrollTrigger
         gsap.from(".invocation > *", {
             scrollTrigger: {
