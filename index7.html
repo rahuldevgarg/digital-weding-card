@@ -12,145 +12,113 @@
 </head>
 <body style="background-color: #222; margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; align-items: center;">
 
-    <div id="wc-final-v7">
+    <div id="wc-final-v8">
         <style>
-            /* --- ISOLATION & RESET --- */
-            #wc-final-v7 {
+            #wc-final-v8 {
                 isolation: isolate;
                 font-family: 'Playfair Display', serif;
                 width: 100%;
-                display: flex;
-                justify-content: center;
+                display: flex; justify-content: center;
                 box-sizing: border-box;
             }
-            #wc-final-v7 * { box-sizing: border-box; margin: 0; padding: 0; }
+            #wc-final-v8 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-            /* --- CARD CONTAINER --- */
             .wc-card {
                 position: relative;
                 width: 100%;
                 max-width: 450px;
-                /* Matches the reference proportions */
                 aspect-ratio: 9/14.5; 
-                background-color: #fcfbf5; /* Warm Cream */
-                /* Subtle grain texture */
-                background-image: radial-gradient(#e6dabf 0.6px, transparent 0.6px);
-                background-size: 16px 16px;
+                background-color: #fdfbf5;
+                /* Subtle grain */
+                background-image: radial-gradient(#e6dabf 0.5px, transparent 0.5px);
+                background-size: 14px 14px;
                 box-shadow: 0 25px 50px rgba(0,0,0,0.4);
                 border-radius: 12px;
                 overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                display: flex; flex-direction: column; align-items: center;
             }
 
-            /* --- SVG LAYER --- */
             .wc-svg-layer {
-                position: absolute;
-                top: 0; left: 0;
-                width: 100%; height: 100%;
-                pointer-events: none;
-                z-index: 10;
+                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                pointer-events: none; z-index: 10;
             }
 
-            /* SVG STYLES */
             .wc-gold { stroke: #cba157; fill: none; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
             .wc-gold-thin { stroke: #cba157; fill: none; stroke-width: 0.8; }
-            
-            /* --- CONTENT LAYER --- */
+
             .wc-content {
-                z-index: 20;
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
+                z-index: 20; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
                 display: flex; flex-direction: column; align-items: center;
-                text-align: center;
-                padding-top: 8%;
+                text-align: center; padding-top: 8%;
             }
 
-            /* TOP BADGE */
             .wc-badge-wrap {
-                position: relative;
-                margin-bottom: 20px;
-                padding: 5px 15px;
+                position: relative; margin-bottom: 5%;
+                display: flex; justify-content: center; align-items: center;
+                width: 80px; height: 36px; /* Explicit size for oval alignment */
             }
             .wc-badge-text {
-                font-family: 'Tiro Devanagari Hindi', serif;
-                color: #bfa15f;
-                font-size: 13px;
-                background: #fcfbf5;
-                position: relative;
-                z-index: 2;
-                padding: 0 10px;
+                font-family: 'Tiro Devanagari Hindi', serif; color: #bfa15f;
+                font-size: 13px; background: transparent; z-index: 2;
             }
-            .wc-badge-bg {
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
-                border: 1px solid #cba157;
-                border-radius: 50%;
-                z-index: 1;
-            }
+            /* The SVG draws the ring, so we don't need CSS border here */
 
-            /* TITLE */
             .wc-title {
-                font-size: clamp(32px, 8vw, 42px);
-                color: #000;
-                line-height: 1;
-                margin-bottom: 15px;
-                font-weight: 700;
+                font-size: clamp(32px, 8vw, 42px); color: #000;
+                line-height: 1; margin-bottom: 4%; font-weight: 700;
             }
 
-            /* IMAGE FRAME */
             .wc-img-frame {
-                position: relative;
-                width: 78%; /* Matches the wide oval */
-                aspect-ratio: 0.77;
-                margin-top: 10px;
+                position: relative; width: 80%; aspect-ratio: 0.77; margin-top: 2%;
             }
             .wc-photo {
-                width: 100%; height: 100%;
-                object-fit: cover;
-                /* Oval Crop */
+                width: 100%; height: 100%; object-fit: cover;
                 clip-path: ellipse(50% 50% at 50% 50%);
                 filter: contrast(1.05) sepia(0.05);
             }
 
-            /* FOOTER */
             .wc-footer {
-                margin-top: auto;
-                margin-bottom: 12%;
-                font-family: 'Montserrat', sans-serif;
-                font-size: 11px;
-                letter-spacing: 3px;
-                color: #6d644f;
-                font-weight: 600;
-                text-transform: uppercase;
+                margin-top: auto; margin-bottom: 12%;
+                font-family: 'Montserrat', sans-serif; font-size: 11px;
+                letter-spacing: 3px; color: #6d644f; font-weight: 600; text-transform: uppercase;
             }
         </style>
 
         <div class="wc-card">
             <svg class="wc-svg-layer" viewBox="0 0 450 725" preserveAspectRatio="xMidYMid slice">
                 <defs>
-                    <pattern id="latticePat" x="0" y="0" width="10" height="16" patternUnits="userSpaceOnUse">
-                        <path d="M0,0 L10,16 M10,0 L0,16" stroke="#cba157" stroke-width="0.5" fill="none" opacity="0.5"/>
+                    <pattern id="latticePat" x="0" y="0" width="8" height="14" patternUnits="userSpaceOnUse">
+                        <path d="M0,0 L8,14 M8,0 L0,14" stroke="#cba157" stroke-width="0.5" fill="none" opacity="0.5"/>
                     </pattern>
 
                     <g id="lily-flower">
-                        <path d="M0,0 Q8,-20 0,-45 Q-8,-20 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
-                        <path d="M0,0 L0,-35" stroke="#cba157" stroke-width="0.6" fill="none"/>
+                        <path d="M0,0 C2,-15 8,-35 0,-45 C-8,-35 -2,-15 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
+                        <path d="M0,0 L0,-30" stroke="#cba157" stroke-width="0.5" fill="none"/>
                         
-                        <path d="M0,0 Q-15,-10 -35,-25 Q-20,5 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
-                        <path d="M0,0 Q-15,-8 -25,-18" stroke="#cba157" stroke-width="0.4" fill="none" opacity="0.6"/> <path d="M0,0 Q15,-10 35,-25 Q20,5 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
-                         <path d="M0,0 Q15,-8 25,-18" stroke="#cba157" stroke-width="0.4" fill="none" opacity="0.6"/> <g stroke="#cba157" stroke-width="0.8" fill="none">
-                            <path d="M0,0 L-6,-22" /> <circle cx="-6" cy="-22" r="1.5" fill="#cba157" stroke="none"/>
-                            <path d="M0,0 L6,-22" />  <circle cx="6" cy="-22" r="1.5" fill="#cba157" stroke="none"/>
-                            <path d="M0,0 L0,-25" />  <circle cx="0" cy="-25" r="1.5" fill="#cba157" stroke="none"/>
-                        </g>
+                        <path d="M0,0 C-10,-5 -25,-15 -35,-5 C-25,5 -10,5 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
+                        
+                        <path d="M0,0 C10,-5 25,-15 35,-5 C25,5 10,5 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
+                        
+                        <path d="M0,0 Q-5,-15 -8,-22" stroke="#cba157" stroke-width="0.6" fill="none"/>
+                        <circle cx="-8" cy="-22" r="1.2" fill="#cba157" stroke="none"/>
+                        
+                        <path d="M0,0 Q5,-15 8,-22" stroke="#cba157" stroke-width="0.6" fill="none"/>
+                        <circle cx="8" cy="-22" r="1.2" fill="#cba157" stroke="none"/>
+                        
+                        <path d="M0,0 L0,-25" stroke="#cba157" stroke-width="0.6" fill="none"/>
+                        <circle cx="0" cy="-25" r="1.2" fill="#cba157" stroke="none"/>
                     </g>
                 </defs>
 
                 <rect x="25" y="45" width="20" height="635" fill="url(#latticePat)" class="anim-fade"/>
-                <line x1="25" y1="45" x2="25" y2="680" class="wc-gold anim-draw"/> <line x1="45" y1="45" x2="45" y2="680" class="wc-gold anim-draw"/> <rect x="405" y="45" width="20" height="635" fill="url(#latticePat)" class="anim-fade"/>
-                <line x1="405" y1="45" x2="405" y2="680" class="wc-gold anim-draw"/> <line x1="425" y1="45" x2="425" y2="680" class="wc-gold anim-draw"/> <path d="M25,45 Q25,20 50,20 H400" class="wc-gold anim-draw" fill="none"/>
+                <line x1="25" y1="45" x2="25" y2="680" class="wc-gold anim-draw"/> 
+                <line x1="45" y1="45" x2="45" y2="680" class="wc-gold anim-draw"/> 
+                
+                <rect x="405" y="45" width="20" height="635" fill="url(#latticePat)" class="anim-fade"/>
+                <line x1="405" y1="45" x2="405" y2="680" class="wc-gold anim-draw"/> 
+                <line x1="425" y1="45" x2="425" y2="680" class="wc-gold anim-draw"/> 
+
+                <path d="M25,45 Q25,20 50,20 H400" class="wc-gold anim-draw" fill="none"/>
                 <path d="M45,45 Q45,30 60,30 H390" class="wc-gold-thin anim-draw" fill="none" opacity="0.7"/>
 
                 <path d="M425,45 Q425,20 400,20" class="wc-gold anim-draw" fill="none"/>
@@ -162,47 +130,35 @@
                 <path d="M425,680 Q425,705 400,705" class="wc-gold anim-draw" fill="none"/>
                 <path d="M405,680 Q405,695 390,695" class="wc-gold-thin anim-draw" fill="none" opacity="0.7"/>
 
-
                 <g transform="translate(45, 360)" class="anim-fade">
                     <g transform="translate(0, -55) rotate(-30) scale(1.3)">
                         <use href="#lily-flower"/>
                     </g>
-                    <path d="M0,0 Q-5,-30 0,-55" class="wc-gold-thin" fill="none"/>
-
                     <g transform="translate(-15, 0) rotate(-90) scale(1.1)">
                         <use href="#lily-flower"/>
                     </g>
-
                     <g transform="translate(0, 55) rotate(-150) scale(1.3)">
                         <use href="#lily-flower"/>
                     </g>
-                    <path d="M0,0 Q-5,30 0,55" class="wc-gold-thin" fill="none"/>
+                    <path d="M0,-55 Q-10,-30 -15,0 Q-10,30 0,55" stroke="#cba157" stroke-width="0.8" fill="none"/>
                 </g>
 
                 <g transform="translate(405, 360) scale(-1, 1)" class="anim-fade">
-                    <g transform="translate(0, -55) rotate(-30) scale(1.3)">
-                        <use href="#lily-flower"/>
-                    </g>
-                    <path d="M0,0 Q-5,-30 0,-55" class="wc-gold-thin" fill="none"/>
-
-                    <g transform="translate(-15, 0) rotate(-90) scale(1.1)">
-                        <use href="#lily-flower"/>
-                    </g>
-
-                    <g transform="translate(0, 55) rotate(-150) scale(1.3)">
-                        <use href="#lily-flower"/>
-                    </g>
-                    <path d="M0,0 Q-5,30 0,55" class="wc-gold-thin" fill="none"/>
+                    <g transform="translate(0, -55) rotate(-30) scale(1.3)"><use href="#lily-flower"/></g>
+                    <g transform="translate(-15, 0) rotate(-90) scale(1.1)"><use href="#lily-flower"/></g>
+                    <g transform="translate(0, 55) rotate(-150) scale(1.3)"><use href="#lily-flower"/></g>
+                    <path d="M0,-55 Q-10,-30 -15,0 Q-10,30 0,55" stroke="#cba157" stroke-width="0.8" fill="none"/>
                 </g>
 
-                <ellipse cx="225" cy="360" rx="145" ry="195" class="wc-gold anim-draw" />
-                <ellipse cx="225" cy="360" rx="138" ry="188" class="wc-gold-thin anim-draw" opacity="0.6"/>
+                <ellipse cx="225" cy="360" rx="155" ry="205" class="wc-gold anim-draw" />
+                <ellipse cx="225" cy="360" rx="148" ry="198" class="wc-gold-thin anim-draw" opacity="0.6"/>
+
+                <ellipse cx="225" cy="80" rx="40" ry="22" class="wc-gold-thin anim-draw" />
 
             </svg>
 
             <div class="wc-content">
                 <div class="wc-badge-wrap anim-pop">
-                    <div class="wc-badge-bg"></div>
                     <span class="wc-badge-text">शुभ विवाह</span>
                 </div>
 
@@ -220,42 +176,30 @@
 
         <script>
             (function() {
-                const initWCv7 = () => {
-                    const scope = document.querySelector("#wc-final-v7");
+                const initWCv8 = () => {
+                    const scope = document.querySelector("#wc-final-v8");
                     if (!scope || !window.gsap) return;
                     
                     let ctx = gsap.context(() => {
                         const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-                        // Setup Lines
-                        gsap.set(".anim-draw", { 
-                            strokeDasharray: (i, t) => t.getTotalLength(),
-                            strokeDashoffset: (i, t) => t.getTotalLength()
-                        });
-                        // Setup Opacity
+                        gsap.set(".anim-draw", { strokeDasharray: (i, t) => t.getTotalLength(), strokeDashoffset: (i, t) => t.getTotalLength() });
                         gsap.set(".anim-fade, .anim-pop", { opacity: 0 });
                         gsap.set(".anim-pop", { y: 20 });
 
-                        // Animation Sequence
-                        tl.to(".anim-draw", { strokeDashoffset: 0, duration: 2.5, stagger: 0.05 })
-                          .to(".anim-fade", { opacity: 1, duration: 1.5 }, "-=2.0")
+                        tl.to(".anim-draw", { strokeDashoffset: 0, duration: 2.2, stagger: 0.05 })
+                          .to(".anim-fade", { opacity: 1, duration: 1.5 }, "-=1.8")
                           .to(".anim-pop", { opacity: 1, y: 0, duration: 0.8, stagger: 0.15 }, "-=1.0");
                           
                     }, scope);
                 };
 
-                // Fallback to ensure visibility
-                setTimeout(() => {
-                    const els = document.querySelectorAll('.anim-fade, .anim-pop');
-                    els.forEach(el => el.style.opacity = '1');
-                }, 2500);
+                setTimeout(() => { document.querySelectorAll('.anim-fade, .anim-pop').forEach(el => el.style.opacity = '1'); }, 2500);
 
-                if (window.gsap) { initWCv7(); }
-                else { window.addEventListener("load", initWCv7); }
+                if (window.gsap) { initWCv8(); } else { window.addEventListener("load", initWCv8); }
             })();
         </script>
     </div>
 
 </body>
-    </html>
-    
+</html>
