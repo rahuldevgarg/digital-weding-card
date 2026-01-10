@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </style>
 <style>
 :root{
+     --bg: #f6f1e7;
   --green:#0f3b32;
   --paper:#f7f0e4;
   --gold:#d4a74f;
@@ -316,7 +317,23 @@ body.hi [data-lang="hi"]{display:block}
   letter-spacing:.22em;
   margin:6px 0;
 }
+/* Content layout */
+    .hero-content {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: center;
+      text-align: center;
+    }
 
+    @media (min-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+      }
+    }
 
 }
 .intro-date{
@@ -780,7 +797,52 @@ footer{
   <button id="enBtn" class="active">EN</button>
   <button id="hiBtn">हिंदी</button>
 </div>
+<section class="hero">
 
+    <!-- Language toggle -->
+    <div class="lang-toggle">
+      <span class="active">EN</span>
+      <span>हिंदी</span>
+    </div>
+
+    <!-- Gold strokes -->
+    <svg class="stroke left" viewBox="0 0 100 1000" preserveAspectRatio="none">
+      <path d="M50 0 C20 200 80 400 50 600 C20 800 80 1000 50 1200"
+            stroke="#d3a64b" stroke-width="6" fill="none" />
+    </svg>
+
+    <svg class="stroke right" viewBox="0 0 100 1000" preserveAspectRatio="none">
+      <path d="M50 0 C20 200 80 400 50 600 C20 800 80 1000 50 1200"
+            stroke="#d3a64b" stroke-width="6" fill="none" />
+    </svg>
+
+    <!-- Content -->
+    <div class="hero-content">
+      <div>
+        <div class="names">
+          Yash &<br />Shrishti
+        </div>
+        <div class="date">
+          10th February 2026 · Tuesday
+        </div>
+      </div>
+
+      <div class="image-wrap">
+        <div class="oval">
+          <img src="couple.png" alt="Yash and Shrishti">
+        </div>
+      </div>
+    </div>
+
+    <!-- Mountains -->
+    <svg class="mountains" viewBox="0 0 1440 180" preserveAspectRatio="none">
+      <path d="M0 120 L120 40 L240 120 L360 40 L480 120 L600 40 L720 120
+               L840 40 L960 120 L1080 40 L1200 120 L1320 40 L1440 120
+               L1440 180 L0 180 Z"
+            fill="#1f3f34"/>
+    </svg>
+
+</section>
 <!-- HERO -->
 <section class="hero">
   <div class="birds"></div>
