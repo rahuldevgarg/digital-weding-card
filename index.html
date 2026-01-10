@@ -12,13 +12,13 @@
     /* ========================= */
 /* WEDDING HERO — ISOLATED */
 /* ========================= */
-:root {
-      --bg: #f6f1e7;
-      --gold: #d3a64b;
-      --green: #1f3f34;
-      --text: #1a1a1a;
-    }
-
+:root{
+  --royal-ivory: #f8f3ea;
+  --royal-gold: #c9a24d;
+  --royal-gold-dark: #9f7c2f;
+  --royal-green: #143c32;
+  --royal-ink: #1b1b1b;
+}
     * {
       box-sizing: border-box;
     }
@@ -55,6 +55,10 @@
   width:80px;
   color: var(--gold);
 }
+.w-hero-stroke path{
+  stroke: url(#goldGradient);
+  stroke-width: 7;
+}
 
 .w-hero-stroke-left{ left:12px; }
 .w-hero-stroke-right{
@@ -85,55 +89,74 @@
 /* Text */
 .w-hero-names{
   font-family:"Cormorant Garamond",serif;
-  font-size:42px;
-  line-height:1.1;
-  margin:0;
+  font-size:48px;
+  font-weight:600;
+  letter-spacing:0.02em;
+  line-height:1.08;
+}
+
+@media(max-width:768px){
+  .w-hero-names{ font-size:40px; }
 }
 
 .w-hero-names span{
   font-weight:400;
 }
 
-.w-hero-date{
-  margin-top:14px;
+..w-hero-date{
+  margin-top:16px;
   font-family:"Hind",sans-serif;
-  font-size:14px;
-  letter-spacing:.18em;
+  font-size:13px;
+  letter-spacing:.28em;
   text-transform:uppercase;
-  color:#6b5c3e;
+  color:#7b6a45;
 }
 
 /* Image */
-.w-hero-media{
+..w-hero-media{
   display:flex;
   justify-content:center;
-}
-
+  }
+    .w-hero-media::before{
+  content:"";
+  position:absolute;
+  width:380px;
+  height:380px;
+  background:
+    radial-gradient(circle,
+      rgba(201,162,77,.25),
+      transparent 70%);
+  filter: blur(40px);
+  z-index:-1;
+    }
 .w-hero-oval{
   width:320px;
   aspect-ratio:3/4;
   border-radius:50% / 42%;
-  overflow:hidden;
-  background:#eee;
+  background:
+    radial-gradient(circle at 50% 45%, #ffffff 0%, #f1eadf 70%);
+  padding:14px;
   box-shadow:
-    0 30px 60px rgba(0,0,0,.18),
-    inset 0 0 0 1px rgba(255,255,255,.5);
+    0 40px 80px rgba(0,0,0,.22),
+    inset 0 0 0 1px rgba(201,162,77,.6);
 }
 
 .w-hero-oval img{
+  border-radius:50% / 42%;
   width:100%;
   height:100%;
   object-fit:cover;
 }
-
+.w-hero-crest{
+  margin:14px 0;
+  font-size:22px;
+  color:var(--royal-gold);
+}
 /* Mountains */
 .w-hero-mountains{
-  position:absolute;
-  bottom:-1px;
-  left:0;
-  width:100%;
-  height:22vh;
-  color: var(--green);
+  height:26vh;
+  color:#143c32;
+  filter: drop-shadow(0 -6px 12px rgba(0,0,0,.25));
 }
   </style>
 </head>
@@ -146,11 +169,25 @@
   <svg class="w-hero-stroke w-hero-stroke-left" viewBox="0 0 100 1000" preserveAspectRatio="none">
     <path d="M50 0 C20 200 80 400 50 600 C20 800 80 1000 50 1200"
           fill="none" stroke="currentColor" stroke-width="6"/>
+    <defs>
+  <linearGradient id="goldGradient" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#f3d98b"/>
+    <stop offset="50%" stop-color="#c9a24d"/>
+    <stop offset="100%" stop-color="#9f7c2f"/>
+  </linearGradient>
+    </defs>
   </svg>
 
   <svg class="w-hero-stroke w-hero-stroke-right" viewBox="0 0 100 1000" preserveAspectRatio="none">
     <path d="M50 0 C20 200 80 400 50 600 C20 800 80 1000 50 1200"
           fill="none" stroke="currentColor" stroke-width="6"/>
+    <defs>
+  <linearGradient id="goldGradient" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#f3d98b"/>
+    <stop offset="50%" stop-color="#c9a24d"/>
+    <stop offset="100%" stop-color="#9f7c2f"/>
+  </linearGradient>
+    </defs>
   </svg>
 
   <div class="w-hero-grid">
@@ -160,7 +197,7 @@
       <h1 class="w-hero-names">
         Yash <span>&</span><br> Shrishti
       </h1>
-
+<div class="w-hero-crest">❦</div>
       <p class="w-hero-date">
         10th February 2026 · Tuesday
       </p>
