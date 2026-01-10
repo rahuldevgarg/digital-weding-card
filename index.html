@@ -341,184 +341,116 @@
         
         /* Print */
          
-    
+
 @media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        -webkit-background-composite: source-over !important;
+        background-composite: source-over !important;
+    }
+    
     body { 
         background: #fcf8f0 !important; 
+        background-color: #fcf8f0 !important;
         color: #1a1a1a !important; 
-        font-size: 11.5pt;
-        line-height: 1.6;
+        font-size: 11.5pt !important;
+        -webkit-print-color-adjust: exact !important;
     }
     
-    /* Hide digital-only */
-    .lang-toggle, #petal-layer, .birds, .mountains { display: none !important; }
-    
-    /* HERO - Royal Portrait Frame */
+    /* FORCE Hero grainy texture */
     .hero {
-        padding: 4rem 0 3rem !important;
+        background: linear-gradient(135deg, #f7f0e4 0%, #f4e9d6 50%, #fff8e1 100%) !important;
+        background-color: #f7f0e4 !important;
+        padding: 3rem 0 !important;
         margin: 2rem 0 !important;
-        background: none !important;
         min-height: 420px !important;
-        position: relative;
+        page-break-inside: avoid !important;
     }
     
-    /* Hero Text - Elegant Serif Gold */
-    .hero-text {
-        display: block !important;
-        position: static !important;
-        transform: none !important;
-        text-align: center;
-        color: #2c1810 !important;
-        font-family: 'Playfair Display', serif !important;
-        margin-bottom: 2rem;
-    }
+    /* Hero Text - Force colors */
     .hero-text p {
-        font-size: 14pt !important;
-        font-weight: 600;
-        letter-spacing: 0.1em;
         color: #8b4513 !important;
-        margin: 0.25rem 0;
-        text-transform: uppercase;
+        background-color: transparent !important;
+        font-family: 'Playfair Display', serif !important;
     }
     .hero-text h1 {
-        font-size: 36pt !important;
-        font-weight: 700 !important;
-        background: linear-gradient(45deg, #d4a74f, #b8860b);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin: 0.5rem 0 0.25rem;
-        letter-spacing: -0.02em;
+        color: #d4a74f !important;
+        background: linear-gradient(45deg, #d4a74f, #b8860b) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        font-family: 'Playfair Display', serif !important;
     }
     
-    /* Portrait Frame */
-    .couple {
-        position: static !important;
-        transform: none !important;
-        width: 320px !important;
-        max-width: 90vw !important;
-        height: 400px !important;
-        margin: 0 auto !important;
-        display: block;
-    }
+    /* Portrait - Force frame */
     .couple::before {
-        content: '';
-        position: absolute;
-        top: -8px; left: -8px; right: -8px; bottom: -8px;
-        background: linear-gradient(45deg, #d4a74f, #ffd700, #d4a74f);
-        border-radius: 24px;
-        z-index: -1;
-        padding: 4px;
+        background: linear-gradient(45deg, #d4a74f, #ffd700) !important;
+        background-color: #d4a74f !important;
     }
     .couple::after {
-        content: '';
-        position: absolute;
-        top: -12px; left: -12px; right: -12px; bottom: -12px;
-        background: #fff;
-        border-radius: 28px;
-        z-index: -2;
-    }
-    .couple img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        border-radius: 16px !important;
-        box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        background-color: #fff !important;
     }
     
-    /* INVOCATION - Sacred Section */
+    /* FORCE Invocation colors */
     .invocation {
-        padding: 3rem 2.5rem !important;
-        margin: 2.5rem 0 !important;
-        background: linear-gradient(135deg, rgba(247,240,228,0.95) 0%, rgba(255,248,225,0.9) 100%);
-        border: 1px solid rgba(212,167,79,0.3);
-        border-radius: 20px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        break-inside: avoid;
-    }
-    
-    /* FAMILY - Elegant Block */
-    .family-block {
-        background: linear-gradient(135deg, rgba(248,241,227,0.8) 0%, rgba(255,252,240,0.9) 100%);
+        background: linear-gradient(135deg, #f7f0e4 0%, #fff8e1 100%) !important;
+        background-color: #f7f0e4 !important;
+        border: 2px solid #d4a74f !important;
+        border-color: #d4a74f !important;
         padding: 2.5rem !important;
         margin: 2rem 0 !important;
-        border-left: 6px solid #d4a74f;
-        border-radius: 8px;
-        break-inside: avoid;
+        page-break-inside: avoid !important;
     }
     
-    /* VENUE - Map Section */
-    .venue-block {
-        background: linear-gradient(135deg, rgba(250,245,232,0.9) 0%, rgba(255,255,255,0.95) 100%);
-        padding: 2.5rem !important;
-        margin: 2rem 0 !important;
-        border-radius: 12px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-        border-top: 3px solid #d4a74f;
-        break-inside: avoid;
+    /* FORCE Family/Venue backgrounds */
+    .family-block, .venue-block {
+        background: linear-gradient(135deg, #fdf8f0 0%, #fffaf4 100%) !important;
+        background-color: #fdf8f0 !important;
+        border-left-color: #d4a74f !important;
+        border-top-color: #d4a74f !important;
+        padding: 2rem !important;
+        margin: 1.5rem 0 !important;
+        page-break-inside: avoid !important;
     }
     
-    /* QR - Compact Elegant */
+    /* QR - Force frame */
     .qr-wrap {
-        width: auto !important;
+        background: #fff !important;
+        background-color: #fff !important;
+        border-color: #d4a74f !important;
+        padding: 1rem !important;
         display: inline-block !important;
-        background: rgba(255,255,255,0.9);
-        padding: 1.25rem !important;
-        border-radius: 12px;
-        border: 2px solid rgba(212,167,79,0.3);
-        margin: 1.5rem auto !important;
-        text-align: center;
-    }
-    .qr-frame canvas {
-        width: 110px !important;
-        height: 110px !important;
-        margin: 0 auto 0.75rem;
+        margin: 1rem auto !important;
+        page-break-inside: avoid !important;
     }
     
-    /* FOOTER - Subtle */
+    /* Footer */
     footer {
-        padding: 2rem 1rem !important;
-        background: rgba(247,240,228,0.7);
-        margin-top: 3rem;
-        border-radius: 12px 12px 0 0;
-        font-style: italic;
-        opacity: 0.9;
+        background-color: rgba(247,240,228,0.9) !important;
+        background: rgba(247,240,228,0.9) !important;
+        padding: 1.5rem !important;
+        margin-top: 2rem !important;
     }
     
-    /* Print Optimizations */
-    .map-button { display: none !important; }
-    section, .family-block, .venue-block { page-break-inside: avoid; break-inside: avoid; }
-    h1, h2, h3 { break-after: avoid; }
+    /* Text colors forced */
+    .shubh-vivah { color: #b8860b !important; }
+    .invocation-names { color: #1a1a1a !important; }
+    .venue-name { color: #2c1810 !important; }
     
-    /* Typography Polish */
-    .invocation-names { font-size: 32pt !important; font-weight: 700 !important; }
-    .shubh-vivah { color: #b8860b !important; font-size: 22pt !important; }
-    .venue-name { font-size: 20pt !important; font-weight: 600; }
-    
-    @page { margin: 0.6in; size: A4; }
-    
-    @media print and (max-width: 600px) {
-        .couple { width: 260px !important; height: 340px !important; }
-        .invocation, .family-block, .venue-block { padding: 2rem 1.5rem !important; }
-        .qr-wrap { padding: 1rem !important; }
-    }
-        }
-        /* Add this to your print CSS for 100% bulletproof */
-@media print {
-    /* Force sections to stay together */
-    .section, .ceremony-combined, .family-block, .venue-block, .hero {
-        display: block !important;
-        page-break-inside: avoid !important;
+    /* Universal anti-clipping */
+    * { page-break-inside: avoid !important; }
+    section, .family-block, .venue-block, .hero, .qr-wrap { 
+        page-break-inside: avoid !important; 
         break-inside: avoid !important;
-        orphans: 3 !important;  /* Min 3 lines at bottom */
-        widows: 2 !important;   /* Min 2 lines at top */
+        orphans: 3 !important;
+        widows: 2 !important;
     }
     
-    /* Portrait frame unbreakable */
-    .couple::before, .couple::after {
-        page-break-inside: avoid !important;
-    }
-        }
+    .map-button { display: none !important; }
+    @page { margin: 0.5in !important; size: A4; }
+}
     </style>
 </head>
 
