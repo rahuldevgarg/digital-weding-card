@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<title>Yash & Shrishti | Shubh Vivah</title>
+
+<!-- OG -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yash & Shrishti | Shubh Vivah">
+<meta property="og:description" content="With divine grace & family blessings, we invite you to celebrate our union.">
+<meta property="og:image" content="https://yashwithshrishti.xeniosrahi.com/assets/og-image.jpeg">
+<meta property="og:url" content="https://yashwithshrishti.xeniosrahi.com/">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ivory:#f6efe3;
+  --gold:#d4a44a;
+  --deep:#1f3f35;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Cormorant Garamond',serif;
+  background:var(--ivory);
+  color:#222;
+  overflow-x:hidden;
+}
+section{
+  position:relative;
+  padding:96px 18px;
+  text-align:center;
+}
+
+/* Toggle */
+.toggle{
+  position:fixed;top:18px;right:18px;z-index:99;
+  background:#fff;border-radius:30px;
+  box-shadow:0 6px 20px rgba(0,0,0,.15);
+  display:flex;
+}
+.toggle button{
+  border:0;background:none;padding:10px 16px;
+  font-family:Poppins,sans-serif;
+  cursor:pointer;
+}
+.toggle .active{background:var(--gold);color:#fff;border-radius:30px}
+
+/* Hero */
+.hero{
+  background:linear-gradient(#234c3f,#16352c);
+  color:#fff;
+  padding-top:140px;
+  padding-bottom:200px;
+  overflow:hidden;
+}
+.hero h1{font-size:48px;letter-spacing:1px}
+.hero p{font-family:Poppins,sans-serif;opacity:.9}
+
+/* Mountains */
+.mountains{
+  position:absolute;bottom:0;left:0;width:100%;height:220px;
+}
+
+/* Mandala */
+.mandala{
+  width:240px;margin:0 auto 24px;
+}
+.mandala path{
+  fill:none;stroke:var(--gold);stroke-width:2;
+  stroke-dasharray:1200;
+  stroke-dashoffset:1200;
+  animation:draw 3s ease forwards;
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* Garlands */
+.garland{
+  position:absolute;top:0;width:120px;height:100%;
+}
+.garland.left{left:0}
+.garland.right{right:0;transform:scaleX(-1)}
+.garland path{
+  stroke:var(--gold);stroke-width:4;fill:none;
+}
+
+/* Couple */
+.couple{
+  max-width:280px;margin:40px auto;
+  border-radius:180px;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+/* Diya */
+.diya{
+  position:absolute;bottom:160px;left:50%;
+  width:260px;height:200px;
+  transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(255,190,90,.9),rgba(255,160,60,.4),transparent 70%);
+  filter:blur(22px);
+  animation:pulse 4s infinite;
+}
+@keyframes pulse{
+  50%{transform:translateX(-50%) scale(1.12);opacity:1}
+}
+
+/* Petals */
+.petal{
+  position:fixed;top:-40px;width:20px;height:28px;
+  pointer-events:none;z-index:10;
+}
+.petal svg path{fill:#e45b5b}
+
+/* Cards */
+.card{
+  background:#fff;border-radius:24px;
+  padding:48px 28px;
+  margin:0 auto 48px;
+  max-width:520px;
+  box-shadow:0 12px 40px rgba(0,0,0,.12);
+}
+
+/* Venue */
+.map{
+  color:var(--gold);text-decoration:none;
+  font-family:Poppins,sans-serif;
+}
+
+/* Footer */
+footer{
+  padding:40px;font-family:Poppins,sans-serif;
+  color:#777;font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="toggle">
+  <button id="en" class="active">EN</button>
+  <button id="hi">हिंदी</button>
+</div>
+
+<section class="hero">
+
+<!-- Garlands -->
+<svg class="garland left" viewBox="0 0 100 1000">
+  <path d="M50 0 C10 200 90 400 50 600 10 800 90 1000 50 1200"/>
+</svg>
+<svg class="garland right" viewBox="0 0 100 1000">
+  <path d="M50 0 C10 200 90 400 50 600 10 800 90 1000 50 1200"/>
+</svg>
+
+<!-- Birds -->
+<svg width="100%" height="160" viewBox="0 0 1000 200">
+  <path d="M50 100 q40 -30 80 0 q40 30 80 0" stroke="#cfd8d3" stroke-width="3" fill="none"/>
+  <path d="M300 80 q30 -20 60 0 q30 20 60 0" stroke="#cfd8d3" stroke-width="2" fill="none"/>
+</svg>
+
+<!-- Mandala -->
+<svg class="mandala" viewBox="0 0 200 200">
+  <path d="M100 10 L120 80 L190 100 L120 120 L100 190 L80 120 L10 100 L80 80 Z"/>
+</svg>
+
+<h1 data-en="Yash & Shrishti" data-hi="यश और श्रिष्ठि">Yash & Shrishti</h1>
+<p data-en="10th February 2026 · Tuesday" data-hi="10 फरवरी 2026 · मंगलवार">
+10th February 2026 · Tuesday</p>
+
+<img src="/assets/couple.png" class="couple" alt="Couple">
+
+<div class="diya"></div>
+
+<!-- Mountains -->
+<svg class="mountains" viewBox="0 0 1200 300" preserveAspectRatio="none">
+  <path d="M0 200 L200 80 L400 200 L600 90 L800 200 L1000 120 L1200 200 L1200 300 L0 300 Z" fill="#1f3f35"/>
+</svg>
+
+</section>
+
+<section>
+<div class="card">
+<p data-en="With sacred lamps aglow and blessings all around, we invite you to celebrate the beginning of our forever."
+   data-hi="दीपों की उजास और परिवार के आशीर्वाद के साथ, हम आपको अपने जीवन के नए आरंभ का साक्षी बनने का आमंत्रण देते हैं।">
+With sacred lamps aglow and blessings all around, we invite you to celebrate the beginning of our forever.
+</p>
+</div>
+
+<div class="card">
+<h2>Bharat & Dinner</h2>
+<p data-en="10th February 2026 · From 7:00 PM onwards"
+   data-hi="10 फरवरी 2026 · शाम 7 बजे से">
+10th February 2026 · From 7:00 PM onwards</p>
+</div>
+
+<div class="card">
+<h2>Venue</h2>
+<p><strong>Singhal Banquet & Farms</strong></p>
+<p>Near Shri Dronacharya Degree College · F1 Race Track · Dankaur · Greater Noida</p>
+<a class="map" href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8">📍 Open in Google Maps</a>
+</div>
+</section>
+
+<footer>
+💛 With love · Shubh Vivah · Yash & Shrishti 2026
+</footer>
+
+<script>
+/* Language toggle */
+const setLang = l=>{
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    el.textContent = el.dataset[l];
+  });
+  document.getElementById('en').classList.toggle('active',l==='en');
+  document.getElementById('hi').classList.toggle('active',l==='hi');
+};
+en.onclick=()=>setLang('en');
+hi.onclick=()=>setLang('hi');
+
+/* Petals */
+setInterval(()=>{
+  const p=document.createElement('div');
+  p.className='petal';
+  p.style.left=Math.random()*100+'vw';
+  p.innerHTML=`<svg viewBox="0 0 20 30"><path d="M10 0 C18 10 12 30 10 30 C8 30 2 10 10 0Z"/></svg>`;
+  document.body.appendChild(p);
+  let y=-40, r=Math.random()*360;
+  const fall=setInterval(()=>{
+    y+=1.2; r+=0.5;
+    p.style.transform=`translateY(${y}px) rotate(${r}deg)`;
+    if(y>window.innerHeight){clearInterval(fall);p.remove()}
+  },16);
+},500);
+</script>
+
+</body>
+  </html>
