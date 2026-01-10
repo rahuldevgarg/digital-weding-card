@@ -101,7 +101,16 @@ gsap.fromTo(
   pointer-events:none;
   opacity:0.78;
 }
+@media (min-width: 1024px){
+  .w-hero-grid{
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
 
+  .w-hero-copy{
+    text-align: center;
+  }
+}
 /* Mobile refinement */
 @media(max-width:768px){
   .w-hero-heritage{
@@ -109,6 +118,25 @@ gsap.fromTo(
     opacity:0.65;
   }
   }
+
+    @media(max-width:768px){
+  .w-hero-media{
+    margin-top: 24px;
+  }
+    }
+    @media(max-width:768px){
+  .w-hero-heritage rect[fill*="jaali"]{
+    opacity: 0.25 !important;
+  }
+    }
+    .w-hero-heritage g[transform]{
+  transform: translate(500px, 120px) scale(0.85);
+  transform-origin: center;
+    }
+    @media(min-width:1024px){
+  .w-hero-stroke-left{ left: 72px; }
+  .w-hero-stroke-right{ right: 72px; }
+    }
 @media print{
   .w-hero-heritage{
     opacity:1;
@@ -120,6 +148,12 @@ gsap.fromTo(
     stroke-width:1.1;
   }
 }
+    @media(max-width:768px){
+  .w-hero-mountains{
+    height: 14vh;
+    opacity: 0.9;
+  }
+    }
 /* Layout */
 .w-hero-grid{
   max-width:1100px;
@@ -293,6 +327,78 @@ gsap.fromTo(
 .w-hero-copy{ z-index:4; }
 .w-hero-media{ z-index:5; }
 .w-hero-mountains{ z-index:6; }
+    @media print {
+
+  /* 1. RESET EVERYTHING FRAGILE */
+  * {
+    filter: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* 2. FORCE STRONG TEXT */
+  .w-hero-names,
+  .w-hero-date {
+    color: #000000 !important;
+    opacity: 1 !important;
+  }
+
+  /* 3. LOCK FRAME INSIDE PAGE */
+  .w-hero {
+    padding: 32px !important;
+    page-break-inside: avoid;
+  }
+
+  .w-hero-heritage {
+    inset: 24px !important;
+    opacity: 1 !important;
+  }
+
+  /* 4. SIMPLIFY GOLD TO SOLID INK */
+  .w-hero-heritage path,
+  .w-hero-heritage rect,
+  .w-hero-heritage circle,
+  .w-hero-heritage text {
+    stroke: #b08a2e !important;
+    stroke-width: 1.2 !important;
+    fill: none !important;
+  }
+
+  /* 5. REBUILD OVAL AS REAL FRAME */
+  .w-hero-oval {
+    padding: 0 !important;
+    border: 1.4pt solid #b08a2e !important;
+    background: #ffffff !important;
+    transform: none !important;
+  }
+
+  .w-hero-oval img {
+    border-radius: 50% / 42%;
+  }
+
+  /* 6. REMOVE DECORATIVE STRIPES */
+  .w-hero-stroke,
+  .w-hero-media::before {
+    display: none !important;
+  }
+
+  /* 7. TAME MOUNTAINS */
+  .w-hero-mountains {
+    height: 14vh !important;
+    opacity: 1 !important;
+    color: #143c32 !important;
+  }
+
+  /* 8. FIX PRINTER MARGINS */
+  @page {
+    margin: 12mm;
+  }
+    }
   </style>
   <script>
 gsap.fromTo(
