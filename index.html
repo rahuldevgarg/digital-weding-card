@@ -361,6 +361,123 @@ footer{
   [data-lang="hi"]{
     line-height: 1.6;
   }
+      .invite-section {
+  position: relative;
+  padding: clamp(5rem, 12vh, 8rem) 1.25rem;
+  background: #f6f0e4;
+  overflow: hidden;
+}
+
+.invite-texture {
+  position: absolute;
+  inset: 0;
+  background:
+    url("/assets/texture.png") repeat,
+    radial-gradient(circle at top, rgba(255,210,140,.28), transparent 70%);
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.invite-inner {
+  position: relative;
+  max-width: 760px;
+  margin: auto;
+  z-index: 1;
+  text-align: center;
+}
+
+.lang-block { display: none; }
+.lang-block.active { display: block; }
+
+.invite-overline,
+.venue-overline {
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #b08a3c;
+  margin-bottom: 2.8rem;
+}
+
+.invite-names {
+  display: grid;
+  gap: 2.8rem;
+}
+
+.invite-person h2 {
+  font-size: clamp(1.7rem, 5vw, 2.2rem);
+  margin-bottom: 0.3rem;
+}
+
+.invite-person p {
+  font-size: 0.92rem;
+  opacity: 0.75;
+}
+
+.invite-divider-wrap {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  margin: 1rem auto;
+}
+
+.invite-divider {
+  font-size: 1.5rem;
+  color: #c8a24a;
+  z-index: 2;
+}
+
+.mandala {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  stroke: #d6b15c;
+  stroke-width: 1.2;
+  fill: none;
+  opacity: 0.35;
+  animation: mandalaBloom 14s linear infinite;
+}
+
+@keyframes mandalaBloom {
+  from { transform: rotate(0deg) scale(0.9); }
+  to   { transform: rotate(360deg) scale(1.05); }
+}
+
+.invite-event {
+  margin-top: 3.8rem;
+}
+
+.invite-event h3 {
+  font-size: 1.4rem;
+}
+
+.invite-event p {
+  opacity: 0.75;
+}
+
+.invite-venue {
+  margin-top: 3.2rem;
+  padding: 2.2rem 1.8rem;
+  background: rgba(255,255,255,.65);
+  backdrop-filter: blur(6px);
+  border-radius: 1.3rem;
+  box-shadow: 0 16px 34px rgba(0,0,0,.08);
+}
+
+.invite-venue p {
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.invite-venue a {
+  display: inline-block;
+  margin-top: .8rem;
+  color: #b08a3c;
+  text-decoration: none;
+}
+
+.invite-venue a:hover {
+  text-decoration: underline;
+      }
 }
 </style>
 </head>
@@ -368,8 +485,8 @@ footer{
 <body class="en">
 
 <div class="lang-toggle">
-  <button id="enBtn" class="active">EN</button>
-  <button id="hiBtn">हिंदी</button>
+  <button id="enBtn" data-lang="en" class="active">EN</button>
+  <button id="hiBtn" data-lang="hi" >हिंदी</button>
 </div>
 
 <!-- HERO -->
@@ -466,7 +583,99 @@ footer{
     </a>
   </p>
 </section>
+<section class="invite-section parallax-layer" data-speed="0.15">
+  <div class="invite-texture"></div>
 
+  <div class="invite-inner">
+
+    <!-- ENGLISH BLOCK -->
+    <div class="lang-block lang-en active">
+      <p class="invite-overline">With the blessings of our families</p>
+
+      <div class="invite-names">
+        <div class="invite-person">
+          <h2>Yash Goyal</h2>
+          <p>Shri. Pawan Goyal · Smt. Archna Goyal</p>
+        </div>
+
+        <div class="invite-divider-wrap">
+          <svg class="mandala" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="60"/>
+            <circle cx="100" cy="100" r="40"/>
+            <circle cx="100" cy="100" r="20"/>
+          </svg>
+          <span class="invite-divider">❦</span>
+        </div>
+
+        <div class="invite-person">
+          <h2>Shrishti Tayal</h2>
+          <p>Shri. Sanjay Tayal · Smt. Manju Tayal</p>
+        </div>
+      </div>
+
+      <div class="invite-event">
+        <h3>Bharat & Dinner</h3>
+        <p>10th February 2026 · From 7:00 PM onwards</p>
+      </div>
+
+      <div class="invite-venue">
+        <span class="venue-overline">Venue</span>
+        <h3>Singhal Banquet & Farms</h3>
+        <p>
+          Near Shri Dronacharya Degree College · F1 Race Track<br>
+          Dankaur · Greater Noida
+        </p>
+        <a href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">
+          📍 Open in Google Maps
+        </a>
+      </div>
+    </div>
+
+    <!-- HINDI BLOCK -->
+    <div class="lang-block lang-hi">
+      <p class="invite-overline">परिवार के स्नेह एवं आशीर्वाद के साथ</p>
+
+      <div class="invite-names">
+        <div class="invite-person">
+          <h2>यश गोयल</h2>
+          <p>श्री पवन गोयल · श्रीमती अर्चना गोयल के सुपुत्र</p>
+        </div>
+
+        <div class="invite-divider-wrap">
+          <svg class="mandala" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="60"/>
+            <circle cx="100" cy="100" r="40"/>
+            <circle cx="100" cy="100" r="20"/>
+          </svg>
+          <span class="invite-divider">❦</span>
+        </div>
+
+        <div class="invite-person">
+          <h2>सृष्टि तयाल</h2>
+          <p>श्री संजय तयाल · श्रीमती मंजू तयाल की सुपुत्री</p>
+        </div>
+      </div>
+
+      <div class="invite-event">
+        <h3>भारत एवं रात्रि भोज</h3>
+        <p>10 फ़रवरी 2026 · सायं 7 बजे से</p>
+      </div>
+
+      <div class="invite-venue">
+        <span class="venue-overline">स्थान</span>
+        <h3>सिंघल बैंक्वेट एंड फ़ार्म्स</h3>
+        <p>
+          श्री द्रोणाचार्य डिग्री कॉलेज के निकट · एफ1 रेस ट्रैक<br>
+          दनकौर · ग्रेटर नोएडा
+        </p>
+        <a href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">
+          📍 गूगल मैप्स पर देखें
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
 <footer>
   <span data-lang="en">With love · Shubh Vivah · Yash & Shrishti</span>
   <span data-lang="hi">स्नेह सहित · शुभ विवाह · यश एवं सृष्टि</span>
@@ -483,6 +692,8 @@ function switchLang(lang){
     document.body.className=lang;
     gsap.fromTo(current,{opacity:0,y:-10},{opacity:1,y:0,duration:.4});
   }});
+      document.querySelectorAll('.lang-block').forEach(b=>b.classList.remove('active'));
+      document.querySelector('.lang-' + btn.dataset.lang).classList.add('active');
   localStorage.setItem("lang",lang);
   enBtn.classList.toggle("active",lang==="en");
   hiBtn.classList.toggle("active",lang==="hi");
