@@ -10,12 +10,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
 </head>
-<body style="background-color: #222; margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; align-items: center;">
+<body style="background-color: #222; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh;">
 
-    <div id="wedding-card-final">
+    <div id="wc-optimized">
         <style>
             /* --- ISOLATION & RESET --- */
-            #wedding-card-final {
+            #wc-optimized {
                 isolation: isolate;
                 font-family: 'Playfair Display', serif;
                 width: 100%;
@@ -23,24 +23,24 @@
                 justify-content: center;
                 box-sizing: border-box;
             }
-            #wedding-card-final * { box-sizing: border-box; margin: 0; padding: 0; }
+            #wc-optimized * { box-sizing: border-box; margin: 0; padding: 0; }
 
-            /* --- MAIN CARD CONTAINER --- */
+            /* --- CARD CONTAINER --- */
             .wc-card {
                 position: relative;
                 width: 100%;
                 max-width: 450px; 
-                /* Matching the aspect ratio of your reference image (approx 2:3) */
                 aspect-ratio: 2/3; 
-                background-color: #fdfbf5; /* Warm Cream */
-                /* Subtle paper texture noise */
-                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-                box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+                /* Solid color instead of heavy noise filter for performance */
+                background-color: #fdfbf5; 
+                box-shadow: 0 15px 35px rgba(0,0,0,0.3);
                 border-radius: 8px;
                 overflow: hidden;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                /* GPU Acceleration hint */
+                will-change: transform, opacity;
             }
 
             /* --- SVG LAYER --- */
@@ -53,10 +53,10 @@
             }
 
             /* SVG STYLES */
+            /* Using simple strokes for performance */
             .wc-gold { stroke: #cba157; fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
-            .wc-gold-fill { fill: #cba157; stroke: none; }
-            .wc-faint { stroke: #cba157; fill: none; stroke-width: 0.8; opacity: 0.5; }
-            .wc-lattice-stroke { stroke: #cba157; stroke-width: 0.5; opacity: 0.4; }
+            .wc-thin { stroke: #cba157; fill: none; stroke-width: 0.8; opacity: 0.6; }
+            .wc-lattice { stroke: #cba157; stroke-width: 0.5; opacity: 0.3; }
 
             /* --- CONTENT LAYER --- */
             .wc-content {
@@ -65,66 +65,53 @@
                 top: 0; left: 0; width: 100%; height: 100%;
                 display: flex; flex-direction: column; align-items: center;
                 text-align: center;
-                padding-top: 5%;
+                padding-top: 6%;
             }
 
-            /* HINDI BADGE */
-            .wc-badge-container {
-                position: relative;
-                margin-bottom: 20px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .wc-badge-text {
+            /* BADGE */
+            .wc-badge {
                 font-family: 'Tiro Devanagari Hindi', serif;
                 color: #bfa15f;
                 font-size: 14px;
-                background: #fdfbf5;
-                padding: 0 10px;
                 position: relative;
-                z-index: 2;
+                padding: 5px 15px;
+                margin-bottom: 15px;
             }
-            /* The little oval ring around the hindi text */
-            .wc-badge-ring {
+            .wc-badge-bg {
                 position: absolute;
-                width: 100%; height: 100%;
+                top: 0; left: 0; width: 100%; height: 100%;
                 border: 1px solid #cba157;
                 border-radius: 50%;
-                top: 0; left: 0;
-                transform: scale(1.4, 1.6);
-                z-index: 1;
+                background: #fdfbf5;
+                z-index: -1;
             }
 
-            /* NAMES */
+            /* TITLE */
             .wc-title {
-                font-size: clamp(30px, 8vw, 42px);
+                font-size: clamp(32px, 8vw, 42px);
                 color: #000;
                 line-height: 1;
-                margin-bottom: 10px;
+                margin-bottom: 20px;
                 font-weight: 700;
             }
 
-            /* IMAGE FRAME */
-            .wc-img-frame {
+            /* IMAGE */
+            .wc-img-wrapper {
                 position: relative;
-                width: 65%; /* Width of the oval relative to card */
-                aspect-ratio: 0.75; /* Portrait Oval */
-                margin-top: 20px;
+                width: 68%;
+                aspect-ratio: 0.72;
+                margin-top: 10px;
             }
-            
-            .wc-couple-photo {
-                width: 100%;
-                height: 100%;
+            .wc-photo {
+                width: 100%; height: 100%;
                 object-fit: cover;
-                /* Precise Oval Clip */
                 clip-path: ellipse(50% 50% at 50% 50%);
-                /* Slight filter to blend with the warm tones */
-                filter: contrast(1.05) saturate(0.9);
+                /* Simple CSS filter is lighter than SVG filter */
+                filter: sepia(0.1) contrast(1.05);
             }
 
-            /* DATE FOOTER */
-            .wc-date {
+            /* FOOTER */
+            .wc-footer {
                 margin-top: auto;
                 margin-bottom: 40px;
                 font-family: 'Montserrat', sans-serif;
@@ -135,124 +122,102 @@
                 text-transform: uppercase;
             }
 
+            /* Visibility states for GSAP */
+            .gsap-fade { opacity: 0; }
+            .gsap-draw { stroke-dasharray: 1000; stroke-dashoffset: 1000; }
         </style>
 
         <div class="wc-card">
             <svg class="wc-svg-layer" viewBox="0 0 450 675" preserveAspectRatio="xMidYMid slice">
                 <defs>
-                    <pattern id="latticePat" x="0" y="0" width="10" height="20" patternUnits="userSpaceOnUse">
-                        <path d="M0,0 L10,20 M10,0 L0,20" class="wc-lattice-stroke" fill="none"/>
+                    <pattern id="lightLattice" x="0" y="0" width="10" height="20" patternUnits="userSpaceOnUse">
+                        <path d="M0,0 L10,20 M10,0 L0,20" class="wc-lattice" fill="none"/>
                     </pattern>
                 </defs>
 
-                <rect x="25" y="45" width="15" height="585" fill="url(#latticePat)" class="anim-fade" />
-                <line x1="25" y1="45" x2="25" y2="630" class="wc-gold anim-draw" /> <line x1="40" y1="45" x2="40" y2="630" class="wc-gold anim-draw" /> <rect x="410" y="45" width="15" height="585" fill="url(#latticePat)" class="anim-fade" />
-                <line x1="410" y1="45" x2="410" y2="630" class="wc-gold anim-draw" /> <line x1="425" y1="45" x2="425" y2="630" class="wc-gold anim-draw" /> <line x1="40" y1="25" x2="410" y2="25" class="wc-gold anim-draw" />
-                <line x1="40" y1="30" x2="410" y2="30" class="wc-faint anim-draw" />
+                <rect x="20" y="40" width="15" height="595" fill="url(#lightLattice)" class="gsap-fade"/>
+                <rect x="415" y="40" width="15" height="595" fill="url(#lightLattice)" class="gsap-fade"/>
                 
-                <line x1="40" y1="650" x2="410" y2="650" class="wc-gold anim-draw" />
-                <line x1="40" y1="645" x2="410" y2="645" class="wc-faint anim-draw" />
+                <line x1="20" y1="40" x2="20" y2="635" class="wc-gold gsap-draw"/>
+                <line x1="35" y1="40" x2="35" y2="635" class="wc-gold gsap-draw"/>
+                <line x1="415" y1="40" x2="415" y2="635" class="wc-gold gsap-draw"/>
+                <line x1="430" y1="40" x2="430" y2="635" class="wc-gold gsap-draw"/>
 
-                <g class="wc-gold anim-draw" fill="none">
-                    <path d="M25,45 Q25,25 45,25" /> 
-                    <path d="M40,45 Q40,30 55,30" stroke-width="0.8"/>
-                    
-                    <path d="M425,45 Q425,25 405,25" />
-                    <path d="M410,45 Q410,30 395,30" stroke-width="0.8"/>
-
-                    <path d="M25,630 Q25,650 45,650" />
-                    <path d="M40,630 Q40,645 55,645" stroke-width="0.8"/>
-
-                    <path d="M425,630 Q425,650 405,650" />
-                    <path d="M410,630 Q410,645 395,645" stroke-width="0.8"/>
+                <path d="M20,40 Q20,20 40,20 H410 Q430,20 430,40" class="wc-gold gsap-draw"/> <path d="M35,40 Q35,30 45,30 H405 Q415,30 415,40" class="wc-thin gsap-draw"/> <path d="M20,635 Q20,655 40,655 H410 Q430,655 430,635" class="wc-gold gsap-draw"/> <path d="M35,635 Q35,645 45,645 H405 Q415,645 415,635" class="wc-thin gsap-draw"/> <g transform="translate(40, 340) scale(0.8)" class="gsap-fade">
+                    <path d="M0,0 C10,-20 30,-30 50,-10 C40,10 20,20 0,0 Z" class="wc-gold" />
+                    <path d="M0,0 C-10,-30 0,-60 20,-80" class="wc-thin" /> <path d="M0,0 C-10,30 0,60 20,80" class="wc-thin" /> <path d="M50,-10 Q70,-20 80,0 Q70,20 50,10" class="wc-gold" /> <path d="M-10,50 C0,30 20,20 40,40 C30,60 10,70 -10,50 Z" class="wc-gold" />
                 </g>
 
-                <g transform="translate(45, 337) scale(0.9)" class="anim-draw">
-                    <path d="M10,0 Q30,-10 50,0 Q30,10 10,0" class="wc-faint" />
-                    <path d="M10,0 Q20,-30 40,-40 M10,0 Q30,-20 50,-20" class="wc-gold" />
-                    <path d="M10,0 Q20,30 40,40 M10,0 Q30,20 50,20" class="wc-gold" />
-                    <path d="M0,-50 Q-10,0 0,50" class="wc-faint" opacity="0.3" />
-                    <path d="M40,-40 Q50,-50 60,-40" class="wc-faint" />
-                    <path d="M40,40 Q50,50 60,40" class="wc-faint" />
+                <g transform="translate(410, 340) scale(-0.8, 0.8)" class="gsap-fade">
+                    <path d="M0,0 C10,-20 30,-30 50,-10 C40,10 20,20 0,0 Z" class="wc-gold" />
+                    <path d="M0,0 C-10,-30 0,-60 20,-80" class="wc-thin" /> 
+                    <path d="M0,0 C-10,30 0,60 20,80" class="wc-thin" /> 
+                    <path d="M50,-10 Q70,-20 80,0 Q70,20 50,10" class="wc-gold" />
+                    <path d="M-10,50 C0,30 20,20 40,40 C30,60 10,70 -10,50 Z" class="wc-gold" />
                 </g>
 
-                <g transform="translate(405, 337) scale(-0.9, 0.9)" class="anim-draw">
-                    <path d="M10,0 Q30,-10 50,0 Q30,10 10,0" class="wc-faint" />
-                    <path d="M10,0 Q20,-30 40,-40 M10,0 Q30,-20 50,-20" class="wc-gold" />
-                    <path d="M10,0 Q20,30 40,40 M10,0 Q30,20 50,20" class="wc-gold" />
-                    <path d="M0,-50 Q-10,0 0,50" class="wc-faint" opacity="0.3" />
-                    <path d="M40,-40 Q50,-50 60,-40" class="wc-faint" />
-                    <path d="M40,40 Q50,50 60,40" class="wc-faint" />
-                </g>
-
-                <ellipse cx="225" cy="337" rx="140" ry="190" class="wc-gold anim-draw" stroke-width="1.5"/>
-                <ellipse cx="225" cy="337" rx="132" ry="180" class="wc-faint anim-draw" />
+                <ellipse cx="225" cy="345" rx="140" ry="195" class="wc-gold gsap-draw" />
+                <ellipse cx="225" cy="345" rx="132" ry="185" class="wc-thin gsap-draw" />
 
             </svg>
 
             <div class="wc-content">
-                
-                <div class="wc-badge-container anim-pop">
-                    <div class="wc-badge-ring"></div>
-                    <span class="wc-badge-text">शुभ विवाह</span>
+                <div class="wc-badge gsap-pop">
+                    <div class="wc-badge-bg"></div>
+                    <span style="position: relative; z-index: 2;">शुभ विवाह</span>
                 </div>
 
-                <h1 class="wc-title anim-pop">Yash & Shrishti</h1>
+                <h1 class="wc-title gsap-pop">Yash & Shrishti</h1>
 
-                <div class="wc-img-frame anim-pop">
-                    <img src="/assets/couple.png" alt="Couple" class="wc-couple-photo">
+                <div class="wc-img-wrapper gsap-pop">
+                    <img src="/assets/couple.png" alt="Couple" class="wc-photo">
                 </div>
 
-                <div class="wc-date anim-pop">
+                <div class="wc-footer gsap-pop">
                     10th February 2026 • Tuesday
                 </div>
-
             </div>
         </div>
 
         <script>
             (function() {
-                const initFinal = () => {
-                    const scope = document.querySelector("#wedding-card-final");
+                const initOptimized = () => {
+                    const scope = document.querySelector("#wc-optimized");
                     if (!scope || !window.gsap) return;
                     
                     let ctx = gsap.context(() => {
                         const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-                        // 1. Draw Lines
-                        tl.from(".anim-draw", { 
-                            strokeDasharray: 1000, 
-                            strokeDashoffset: 1000, 
-                            duration: 2.5, 
-                            stagger: 0.05 
-                        })
-                        
-                        // 2. Fade in Lattice Sidebars
-                        .from(".anim-fade", { 
-                            opacity: 0, 
-                            duration: 1.5 
-                        }, "-=2.0")
+                        // 1. Initial Visibility Set
+                        gsap.set(".gsap-draw", { 
+                            strokeDasharray: (i, t) => t.getTotalLength(),
+                            strokeDashoffset: (i, t) => t.getTotalLength()
+                        });
 
-                        // 3. Pop in Content (Badge, Names, Image, Date)
-                        .from(".anim-pop", { 
-                            y: 30, 
-                            opacity: 0, 
-                            duration: 1, 
-                            stagger: 0.2 
-                        }, "-=1.5");
+                        // 2. Animation Sequence
+                        // Draw lines first
+                        tl.to(".gsap-draw", { strokeDashoffset: 0, duration: 2, stagger: 0.05 })
+                        // Fade in the flowers and lattice (Much cheaper than drawing them)
+                        .to(".gsap-fade", { opacity: 1, duration: 1.5 }, "-=1.5")
+                        // Pop in content
+                        .from(".gsap-pop", { y: 20, opacity: 0, duration: 0.8, stagger: 0.15 }, "-=1.0");
                           
                     }, scope);
                 };
 
+                // Fallback: If GSAP fails or is slow, make sure elements are visible
+                setTimeout(() => {
+                    document.querySelectorAll('.gsap-fade, .gsap-pop').forEach(el => el.style.opacity = '1');
+                }, 3000);
+
                 if (window.gsap) {
-                    initFinal();
+                    initOptimized();
                 } else {
-                    window.addEventListener("load", initFinal);
-                    setTimeout(() => { if(window.gsap) initFinal(); }, 1500);
+                    window.addEventListener("load", initOptimized);
                 }
             })();
         </script>
     </div>
-    </body>
-            </html>
-            
+
+</body>
+</html>
