@@ -2,204 +2,464 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yash & Shrishti Wedding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <link rel="icon" href="/assets/favicon.ico" sizes="any" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/safari-pinned-tab.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Yash & Shrishti • Shubh Vivah • 10 February 2026</title>
+
+    <meta name="description" content="With divine grace and family blessings, we invite you to celebrate the Shubh Vivah of Yash & Shrishti on 10th February 2026.">
+    <meta name="author" content="Yash Goyal & Shrishti Tayal">
+    <meta name="theme-color" content="#1f4f43">
+    <meta name="color-scheme" content="light">
+    <link rel="canonical" href="https://yashwithshrishti.xeniosrahi.com/">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Hind:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+
+    <style>
+        :root {
+            --royal-gold: #d4a74f;
+            --royal-cream: #f7f0e4;
+            --royal-deep: #1a1a1a;
+            --royal-accent: #b8973e;
+        }
+        
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Cormorant Garamond", serif;
+            background: var(--royal-cream);
+            color: var(--royal-deep);
+            overflow-x: hidden;
+        }
+        
+        /* Language Toggle */
+        [data-lang] { display: none; }
+        body.en [data-lang="en"] { display: block; }
+        body.hi [data-lang="hi"] { display: block; }
+        
+        .lang-toggle {
+            position: fixed; top: 1rem; right: 1rem; z-index: 1060;
+            background: #fff; border-radius: 50rem;
+            box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.2);
+        }
+        .lang-toggle .btn { border: 0; padding: .5rem 1rem; font-size: .875rem; }
+        .lang-toggle .active { background: var(--royal-gold) !important; color: #fff !important; }
+        
+        /* Petals */
+        #petal-layer { position: fixed; inset: 0; pointer-events: none; z-index: 20; }
+        .petal {
+            position: fixed; top: -12%; width: 1.375rem; height: 2rem;
+            background: radial-gradient(ellipse at 30% 30%, #ffd6d6, #e36a6a 60%, #b94b4b 100%);
+            border-radius: 70% 30% 60% 40%; opacity: .85; z-index: 30; filter: blur(.0125rem);
+        }
+        
+        /* ========================================= */
+        /* NEW HERO STYLES (Wedding Card Module)    */
+        /* ========================================= */
+        .hero {
+            /* Full viewport height to center the card */
+            min-height: 100svh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Subtle background to make the card pop */
+            background: linear-gradient(135deg, #f0e6d2 0%, #f7f0e4 100%);
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- CARD CSS NAMESPACE: wc- --- */
+        #wc-module-v8 {
+            isolation: isolate;
+            font-family: 'Playfair Display', serif;
+            width: 100%;
+            height: 100%;
+            display: flex; justify-content: center; align-items: center;
+        }
+        
+        .wc-card {
+            position: relative;
+            width: 100%;
+            max-width: 420px; /* Optimal width for mobile card */
+            aspect-ratio: 9/15; /* Matches reference vertical ratio */
+            background-color: #fcfbf5;
+            background-image: radial-gradient(#e6dabf 0.5px, transparent 0.5px);
+            background-size: 14px 14px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(212, 167, 79, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .wc-svg-layer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1;
+        }
+
+        .wc-gold { stroke: #cba157; fill: none; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+        .wc-gold-thin { stroke: #cba157; fill: none; stroke-width: 0.8; }
+
+        .wc-content {
+            z-index: 2; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center;
+            text-align: center; padding-top: 8%;
+        }
+
+        .wc-badge-wrap {
+            position: relative; margin-bottom: 5%;
+            display: flex; justify-content: center; align-items: center;
+            width: 80px; height: 36px;
+        }
+        .wc-badge-text {
+            font-family: 'Tiro Devanagari Hindi', serif; color: #bfa15f;
+            font-size: 13px; background: transparent; z-index: 2;
+        }
+
+        .wc-title {
+            font-size: clamp(32px, 8vw, 42px); color: #000;
+            line-height: 1; margin-bottom: 4%; font-weight: 700;
+        }
+
+        .wc-img-frame {
+            position: relative; width: 80%; aspect-ratio: 0.77; margin-top: 2%;
+            /* Drop shadow for depth */
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+        }
+        .wc-photo {
+            width: 100%; height: 100%; object-fit: cover;
+            clip-path: ellipse(50% 50% at 50% 50%);
+            filter: contrast(1.05) sepia(0.05);
+        }
+
+        .wc-footer {
+            margin-top: auto; margin-bottom: 12%;
+            font-family: 'Montserrat', sans-serif; font-size: 11px;
+            letter-spacing: 3px; color: #6d644f; font-weight: 600; text-transform: uppercase;
+        }
+
+        /* --- REST OF SITE STYLES --- */
+        .invocation {
+            padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 3vw, 2rem);
+            background: radial-gradient(circle at center, rgba(212,167,79,.08), transparent 70%);
+        }
+        .om-symbol { width: 120px; height: 120px; margin: 0 auto 1rem; display: block; }
+        .shloka { max-width: 40rem; margin: .75rem auto; font-size: 1.1rem; line-height: 1.75; }
+        .family-sep { font-size: 1.5rem; color: var(--royal-gold); margin: 2rem 0; }
+        .map-button { display: inline-block; margin-top: 1.5rem; padding: .875rem 1.75rem; border-radius: 50rem; background: var(--royal-gold); color: #fff; text-decoration: none; letter-spacing: .18em; }
+        .qr-frame { padding: 1rem; background: #fff; border-radius: 1rem; display: inline-block; }
+        footer { padding: 3rem 1rem; text-align: center; font-size: .875rem; opacity: 0.8; }
+
+        /* Print Override */
+        @media print {
+            .lang-toggle, #petal-layer, .map-button { display: none !important; }
+            .hero { min-height: auto; padding: 0; }
+            .wc-card { box-shadow: none; border: 1px solid #ddd; }
+        }
+    </style>
 </head>
-<body style="background-color: #222; margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; align-items: center;">
 
-    <div id="wc-final-v8">
-        <style>
-            #wc-final-v8 {
-                isolation: isolate;
-                font-family: 'Playfair Display', serif;
-                width: 100%;
-                display: flex; justify-content: center;
-                box-sizing: border-box;
-            }
-            #wc-final-v8 * { box-sizing: border-box; margin: 0; padding: 0; }
+<body class="en">
 
-            .wc-card {
-                position: relative;
-                width: 100%;
-                max-width: 450px;
-                aspect-ratio: 9/14.5; 
-                background-color: #fdfbf5;
-                /* Subtle grain */
-                background-image: radial-gradient(#e6dabf 0.5px, transparent 0.5px);
-                background-size: 14px 14px;
-                box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-                border-radius: 12px;
-                overflow: hidden;
-                display: flex; flex-direction: column; align-items: center;
-            }
+    <div id="petal-layer"></div>
+    
+    <div class="lang-toggle">
+        <button id="enBtn" class="btn btn-sm active">EN</button>
+        <button id="hiBtn" class="btn btn-sm">हिंदी</button>
+    </div>
 
-            .wc-svg-layer {
-                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                pointer-events: none; z-index: 10;
-            }
+    <section class="hero">
+        <div id="wc-module-v8">
+            <div class="wc-card">
+                <svg class="wc-svg-layer" viewBox="0 0 450 725" preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                        <pattern id="latticePat" x="0" y="0" width="8" height="14" patternUnits="userSpaceOnUse">
+                            <path d="M0,0 L8,14 M8,0 L0,14" stroke="#cba157" stroke-width="0.5" fill="none" opacity="0.5"/>
+                        </pattern>
 
-            .wc-gold { stroke: #cba157; fill: none; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
-            .wc-gold-thin { stroke: #cba157; fill: none; stroke-width: 0.8; }
+                        <g id="lily-flower">
+                            <path d="M0,0 C2,-15 8,-35 0,-45 C-8,-35 -2,-15 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
+                            <path d="M0,0 L0,-30" stroke="#cba157" stroke-width="0.5" fill="none"/>
+                            
+                            <path d="M0,0 C-10,-5 -25,-15 -35,-5 C-25,5 -10,5 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
+                            
+                            <path d="M0,0 C10,-5 25,-15 35,-5 C25,5 10,5 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
+                            
+                            <path d="M0,0 Q-5,-15 -8,-22" stroke="#cba157" stroke-width="0.6" fill="none"/>
+                            <circle cx="-8" cy="-22" r="1.2" fill="#cba157" stroke="none"/>
+                            <path d="M0,0 Q5,-15 8,-22" stroke="#cba157" stroke-width="0.6" fill="none"/>
+                            <circle cx="8" cy="-22" r="1.2" fill="#cba157" stroke="none"/>
+                            <path d="M0,0 L0,-25" stroke="#cba157" stroke-width="0.6" fill="none"/>
+                            <circle cx="0" cy="-25" r="1.2" fill="#cba157" stroke="none"/>
+                        </g>
+                    </defs>
 
-            .wc-content {
-                z-index: 20; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                display: flex; flex-direction: column; align-items: center;
-                text-align: center; padding-top: 8%;
-            }
+                    <rect x="25" y="45" width="20" height="635" fill="url(#latticePat)" class="anim-fade"/>
+                    <line x1="25" y1="45" x2="25" y2="680" class="wc-gold anim-draw"/> 
+                    <line x1="45" y1="45" x2="45" y2="680" class="wc-gold anim-draw"/> 
+                    
+                    <rect x="405" y="45" width="20" height="635" fill="url(#latticePat)" class="anim-fade"/>
+                    <line x1="405" y1="45" x2="405" y2="680" class="wc-gold anim-draw"/> 
+                    <line x1="425" y1="45" x2="425" y2="680" class="wc-gold anim-draw"/> 
 
-            .wc-badge-wrap {
-                position: relative; margin-bottom: 5%;
-                display: flex; justify-content: center; align-items: center;
-                width: 80px; height: 36px; /* Explicit size for oval alignment */
-            }
-            .wc-badge-text {
-                font-family: 'Tiro Devanagari Hindi', serif; color: #bfa15f;
-                font-size: 13px; background: transparent; z-index: 2;
-            }
-            /* The SVG draws the ring, so we don't need CSS border here */
+                    <path d="M25,45 Q25,20 50,20 H400" class="wc-gold anim-draw" fill="none"/>
+                    <path d="M45,45 Q45,30 60,30 H390" class="wc-gold-thin anim-draw" fill="none" opacity="0.7"/>
 
-            .wc-title {
-                font-size: clamp(32px, 8vw, 42px); color: #000;
-                line-height: 1; margin-bottom: 4%; font-weight: 700;
-            }
+                    <path d="M425,45 Q425,20 400,20" class="wc-gold anim-draw" fill="none"/>
+                    <path d="M405,45 Q405,30 390,30" class="wc-gold-thin anim-draw" fill="none" opacity="0.7"/>
 
-            .wc-img-frame {
-                position: relative; width: 80%; aspect-ratio: 0.77; margin-top: 2%;
-            }
-            .wc-photo {
-                width: 100%; height: 100%; object-fit: cover;
-                clip-path: ellipse(50% 50% at 50% 50%);
-                filter: contrast(1.05) sepia(0.05);
-            }
+                    <path d="M25,680 Q25,705 50,705 H400" class="wc-gold anim-draw" fill="none"/>
+                    <path d="M45,680 Q45,695 60,695 H390" class="wc-gold-thin anim-draw" fill="none" opacity="0.7"/>
 
-            .wc-footer {
-                margin-top: auto; margin-bottom: 12%;
-                font-family: 'Montserrat', sans-serif; font-size: 11px;
-                letter-spacing: 3px; color: #6d644f; font-weight: 600; text-transform: uppercase;
-            }
-        </style>
+                    <path d="M425,680 Q425,705 400,705" class="wc-gold anim-draw" fill="none"/>
+                    <path d="M405,680 Q405,695 390,695" class="wc-gold-thin anim-draw" fill="none" opacity="0.7"/>
 
-        <div class="wc-card">
-            <svg class="wc-svg-layer" viewBox="0 0 450 725" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                    <pattern id="latticePat" x="0" y="0" width="8" height="14" patternUnits="userSpaceOnUse">
-                        <path d="M0,0 L8,14 M8,0 L0,14" stroke="#cba157" stroke-width="0.5" fill="none" opacity="0.5"/>
-                    </pattern>
-
-                    <g id="lily-flower">
-                        <path d="M0,0 C2,-15 8,-35 0,-45 C-8,-35 -2,-15 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
-                        <path d="M0,0 L0,-30" stroke="#cba157" stroke-width="0.5" fill="none"/>
-                        
-                        <path d="M0,0 C-10,-5 -25,-15 -35,-5 C-25,5 -10,5 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
-                        
-                        <path d="M0,0 C10,-5 25,-15 35,-5 C25,5 10,5 0,0" stroke="#cba157" stroke-width="1.2" fill="#fcfbf5"/>
-                        
-                        <path d="M0,0 Q-5,-15 -8,-22" stroke="#cba157" stroke-width="0.6" fill="none"/>
-                        <circle cx="-8" cy="-22" r="1.2" fill="#cba157" stroke="none"/>
-                        
-                        <path d="M0,0 Q5,-15 8,-22" stroke="#cba157" stroke-width="0.6" fill="none"/>
-                        <circle cx="8" cy="-22" r="1.2" fill="#cba157" stroke="none"/>
-                        
-                        <path d="M0,0 L0,-25" stroke="#cba157" stroke-width="0.6" fill="none"/>
-                        <circle cx="0" cy="-25" r="1.2" fill="#cba157" stroke="none"/>
+                    <g transform="translate(45, 360)" class="anim-fade">
+                        <g transform="translate(0, -55) rotate(-30) scale(1.3)"><use href="#lily-flower"/></g>
+                        <g transform="translate(-15, 0) rotate(-90) scale(1.1)"><use href="#lily-flower"/></g>
+                        <g transform="translate(0, 55) rotate(-150) scale(1.3)"><use href="#lily-flower"/></g>
+                        <path d="M0,-55 Q-10,-30 -15,0 Q-10,30 0,55" stroke="#cba157" stroke-width="0.8" fill="none"/>
                     </g>
-                </defs>
 
-                <rect x="25" y="45" width="20" height="635" fill="url(#latticePat)" class="anim-fade"/>
-                <line x1="25" y1="45" x2="25" y2="680" class="wc-gold anim-draw"/> 
-                <line x1="45" y1="45" x2="45" y2="680" class="wc-gold anim-draw"/> 
-                
-                <rect x="405" y="45" width="20" height="635" fill="url(#latticePat)" class="anim-fade"/>
-                <line x1="405" y1="45" x2="405" y2="680" class="wc-gold anim-draw"/> 
-                <line x1="425" y1="45" x2="425" y2="680" class="wc-gold anim-draw"/> 
-
-                <path d="M25,45 Q25,20 50,20 H400" class="wc-gold anim-draw" fill="none"/>
-                <path d="M45,45 Q45,30 60,30 H390" class="wc-gold-thin anim-draw" fill="none" opacity="0.7"/>
-
-                <path d="M425,45 Q425,20 400,20" class="wc-gold anim-draw" fill="none"/>
-                <path d="M405,45 Q405,30 390,30" class="wc-gold-thin anim-draw" fill="none" opacity="0.7"/>
-
-                <path d="M25,680 Q25,705 50,705 H400" class="wc-gold anim-draw" fill="none"/>
-                <path d="M45,680 Q45,695 60,695 H390" class="wc-gold-thin anim-draw" fill="none" opacity="0.7"/>
-
-                <path d="M425,680 Q425,705 400,705" class="wc-gold anim-draw" fill="none"/>
-                <path d="M405,680 Q405,695 390,695" class="wc-gold-thin anim-draw" fill="none" opacity="0.7"/>
-
-                <g transform="translate(45, 360)" class="anim-fade">
-                    <g transform="translate(0, -55) rotate(-30) scale(1.3)">
-                        <use href="#lily-flower"/>
+                    <g transform="translate(405, 360) scale(-1, 1)" class="anim-fade">
+                        <g transform="translate(0, -55) rotate(-30) scale(1.3)"><use href="#lily-flower"/></g>
+                        <g transform="translate(-15, 0) rotate(-90) scale(1.1)"><use href="#lily-flower"/></g>
+                        <g transform="translate(0, 55) rotate(-150) scale(1.3)"><use href="#lily-flower"/></g>
+                        <path d="M0,-55 Q-10,-30 -15,0 Q-10,30 0,55" stroke="#cba157" stroke-width="0.8" fill="none"/>
                     </g>
-                    <g transform="translate(-15, 0) rotate(-90) scale(1.1)">
-                        <use href="#lily-flower"/>
-                    </g>
-                    <g transform="translate(0, 55) rotate(-150) scale(1.3)">
-                        <use href="#lily-flower"/>
-                    </g>
-                    <path d="M0,-55 Q-10,-30 -15,0 Q-10,30 0,55" stroke="#cba157" stroke-width="0.8" fill="none"/>
-                </g>
 
-                <g transform="translate(405, 360) scale(-1, 1)" class="anim-fade">
-                    <g transform="translate(0, -55) rotate(-30) scale(1.3)"><use href="#lily-flower"/></g>
-                    <g transform="translate(-15, 0) rotate(-90) scale(1.1)"><use href="#lily-flower"/></g>
-                    <g transform="translate(0, 55) rotate(-150) scale(1.3)"><use href="#lily-flower"/></g>
-                    <path d="M0,-55 Q-10,-30 -15,0 Q-10,30 0,55" stroke="#cba157" stroke-width="0.8" fill="none"/>
-                </g>
+                    <ellipse cx="225" cy="360" rx="155" ry="205" class="wc-gold anim-draw" />
+                    <ellipse cx="225" cy="360" rx="148" ry="198" class="wc-gold-thin anim-draw" opacity="0.6"/>
 
-                <ellipse cx="225" cy="360" rx="155" ry="205" class="wc-gold anim-draw" />
-                <ellipse cx="225" cy="360" rx="148" ry="198" class="wc-gold-thin anim-draw" opacity="0.6"/>
+                    <ellipse cx="225" cy="80" rx="40" ry="22" class="wc-gold-thin anim-draw" />
+                </svg>
 
-                <ellipse cx="225" cy="80" rx="40" ry="22" class="wc-gold-thin anim-draw" />
+                <div class="wc-content">
+                    <div class="wc-badge-wrap anim-pop">
+                        <span class="wc-badge-text">शुभ विवाह</span>
+                    </div>
 
-            </svg>
+                    <h1 class="wc-title anim-pop">Yash & Shrishti</h1>
 
-            <div class="wc-content">
-                <div class="wc-badge-wrap anim-pop">
-                    <span class="wc-badge-text">शुभ विवाह</span>
-                </div>
+                    <div class="wc-img-frame anim-pop">
+                        <img src="assets/couple.png" alt="Couple" class="wc-photo">
+                    </div>
 
-                <h1 class="wc-title anim-pop">Yash & Shrishti</h1>
-
-                <div class="wc-img-frame anim-pop">
-                    <img src="/assets/couple.png" alt="Couple" class="wc-photo">
-                </div>
-
-                <div class="wc-footer anim-pop">
-                    10th February 2026 • Tuesday
+                    <div class="wc-footer anim-pop">
+                        10th February 2026 • Tuesday
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <script>
-            (function() {
-                const initWCv8 = () => {
-                    const scope = document.querySelector("#wc-final-v8");
-                    if (!scope || !window.gsap) return;
-                    
-                    let ctx = gsap.context(() => {
-                        const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+    <section class="section invocation position-relative">
+        <svg class="om-symbol mb-3" viewBox="0 0 512 512" aria-label="Om Symbol">
+            <g id="om-stroke" fill="none" stroke="var(--royal-gold)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+               <path d="M 248.90 461.52 L 211.60 460.63 L 197.39 456.19 L 195.61 457.08 L 185.85 452.64 L 184.07 453.53 L 169.86 446.42 L 151.21 432.22 L 150.32 433.10 L 105.92 391.37 L 88.16 378.93 L 68.63 371.83 L 54.42 370.94 L 39.32 376.27 L 35.77 379.82 L 25.56 366.06 L 39.32 357.62 L 58.86 354.07 L 75.73 355.85 L 89.05 360.29 L 112.14 373.61 L 157.43 416.23 L 164.53 419.78 L 168.08 424.22 L 180.52 432.22 L 183.18 431.33 L 186.73 433.10 L 193.84 438.43 L 218.70 444.65 L 240.90 445.54 L 255.11 442.87 L 257.78 440.21 L 264.88 440.21 L 279.98 431.33 L 281.75 432.22 L 292.41 424.22 L 301.73 414.01 L 301.73 409.57 L 310.61 399.80 L 318.61 374.05 L 317.72 344.75 L 310.61 318.99 L 302.62 304.78 L 284.42 283.92 L 269.32 272.37 L 253.34 264.38 L 250.67 266.15 L 245.34 260.83 L 236.46 259.05 L 232.91 256.39 L 222.25 255.50 L 217.81 252.83 L 208.05 251.06 L 192.95 250.17 L 188.95 247.06 L 188.07 232.85 L 209.82 221.75 L 223.59 203.55 L 227.14 190.23 L 227.14 179.57 L 221.81 168.03 L 207.16 158.70 L 192.06 157.81 L 170.75 162.25 L 158.32 167.58 L 149.44 173.80 L 145.88 173.80 L 137.00 179.13 L 118.36 193.34 L 106.37 181.35 L 120.13 169.36 L 130.79 162.25 L 132.56 163.14 L 143.22 155.15 L 148.55 154.26 L 158.32 148.05 L 160.98 148.93 L 179.63 141.83 L 208.05 140.94 L 215.15 143.61 L 229.36 151.60 L 237.80 160.92 L 241.35 168.03 L 244.90 181.35 L 242.24 202.66 L 234.24 220.42 L 221.81 234.63 L 224.92 237.74 L 245.34 243.07 L 266.66 237.74 L 278.20 229.75 L 308.84 193.78 L 326.15 180.02 L 335.03 175.58 L 336.81 176.46 L 343.03 172.91 L 349.24 172.02 L 364.34 171.14 L 379.44 172.91 L 389.20 176.46 L 392.76 175.58 L 416.73 188.01 L 433.61 200.44 L 453.59 219.53 L 474.01 252.39 L 486.44 287.91 L 485.56 334.09 L 483.78 344.75 L 481.12 349.19 L 482.00 350.96 L 474.01 362.51 L 474.90 363.39 L 462.91 375.38 L 451.37 380.71 L 447.81 384.26 L 418.51 386.04 L 411.41 385.15 L 399.86 378.93 L 398.08 379.82 L 382.99 368.28 L 382.10 369.17 L 369.22 353.63 L 381.21 343.41 L 399.86 360.29 L 414.96 367.39 L 436.27 368.28 L 450.48 362.95 L 465.13 344.75 L 468.68 332.31 L 469.57 295.90 L 465.13 275.48 L 453.59 250.61 L 439.38 231.08 L 420.29 211.98 L 414.96 210.21 L 401.64 198.66 L 376.77 189.78 L 353.68 188.90 L 341.25 191.56 L 327.04 199.55 L 306.17 223.09 L 306.17 227.53 L 279.09 251.95 L 277.31 251.06 L 273.32 254.17 L 287.97 263.49 L 305.29 279.03 L 327.49 311.89 L 326.60 314.55 L 332.81 332.31 L 335.48 350.07 L 335.48 373.16 L 331.93 392.70 L 323.93 411.35 L 315.94 423.78 L 295.96 443.76 L 272.87 455.31 L 248.90 461.52 Z" />
+                <path d="M 337.70 128.51 L 314.61 127.62 L 310.17 125.85 L 306.62 126.73 L 304.84 124.96 L 280.86 120.52 L 250.67 108.09 L 249.78 108.97 L 240.02 102.76 L 238.24 103.64 L 233.80 99.20 L 232.02 100.09 L 215.15 87.66 L 212.49 87.66 L 207.16 82.33 L 200.05 78.78 L 186.73 68.12 L 184.51 65.90 L 184.51 62.35 L 195.61 52.14 L 228.47 77.00 L 232.91 79.67 L 235.58 78.78 L 240.90 84.11 L 245.34 85.00 L 256.00 92.10 L 290.63 105.42 L 297.74 105.42 L 302.18 108.09 L 324.38 110.75 L 339.47 110.75 L 353.68 107.20 L 357.24 104.53 L 358.12 105.42 L 371.44 96.54 L 379.88 88.10 L 380.77 86.33 L 378.99 84.55 L 386.10 79.22 L 386.10 75.67 L 390.98 70.79 L 401.64 73.45 L 406.52 78.34 L 402.97 81.89 L 401.19 88.10 L 396.75 94.32 L 385.65 107.20 L 363.45 123.18 L 360.79 122.29 L 350.13 126.73 L 349.24 125.85 L 337.70 128.51 Z" />
+            </g>
+            <g id="om-fill" fill="var(--royal-gold)" opacity="0">
+                 <path d="M 248.90 461.52 L 211.60 460.63 ... Z" /> </g>
+        </svg>
 
-                        gsap.set(".anim-draw", { strokeDasharray: (i, t) => t.getTotalLength(), strokeDashoffset: (i, t) => t.getTotalLength() });
-                        gsap.set(".anim-fade, .anim-pop", { opacity: 0 });
-                        gsap.set(".anim-pop", { y: 20 });
+        <div class="invocation-inner">
+            <p class="invocation-kicker text-center text-uppercase mb-0" data-lang="en">WITH DIVINE GRACE AND FAMILY BLESSINGS</p>
+            <p class="invocation-kicker text-center text-uppercase mb-0" data-lang="hi">ईश्वर की कृपा एवं परिवार के आशीर्वाद से</p>
+            
+            <div class="shloka text-center shloka-en mb-3" data-lang="en">
+                With the blessings of our families and the grace of the god,
+                we invite you to witness the beginning of our forever.
+            </div>
+            <div class="shloka text-center shloka-hi mb-3" data-lang="hi">
+                परिवार के आशीर्वाद और ईश्वर की कृपा से,
+                हम अपने नए जीवन की शुरुआत कर रहे हैं।
+            </div>
+            
+            <h2 class="invocation-names text-center mb-2">Yash & Shrishti</h2>
+            
+            <p class="invocation-sub text-center text-uppercase mb-2" data-lang="en">are uniting their lives</p>
+            <p class="invocation-sub text-center text-uppercase mb-2" data-lang="hi">अपने जीवन का आरंभ कर रहे हैं</p>
+            
+            <p class="invocation-date text-center intro-date mb-0" data-lang="en">10th February 2026</p>
+            <p class="invocation-date text-center intro-date mb-0" data-lang="hi">10 फ़रवरी 2026</p>
+        </div>
+    </section>
 
-                        tl.to(".anim-draw", { strokeDashoffset: 0, duration: 2.2, stagger: 0.05 })
-                          .to(".anim-fade", { opacity: 1, duration: 1.5 }, "-=1.8")
-                          .to(".anim-pop", { opacity: 1, y: 0, duration: 0.8, stagger: 0.15 }, "-=1.0");
-                          
-                    }, scope);
-                };
+    <section class="ceremony-combined position-relative">
+        <div class="ceremony-inner">
+            <div class="family-sep mb-4">❦</div>
+            
+            <div class="family-block">
+                <p class="family-person mb-4">
+                    <strong>Yash Goyal</strong><br>
+                    <span data-lang="en">Son of Shri Pawan Goyal & Smt. Archna Goyal</span>
+                    <span data-lang="hi">श्री पवन गोयल एवं श्रीमती अर्चना गोयल के सुपुत्र</span>
+                </p>
+                <p class="family-sep mb-4">❦</p>
+                <p class="family-person">
+                    <strong>Shrishti Tayal</strong><br>
+                    <span data-lang="en">Daughter of Shri Sanjay Tayal & Smt. Manju Tayal</span>
+                    <span data-lang="hi">श्री संजय तायल एवं श्रीमती मंजू तायल की सुपुत्री</span>
+                </p>
+            </div>
+            
+            <div class="event-block mb-5">
+                <h3 data-lang="en">Baarat & Dinner</h3>
+                <h3 data-lang="hi">बारात एवं रात्रि भोज</h3>
+                <p class="event-time mb-0" data-lang="en">10 February 2026 · From 7:00 PM onwards</p>
+                <p class="event-time mb-0" data-lang="hi">10 फ़रवरी 2026 · सायं 7 बजे से</p>
+            </div>
+            
+            <div class="venue-block">
+                <p class="venue-eyebrow text-uppercase mb-2" data-lang="en">Venue</p>
+                <p class="venue-eyebrow text-uppercase mb-2" data-lang="hi">स्थान</p>
+                <h4 class="venue-name mb-3">Singhal Banquet & Farms</h4>
+                <p class="venue-address mb-4">
+                    Near Shri Dronacharya Degree College · F1 Race Track<br>
+                    Dankaur · Greater Noida
+                </p>
+                <a class="map-button mb-4 d-inline-block" href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">
+                    📍 Open in Google Maps
+                </a>
+                
+                <div class="qr-wrap">
+                    <div class="qr-frame">
+                        <canvas id="venueQR" width="160" height="160"></canvas>
+                    </div>
+                    <p class="qr-caption text-uppercase mt-3 mb-0" data-lang="en">Scan for directions</p>
+                    <p class="qr-caption text-uppercase mt-3 mb-0" data-lang="hi">दिशा हेतु स्कैन करें</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="text-center">
+        <span data-lang="en">💗 With love · Save the Date · © Yash & Shrishti 2026</span>
+        <span data-lang="hi">💗 स्नेह सहित · तिथि सुरक्षित रखें · © यश एवं सृष्टि 2026</span>
+    </footer>
 
-                setTimeout(() => { document.querySelectorAll('.anim-fade, .anim-pop').forEach(el => el.style.opacity = '1'); }, 2500);
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
 
-                if (window.gsap) { initWCv8(); } else { window.addEventListener("load", initWCv8); }
-            })();
-        </script>
-    </div>
+        // --- NEW HERO ANIMATION (Wedding Card) ---
+        // We use gsap.context to isolate these animations to the hero module
+        document.addEventListener("DOMContentLoaded", () => {
+            const heroScope = document.querySelector("#wc-module-v8");
+            if (heroScope) {
+                let ctx = gsap.context(() => {
+                    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
+                    // Set initial states
+                    gsap.set(".anim-draw", { 
+                        strokeDasharray: (i, t) => t.getTotalLength(),
+                        strokeDashoffset: (i, t) => t.getTotalLength()
+                    });
+                    gsap.set(".anim-fade, .anim-pop", { opacity: 0 });
+                    gsap.set(".anim-pop", { y: 20 });
+
+                    // Animate
+                    tl.to(".anim-draw", { strokeDashoffset: 0, duration: 2.2, stagger: 0.05 })
+                      .to(".anim-fade", { opacity: 1, duration: 1.5 }, "-=1.8")
+                      .to(".anim-pop", { opacity: 1, y: 0, duration: 0.8, stagger: 0.15 }, "-=1.0");
+                }, heroScope);
+            }
+            
+            // --- QR Code ---
+            const qrCanvas = document.getElementById("venueQR");
+            if (qrCanvas) {
+                new QRious({
+                    element: qrCanvas,
+                    value: "https://maps.app.goo.gl/QQESQLd4RyqDg1LF8",
+                    size: 160,
+                    foreground: "#1f4f43",
+                    background: "#ffffff"
+                });
+            }
+        });
+        
+        // --- Language Toggle ---
+        const enBtn = document.getElementById("enBtn");
+        const hiBtn = document.getElementById("hiBtn");
+        function switchLang(lang) {
+            document.body.className = lang;
+            localStorage.setItem("lang", lang);
+            enBtn.classList.toggle("active", lang === "en");
+            hiBtn.classList.toggle("active", lang === "hi");
+        }
+        enBtn.onclick = () => switchLang("en");
+        hiBtn.onclick = () => switchLang("hi");
+        switchLang(localStorage.getItem("lang") || "en");
+        
+        // --- Petals ---
+        const PETAL_COUNT = 10;
+        for (let i = 0; i < PETAL_COUNT; i++) {
+            const petal = document.createElement("div");
+            petal.className = "petal";
+            petal.style.left = Math.random() * 100 + "vw";
+            petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+            document.getElementById("petal-layer").appendChild(petal);
+            gsap.to(petal, {
+                y: "120vh",
+                x: () => gsap.utils.random(-140, 140),
+                rotation: () => gsap.utils.random(360, 720),
+                duration: gsap.utils.random(24, 38),
+                delay: Math.random() * 14,
+                repeat: -1,
+                ease: "sine.inOut"
+            });
+        }
+        
+        // --- Scroll effects ---
+        // Scroll petals
+        let lastScroll = window.scrollY;
+        window.addEventListener("scroll", () => {
+            const delta = window.scrollY - lastScroll;
+            gsap.to(".petal", { x: `+=${delta * 0.15}`, duration: 0.6, ease: "power1.out" });
+            lastScroll = window.scrollY;
+        });
+
+        // Invocation Reveal
+        gsap.from(".invocation-inner > *", {
+            scrollTrigger: {
+                trigger: ".invocation",
+                start: "top 75%",
+            },
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            stagger: 0.12,
+            ease: "power1.out"
+        });
+        
+        // --- Print handling ---
+        window.addEventListener("load", () => {
+            if (location.search.includes("print")) {
+                setTimeout(() => {
+                    gsap.globalTimeline.pause();
+                    if (window.ScrollTrigger) ScrollTrigger.getAll().forEach(t => t.kill());
+                    window.print();
+                }, 800);
+            }
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
