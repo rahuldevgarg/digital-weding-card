@@ -9,187 +9,168 @@
 </head>
 <body style="background-color: #222; margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; align-items: center;">
 
-    <div id="wc-module-v5">
+    <div id="wc-final-svg">
         <style>
-            #wc-module-v5 {
+            #wc-final-svg {
                 isolation: isolate;
                 font-family: 'Playfair Display', serif;
                 width: 100%;
-                display: flex;
-                justify-content: center;
+                display: flex; justify-content: center;
                 box-sizing: border-box;
             }
-            #wc-module-v5 * { box-sizing: border-box; margin: 0; padding: 0; }
+            #wc-final-svg * { box-sizing: border-box; margin: 0; padding: 0; }
 
             .wc-card {
                 position: relative;
                 width: 100%;
                 max-width: 450px;
-                /* Exact aspect ratio from reference */
-                aspect-ratio: 9/14.5; 
-                background-color: #fcfaf4;
-                /* Lightweight paper texture pattern */
+                aspect-ratio: 9/15.5; /* Tall mobile aspect ratio */
+                background-color: #fcfbf5; /* Warm Cream */
+                /* Very subtle texture */
                 background-image: radial-gradient(#e6dabf 0.5px, transparent 0.5px);
-                background-size: 15px 15px;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+                background-size: 20px 20px;
+                box-shadow: 0 25px 50px rgba(0,0,0,0.4);
                 border-radius: 12px;
                 overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                display: flex; flex-direction: column; align-items: center;
             }
 
             .wc-svg-layer {
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
+                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
                 pointer-events: none; z-index: 10;
             }
 
-            /* Styles mimicking the reference lines */
-            .wc-gold { stroke: #cba157; fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+            /* SVG STYLES */
+            .wc-gold { stroke: #cba157; fill: none; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
             .wc-gold-thin { stroke: #cba157; fill: none; stroke-width: 0.8; }
-            .wc-gold-faint { stroke: #cba157; fill: none; stroke-width: 0.5; opacity: 0.6; }
+            .wc-lattice-line { stroke: #cba157; stroke-width: 0.5; opacity: 0.5; }
 
+            /* TEXT CONTENT LAYER */
             .wc-content {
-                z-index: 20;
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
+                z-index: 20; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
                 display: flex; flex-direction: column; align-items: center;
-                text-align: center;
-                padding-top: 8%; /* Adjust top spacing */
+                text-align: center; padding-top: 8%;
             }
 
-            .wc-badge-container {
-                position: relative;
-                margin-bottom: 5%;
-                padding: 4px 12px;
+            .wc-badge-wrap {
+                position: relative; margin-bottom: 20px; padding: 6px 16px;
                 display: flex; justify-content: center; align-items: center;
             }
-            .wc-badge-text {
-                font-family: 'Tiro Devanagari Hindi', serif;
-                color: #bfa15f;
-                font-size: 14px;
-                background: #fcfaf4;
-                padding: 0 8px;
-                position: relative; z-index: 2;
+            .wc-badge-bg {
+                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                border: 1px solid #cba157; border-radius: 50%; z-index: 1;
             }
-            .wc-badge-ring {
-                position: absolute; width: 100%; height: 100%;
-                border: 1px solid #cba157; border-radius: 50%;
-                z-index: 1; top: 0; left: 0;
+            .wc-badge-text {
+                font-family: 'Tiro Devanagari Hindi', serif; color: #bfa15f;
+                font-size: 13px; background: #fcfbf5; position: relative; z-index: 2; padding: 0 8px;
             }
 
             .wc-title {
-                font-size: clamp(32px, 8vw, 40px);
-                color: #000;
-                line-height: 1;
-                margin-bottom: 4%;
-                font-weight: 700;
+                font-size: clamp(32px, 8vw, 42px); color: #000;
+                line-height: 1; margin-bottom: 15px; font-weight: 700;
             }
 
-            .wc-img-frame {
-                position: relative;
-                width: 78%; /* Wider to fill space like reference */
-                aspect-ratio: 0.8; 
-                margin-top: 2%;
+            .wc-img-wrap {
+                position: relative; width: 78%; aspect-ratio: 0.76; margin-top: 10px;
             }
             .wc-photo {
-                width: 100%; height: 100%;
-                object-fit: cover;
-                /* Matches oval crop */
+                width: 100%; height: 100%; object-fit: cover;
                 clip-path: ellipse(50% 50% at 50% 50%);
                 filter: contrast(1.05) sepia(0.05);
             }
 
             .wc-footer {
-                margin-top: auto;
-                margin-bottom: 12%;
-                font-family: 'Montserrat', sans-serif;
-                font-size: 11px;
-                letter-spacing: 2px;
-                color: #6d644f;
-                font-weight: 600;
-                text-transform: uppercase;
+                margin-top: auto; margin-bottom: 12%;
+                font-family: 'Montserrat', sans-serif; font-size: 11px;
+                letter-spacing: 3px; color: #6d644f; font-weight: 600; text-transform: uppercase;
             }
         </style>
 
         <div class="wc-card">
-            <svg class="wc-svg-layer" viewBox="0 0 450 725" preserveAspectRatio="xMidYMid slice">
+            <svg class="wc-svg-layer" viewBox="0 0 450 750" preserveAspectRatio="xMidYMid slice">
                 <defs>
-                    <pattern id="lattice" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
-                        <path d="M0,8 L8,0" stroke="#cba157" stroke-width="0.5" opacity="0.4"/>
-                        <path d="M0,0 L8,8" stroke="#cba157" stroke-width="0.5" opacity="0.4"/>
+                    <pattern id="diamond-lattice" x="0" y="0" width="10" height="16" patternUnits="userSpaceOnUse">
+                        <path d="M0,0 L10,16 M10,0 L0,16" class="wc-lattice-line" fill="none"/>
                     </pattern>
 
-                    <g id="lily">
-                        <path d="M0,0 Q5,-15 0,-25 Q-5,-15 0,0" class="wc-gold" fill="#fcfaf4"/>
-                        <path d="M0,0 Q-10,-5 -20,-15 Q-10,5 0,0" class="wc-gold" fill="#fcfaf4"/>
-                        <path d="M0,0 Q10,-5 20,-15 Q10,5 0,0" class="wc-gold" fill="#fcfaf4"/>
-                        <path d="M0,0 L-3,-15 M0,0 L3,-15 M0,0 L0,-18" class="wc-gold-faint"/>
+                    <g id="detailed-lily">
+                        <path d="M0,0 Q8,-25 0,-45 Q-8,-25 0,0" class="wc-gold-thin" fill="#fcfbf5"/>
+                        <path d="M0,0 L0,-35" stroke="#cba157" stroke-width="0.5" fill="none"/>
+                        
+                        <path d="M0,0 Q-15,-10 -30,-25 Q-15,5 0,0" class="wc-gold-thin" fill="#fcfbf5"/>
+                        
+                        <path d="M0,0 Q15,-10 30,-25 Q15,5 0,0" class="wc-gold-thin" fill="#fcfbf5"/>
+                        
+                        <path d="M0,0 L-5,-20" stroke="#cba157" stroke-width="0.5" fill="none"/>
+                        <circle cx="-5" cy="-20" r="1.5" fill="#cba157"/>
+                        
+                        <path d="M0,0 L5,-20" stroke="#cba157" stroke-width="0.5" fill="none"/>
+                        <circle cx="5" cy="-20" r="1.5" fill="#cba157"/>
+                        
+                        <path d="M0,0 L0,-25" stroke="#cba157" stroke-width="0.5" fill="none"/>
+                        <circle cx="0" cy="-25" r="1.5" fill="#cba157"/>
                     </g>
                 </defs>
 
-                <rect x="25" y="40" width="15" height="645" fill="url(#lattice)" class="anim-fade"/>
-                <line x1="25" y1="40" x2="25" y2="685" class="wc-gold anim-draw"/> <line x1="40" y1="40" x2="40" y2="685" class="wc-gold anim-draw"/> <rect x="410" y="40" width="15" height="645" fill="url(#lattice)" class="anim-fade"/>
-                <line x1="410" y1="40" x2="410" y2="685" class="wc-gold anim-draw"/> <line x1="425" y1="40" x2="425" y2="685" class="wc-gold anim-draw"/> <path d="M25,40 Q25,20 45,20 H405" class="wc-gold anim-draw"/>
-                <path d="M40,40 Q40,30 50,30 H400" class="wc-gold-faint anim-draw"/>
-                <path d="M425,40 Q425,20 405,20" class="wc-gold anim-draw"/>
-                <path d="M410,40 Q410,30 400,30" class="wc-gold-faint anim-draw"/>
+                <rect x="25" y="45" width="20" height="660" fill="url(#diamond-lattice)" class="anim-fade"/>
+                <line x1="25" y1="45" x2="25" y2="705" class="wc-gold anim-draw"/> <line x1="45" y1="45" x2="45" y2="705" class="wc-gold anim-draw"/> <rect x="405" y="45" width="20" height="660" fill="url(#diamond-lattice)" class="anim-fade"/>
+                <line x1="405" y1="45" x2="405" y2="705" class="wc-gold anim-draw"/> <line x1="425" y1="45" x2="425" y2="705" class="wc-gold anim-draw"/> <path d="M25,45 Q25,20 50,20 H400" class="wc-gold anim-draw" fill="none"/>
+                <path d="M45,45 Q45,30 60,30 H390" class="wc-gold-thin anim-draw" fill="none"/>
+                <path d="M425,45 Q425,20 400,20" class="wc-gold anim-draw" fill="none"/>
+                <path d="M405,45 Q405,30 390,30" class="wc-gold-thin anim-draw" fill="none"/>
 
-                <path d="M25,685 Q25,705 45,705 H405" class="wc-gold anim-draw"/>
-                <path d="M40,685 Q40,695 50,695 H400" class="wc-gold-faint anim-draw"/>
-                <path d="M425,685 Q425,705 405,705" class="wc-gold anim-draw"/>
-                <path d="M410,685 Q410,695 400,695" class="wc-gold-faint anim-draw"/>
+                <path d="M25,705 Q25,730 50,730 H400" class="wc-gold anim-draw" fill="none"/>
+                <path d="M45,705 Q45,720 60,720 H390" class="wc-gold-thin anim-draw" fill="none"/>
+                <path d="M425,705 Q425,730 400,730" class="wc-gold anim-draw" fill="none"/>
+                <path d="M405,705 Q405,720 390,720" class="wc-gold-thin anim-draw" fill="none"/>
 
-
-                <g transform="translate(40, 360)" class="anim-fade">
-                    <g transform="translate(0, -50) rotate(-30) scale(1.2)">
-                        <use href="#lily"/>
+                <g transform="translate(45, 375)" class="anim-fade">
+                    <g transform="translate(0, -60) rotate(-25) scale(1.4)">
+                        <use href="#detailed-lily"/>
                     </g>
-                    <path d="M0,0 Q-10,-25 0,-50" class="wc-gold-thin"/>
+                    <path d="M0,0 Q-5,-30 0,-60" class="wc-gold-thin" fill="none"/>
 
-                    <g transform="translate(-15, 0) rotate(-90) scale(1)">
-                        <use href="#lily"/>
+                    <g transform="translate(-15, 0) rotate(-90) scale(1.2)">
+                        <use href="#detailed-lily"/>
                     </g>
-                    
-                    <g transform="translate(0, 50) rotate(-150) scale(1.2)">
-                        <use href="#lily"/>
+
+                    <g transform="translate(0, 60) rotate(-155) scale(1.4)">
+                        <use href="#detailed-lily"/>
                     </g>
-                     <path d="M0,0 Q-10,25 0,50" class="wc-gold-thin"/>
+                    <path d="M0,0 Q-5,30 0,60" class="wc-gold-thin" fill="none"/>
                 </g>
 
-                <g transform="translate(410, 360) scale(-1, 1)" class="anim-fade">
-                    <g transform="translate(0, -50) rotate(-30) scale(1.2)">
-                        <use href="#lily"/>
+                <g transform="translate(405, 375) scale(-1, 1)" class="anim-fade">
+                    <g transform="translate(0, -60) rotate(-25) scale(1.4)">
+                        <use href="#detailed-lily"/>
                     </g>
-                    <path d="M0,0 Q-10,-25 0,-50" class="wc-gold-thin"/>
+                    <path d="M0,0 Q-5,-30 0,-60" class="wc-gold-thin" fill="none"/>
 
-                    <g transform="translate(-15, 0) rotate(-90) scale(1)">
-                        <use href="#lily"/>
+                    <g transform="translate(-15, 0) rotate(-90) scale(1.2)">
+                        <use href="#detailed-lily"/>
                     </g>
-                    
-                    <g transform="translate(0, 50) rotate(-150) scale(1.2)">
-                        <use href="#lily"/>
+
+                    <g transform="translate(0, 60) rotate(-155) scale(1.4)">
+                        <use href="#detailed-lily"/>
                     </g>
-                     <path d="M0,0 Q-10,25 0,50" class="wc-gold-thin"/>
+                     <path d="M0,0 Q-5,30 0,60" class="wc-gold-thin" fill="none"/>
                 </g>
 
-
-                <ellipse cx="225" cy="360" rx="145" ry="195" class="wc-gold anim-draw" stroke-width="1.5"/>
-                <ellipse cx="225" cy="360" rx="138" ry="188" class="wc-gold-faint anim-draw" />
+                <ellipse cx="225" cy="375" rx="145" ry="195" class="wc-gold anim-draw" />
+                <ellipse cx="225" cy="375" rx="138" ry="188" class="wc-gold-thin anim-draw" opacity="0.6"/>
 
             </svg>
 
             <div class="wc-content">
-                <div class="wc-badge-container anim-pop">
-                    <div class="wc-badge-ring"></div>
+                <div class="wc-badge-wrap anim-pop">
+                    <div class="wc-badge-bg"></div>
                     <span class="wc-badge-text">शुभ विवाह</span>
                 </div>
 
                 <h1 class="wc-title anim-pop">Yash & Shrishti</h1>
 
-                <div class="wc-img-frame anim-pop">
-                    <img src="/assets/couple.png" alt="Couple" class="wc-photo">
+                <div class="wc-img-wrap anim-pop">
+                    <img src="couple.png" alt="Couple" class="wc-photo">
                 </div>
 
                 <div class="wc-footer anim-pop">
@@ -200,14 +181,14 @@
 
         <script>
             (function() {
-                const initV5 = () => {
-                    const scope = document.querySelector("#wc-module-v5");
+                const initWC = () => {
+                    const scope = document.querySelector("#wc-final-svg");
                     if (!scope || !window.gsap) return;
                     
                     let ctx = gsap.context(() => {
                         const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-                        // Setup
+                        // Initial States
                         gsap.set(".anim-draw", { 
                             strokeDasharray: (i, t) => t.getTotalLength(),
                             strokeDashoffset: (i, t) => t.getTotalLength()
@@ -215,25 +196,26 @@
                         gsap.set(".anim-fade, .anim-pop", { opacity: 0 });
                         gsap.set(".anim-pop", { y: 20 });
 
-                        // Animate
-                        tl.to(".anim-draw", { strokeDashoffset: 0, duration: 2, stagger: 0.05 })
-                          .to(".anim-fade", { opacity: 1, duration: 1 }, "-=1.5")
-                          .to(".anim-pop", { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }, "-=1.0");
+                        // Animation
+                        tl.to(".anim-draw", { strokeDashoffset: 0, duration: 2.2, stagger: 0.05 })
+                          .to(".anim-fade", { opacity: 1, duration: 1.5 }, "-=1.8")
+                          .to(".anim-pop", { opacity: 1, y: 0, duration: 0.8, stagger: 0.15 }, "-=1.0");
                           
                     }, scope);
                 };
 
-                // Safety Fallback for visibility
+                // Fallback for visibility
                 setTimeout(() => {
                     const els = document.querySelectorAll('.anim-fade, .anim-pop');
                     els.forEach(el => el.style.opacity = '1');
                 }, 2500);
 
-                if (window.gsap) { initV5(); }
-                else { window.addEventListener("load", initV5); }
+                if (window.gsap) { initWC(); }
+                else { window.addEventListener("load", initWC); }
             })();
         </script>
     </div>
 
 </body>
-</html>
+    </html>
+                        
