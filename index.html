@@ -366,12 +366,30 @@
          
 
 @media print {
+    /* FORCE Hide language button + ALL boundaries */
+    .lang-toggle, #petal-layer, .birds, .mountains, .hero-text,
+    .lang-toggle *,
+    border,
+    .border,
+    box-shadow,
+    outline { 
+        display: none !important; 
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+    }
+    
+    /* Remove ALL boundaries & shadows */
     * {
+        border: none !important;
+        border-color: transparent !important;
+        border-width: 0 !important;
+        box-shadow: none !important;
+        outline: none !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
         color-adjust: exact !important;
-        -webkit-background-composite: source-over !important;
-        background-composite: source-over !important;
     }
     
     body { 
@@ -379,71 +397,66 @@
         background-color: #fcf8f0 !important;
         color: #1a1a1a !important; 
         font-size: 11.5pt !important;
-        -webkit-print-color-adjust: exact !important;
     }
     
-    /* FORCE Hero grainy texture */
+    /* Hero - Clean portrait section */
     .hero {
-        background: linear-gradient(135deg, #f7f0e4 0%, #f4e9d6 50%, #fff8e1 100%) !important;
+        background: linear-gradient(135deg, #f7f0e4 0%, #f4e9d6 100%) !important;
         background-color: #f7f0e4 !important;
         padding: 3rem 0 !important;
         margin: 2rem 0 !important;
-        min-height: 420px !important;
         page-break-inside: avoid !important;
     }
     
-    /* Hero Text - Force colors */
-    .hero-text p {
-        color: #8b4513 !important;
-        background-color: transparent !important;
-        font-family: 'Playfair Display', serif !important;
+    /* Portrait - Simple elegant frame */
+    .couple {
+        width: 300px !important;
+        max-width: 90vw !important;
+        height: 380px !important;
+        margin: 0 auto !important;
     }
-    .hero-text h1 {
-        color: #d4a74f !important;
-        background: linear-gradient(45deg, #d4a74f, #b8860b) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        background-clip: text !important;
-        font-family: 'Playfair Display', serif !important;
-    }
-    
-    /* Portrait - Force frame */
-    .couple::before {
-        background: linear-gradient(45deg, #d4a74f, #ffd700) !important;
-        background-color: #d4a74f !important;
-    }
-    .couple::after {
-        background-color: #fff !important;
+    .couple img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 12px !important;
     }
     
-    /* FORCE Invocation colors */
+    /* Hero text - Clean */
+    .hero-text {
+        display: block !important;
+        text-align: center;
+        color: #2c1810 !important;
+        margin-bottom: 2rem;
+    }
+    .hero-text h1 { 
+        color: #b8860b !important; 
+        font-size: 32pt !important;
+        font-weight: 700 !important;
+    }
+    
+    /* Invocation - Clean subtle bg */
     .invocation {
-        background: linear-gradient(135deg, #f7f0e4 0%, #fff8e1 100%) !important;
-        background-color: #f7f0e4 !important;
-        border: 2px solid #d4a74f !important;
-        border-color: #d4a74f !important;
+        background-color: #f9f5ed !important;
+        background: #f9f5ed !important;
         padding: 2.5rem !important;
-        margin: 2rem 0 !important;
+        margin: 1.5rem 0 !important;
         page-break-inside: avoid !important;
     }
     
-    /* FORCE Family/Venue backgrounds */
+    /* Family/Venue - Clean backgrounds */
     .family-block, .venue-block {
-        background: linear-gradient(135deg, #fdf8f0 0%, #fffaf4 100%) !important;
         background-color: #fdf8f0 !important;
-        border-left-color: #d4a74f !important;
-        border-top-color: #d4a74f !important;
         padding: 2rem !important;
         margin: 1.5rem 0 !important;
         page-break-inside: avoid !important;
     }
     
-    /* QR - Force frame */
+    /* QR - Clean compact */
     .qr-wrap {
-        background: #fff !important;
         background-color: #fff !important;
-        border-color: #d4a74f !important;
         padding: 1rem !important;
+        border-radius: 8px !important;
         display: inline-block !important;
         margin: 1rem auto !important;
         page-break-inside: avoid !important;
@@ -451,29 +464,22 @@
     
     /* Footer */
     footer {
-        background-color: rgba(247,240,228,0.9) !important;
-        background: rgba(247,240,228,0.9) !important;
+        background-color: #f7f0e4 !important;
         padding: 1.5rem !important;
-        margin-top: 2rem !important;
+        opacity: 0.95 !important;
     }
     
-    /* Text colors forced */
-    .shubh-vivah { color: #b8860b !important; }
-    .invocation-names { color: #1a1a1a !important; }
-    .venue-name { color: #2c1810 !important; }
-    
-    /* Universal anti-clipping */
-    * { page-break-inside: avoid !important; }
-    section, .family-block, .venue-block, .hero, .qr-wrap { 
-        page-break-inside: avoid !important; 
-        break-inside: avoid !important;
-        orphans: 3 !important;
-        widows: 2 !important;
-    }
-    
+    /* Hide map button */
     .map-button { display: none !important; }
+    
+    /* Anti-clipping */
+    section, .hero, .family-block, .venue-block, .qr-wrap {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+    
     @page { margin: 0in !important; }
-}
+        }
     </style>
 </head>
 
