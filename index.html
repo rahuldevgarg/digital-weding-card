@@ -985,7 +985,13 @@ gsap.timeline()
   ease: "power1.out"
 });
     </script>
+    <script>
+  if (window.location.search.includes("print")) {
+    setTimeout(() => window.print(), 600);
+  }
+    </script>
 <script>
+    
 const enBtn=document.getElementById("enBtn");
 const hiBtn=document.getElementById("hiBtn");
 
