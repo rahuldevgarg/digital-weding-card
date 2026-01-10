@@ -121,93 +121,8 @@ body.hi [data-lang="hi"]{display:block}
   background:var(--gold);
   color:#fff;
 }
-    .invocation-inner{
-  max-width:720px;
-  margin:0 auto;
-}
 
-.invocation-kicker{
-  font-family:"Hind",sans-serif;
-  font-size:12px;
-  letter-spacing:.32em;
-  color:var(--gold);
-  margin-bottom:24px;
-}
 
-.invocation-names{
-  font-size:42px;
-  margin:0;
-}
-
-.invocation-sub{
-  font-family:"Hind",sans-serif;
-  letter-spacing:.28em;
-  margin:12px 0 24px;
-}
-
-.invocation-date{
-  font-size:18px;
-  color:#7a6a4a;
-  margin-bottom:40px;
-}
-
-.invocation-body{
-  font-size:22px;
-  line-height:1.8;
-  margin:0 auto;
-}
-.venue-card{
-  max-width:640px;
-  margin:0 auto;
-  padding:48px 32px;
-  background:#fff;
-  border-radius:24px;
-  box-shadow:0 20px 40px rgba(0,0,0,.06);
-}
-
-.venue-kicker{
-  font-family:"Hind",sans-serif;
-  font-size:12px;
-  letter-spacing:.32em;
-  color:var(--gold);
-}
-
-.venue-address{
-  font-size:18px;
-  line-height:1.6;
-}
-
-.map-button{
-  display:inline-block;
-  margin-top:24px;
-  padding:14px 28px;
-  border-radius:999px;
-  background:var(--gold);
-  color:#fff;
-  text-decoration:none;
-  font-family:"Hind",sans-serif;
-  letter-spacing:.18em;
-}
-
-.qr-wrap{
-  margin-top:36px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-
-.qr-wrap canvas{
-  width:140px;
-  height:140px;
-}
-
-.qr-caption{
-  margin-top:12px;
-  font-family:"Hind",sans-serif;
-  font-size:12px;
-  letter-spacing:.24em;
-  color:var(--gold);
-}
 /* HERO */
 .hero{
   position:relative;
@@ -226,7 +141,7 @@ body.hi [data-lang="hi"]{display:block}
 .birds{
   position:absolute;
   inset:0;
-  background:url("assets/birds.svg") center/1200px repeat;
+  background:url("assets/birds.svg") center/700px repeat;
   opacity:.18;
 }
 
@@ -316,35 +231,7 @@ body.hi [data-lang="hi"]{display:block}
   margin:6px 0;
 }
 
-/* ===== INTRO PROSE (MISSING BLOCK) ===== */
-.intro-prose{
-  position:relative;
-  padding:96px 16px 88px;
-  background:var(--paper);
-}
-.intro-prose::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url("assets/texture.png");
-  opacity:.1;
-}
-.intro-inner{
-  max-width:720px;
-  margin:0 auto;
-  text-align:center;
-}
-.intro-names{
-  font-size:40px;
-  font-weight:600;
-  margin-bottom:10px;
-}
-.intro-strap{
-  font-family:"Hind",sans-serif;
-  font-size:12px;
-  letter-spacing:.32em;
-  color:var(--gold);
-  margin-bottom:18px;
+
 }
 .intro-date{
   font-family:"Hind",sans-serif;
@@ -352,19 +239,25 @@ body.hi [data-lang="hi"]{display:block}
   letter-spacing:.14em;
   margin-bottom:40px;
 }
-.intro-copy{
-  font-size:22px;
-  line-height:1.9;
-  max-width:560px;
-  margin:0 auto;
-}
+
 
 /* Sections */
 .section{
-  padding:120px 16px;
+  padding:96px 16px;
   text-align:center;
 }
+    .section.compact{
+  padding:64px 16px;
+    }
+@media (max-width: 768px){
+  .section{
+    padding:64px 16px;
+  }
 
+  .section.compact{
+    padding:48px 16px;
+  }
+                             }
 /* Invocation */
 .invocation{
   background:radial-gradient(circle, rgba(212,167,79,.12), transparent 70%);
@@ -411,7 +304,29 @@ footer{
   text-align:center;
   font-size:14px;
 }
+/* ========================= */
+/* PETAL ANIMATION */
+/* ========================= */
 
+.petal{
+  position:fixed;
+  top:-12%;
+  width:22px;
+  height:32px;
+  background:
+    radial-gradient(
+      ellipse at 30% 30%,
+      #ffd6d6,
+      #e36a6a 60%,
+      #b94b4b 100%
+    );
+  border-radius:70% 30% 60% 40%;
+  opacity:.85;
+  pointer-events:none;
+  z-index:30; /* BELOW hero text, ABOVE background */
+  transform:rotate(0deg);
+  filter:blur(.2px);
+    }
 /* Mobile */
 @media(max-width:600px){
   .intro-prose{padding:72px 16px}
@@ -767,7 +682,46 @@ footer{
   <span data-lang="en">With love · Save the Date · © Yash & Shrishti 2026</span>
   <span data-lang="hi">स्नेह सहित · तिथि सुरक्षित रखें · © यश एवं सृष्टि 2026</span>
 </footer>
+    <script>
+/* ========================= */
+/* PETAL GENERATOR */
+/* ========================= */
 
+const PETAL_COUNT = 22;
+
+for(let i=0;i<PETAL_COUNT;i++){
+  const petal = document.createElement("div");
+  petal.className = "petal";
+
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.transform = `rotate(${Math.random()*360}deg)`;
+
+  document.body.appendChild(petal);
+
+  gsap.to(petal,{
+    y: "120vh",
+    x: () => gsap.utils.random(-140,140),
+    rotation: () => gsap.utils.random(360,720),
+    duration: gsap.utils.random(24,38),
+    delay: Math.random()*14,
+    repeat: -1,
+    ease: "sine.inOut"
+  });
+}
+    </script>
+<script>
+let lastScroll = window.scrollY;
+
+window.addEventListener("scroll",()=>{
+  const delta = window.scrollY - lastScroll;
+  gsap.to(".petal",{
+    x: `+=${delta * 0.15}`,
+    duration: 0.6,
+    ease: "power1.out"
+  });
+  lastScroll = window.scrollY;
+});
+</script>
 <script>
 const enBtn=document.getElementById("enBtn");
 const hiBtn=document.getElementById("hiBtn");
