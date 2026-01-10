@@ -63,14 +63,18 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
-
 <script>
-new QRious({
-  element: document.getElementById("venueQR"),
-  value: "https://maps.app.goo.gl/QQESQLd4RyqDg1LF8",
-  size: 140,
-  foreground: "#1f4f43",
-  background: "#ffffff"
+document.addEventListener("DOMContentLoaded", () => {
+  const qrCanvas = document.getElementById("venueQR");
+  if(!qrCanvas) return;
+
+  new QRious({
+    element: qrCanvas,
+    value: "https://maps.app.goo.gl/QQESQLd4RyqDg1LF8",
+    size: 160,
+    foreground: "#1f4f43",
+    background: "#ffffff"
+  });
 });
 </script>
     
@@ -297,14 +301,29 @@ body.hi [data-lang="hi"]{display:block}
   line-height:1.8;
   margin:0 auto;
 }
+/* ========================= */
+/* OM SYMBOL */
+/* ========================= */
+
+.om-wrap{
+  position:relative;
+  margin:0 auto 32px;
+  z-index:5; /* ABOVE texture, BELOW text */
+  display:flex;
+  justify-content:center;
+}
+
 .om{
   width:140px;
-  margin:0 auto 24px;
+  height:auto;
 }
+
 .om path{
   fill:none;
   stroke:var(--gold);
   stroke-width:3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
   stroke-dasharray:600;
   stroke-dashoffset:600;
 }
@@ -529,9 +548,19 @@ footer{
   align-items:center;
 }
 
-.qr-wrap canvas{
-  width:140px;
-  height:140px;
+.qr-frame{
+  padding:16px;
+  background:linear-gradient(145deg,#fff,#efe6d6);
+  border-radius:18px;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.6),
+    0 8px 20px rgba(0,0,0,.08);
+}
+
+.qr-frame canvas{
+  display:block;
+  width:160px;
+  height:160px;
 }
 
 .qr-caption{
@@ -540,6 +569,7 @@ footer{
   font-size:12px;
   letter-spacing:.24em;
   color:var(--gold);
+  text-align:center;
 }
 
 /* Mobile */
@@ -635,7 +665,11 @@ footer{
 
   </div>
 </section>
-
+<div class="om-wrap fade-in">
+  <svg class="om" viewBox="0 0 200 200" aria-hidden="true">
+    <path d="M40 110 C40 40 160 40 160 110 C160 150 110 160 80 140 C100 170 60 180 40 150"/>
+  </svg>
+</div>
 
     <section class="ceremony-combined fade-in">
 
@@ -703,10 +737,13 @@ footer{
       </a>
 
       <!-- QR -->
-      <div class="qr-wrap">
-        <canvas id="venueQR"></canvas>
-        <p class="qr-caption" data-lang="en">Scan for directions</p>
-        <p class="qr-caption" data-lang="hi">दिशा हेतु स्कैन करें</p>
+      <div class="qr-wrap fade-in">
+  <div class="qr-frame">
+    <canvas id="venueQR" width="160" height="160"></canvas>
+  </div>
+
+  <p class="qr-caption" data-lang="en">Scan for directions</p>
+  <p class="qr-caption" data-lang="hi">दिशा हेतु स्कैन करें</p>
       </div>
 
     </div>
@@ -757,6 +794,22 @@ window.addEventListener("scroll",()=>{
   lastScroll = window.scrollY;
 });
 </script>
+    <script>
+gsap.fromTo(
+  ".om path",
+  { strokeDashoffset: 600 },
+  {
+    strokeDashoffset: 0,
+    duration: 3.8,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".om-wrap",
+      start: "top 80%",
+      once: true
+    }
+  }
+);
+    </script>
 <script>
 const enBtn=document.getElementById("enBtn");
 const hiBtn=document.getElementById("hiBtn");
