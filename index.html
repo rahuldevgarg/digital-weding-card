@@ -1048,9 +1048,25 @@ gsap.timeline()
 });
     </script>
     <script>
-  if (window.location.search.includes("print")) {
-    setTimeout(() => window.print(), 600);
+        window.addEventListener("load", () => {
+  if (location.search.includes("print")) {
+  setTimeout(() => {
+    // 🔴 STOP ALL GSAP ACTIVITY
+    gsap.globalTimeline.pause();
+
+    // 🔴 KILL ScrollTrigger (VERY IMPORTANT)
+    if (window.ScrollTrigger) {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    }
+
+    // 🔴 FORCE REPAINT
+    document.body.offsetHeight;
+
+    // 🔴 NOW print
+    window.print();
+  }, 800);
   }
+            });
     </script>
 <script>
     
