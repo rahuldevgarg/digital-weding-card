@@ -256,6 +256,40 @@ footer{
   text-align:center;
   font-size:14px;
 }
+
+/* ===== MOBILE SPACING FIX ===== */
+@media (max-width: 768px) {
+
+  .section{
+    padding: 64px 16px; /* was 120px */
+  }
+
+  .family .person{
+    margin: 16px 0;
+  }
+
+  .family .divider{
+    margin: 12px 0;
+  }
+
+  .event{
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .section.compact{
+  padding-top: 48px;
+  padding-bottom: 48px;
+  }
+
+  footer{
+    padding: 32px 16px;
+  }
+
+  /* tighten Hindi text blocks */
+  [data-lang="hi"]{
+    line-height: 1.6;
+  }
+}
 </style>
 </head>
 
@@ -317,7 +351,7 @@ footer{
 </section>
 
 <!-- FAMILY -->
-<section class="section family">
+<section class="section family compact">
   <h2 data-lang="en">With the blessings of our families</h2>
   <h2 data-lang="hi">परिवार के स्नेह एवं आशीर्वाद के साथ</h2>
 
@@ -337,7 +371,7 @@ footer{
 </section>
 
 <!-- EVENT -->
-<section class="section event">
+<section class="section event compact">
   <h2 data-lang="en">Bharat & Dinner</h2>
   <h2 data-lang="hi">भारत एवं रात्रि भोज</h2>
   <p data-lang="en">10 February 2026 · From 7:00 PM onwards</p>
