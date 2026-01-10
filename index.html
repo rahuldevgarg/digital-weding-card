@@ -116,7 +116,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
     <style>
         
  :root {
@@ -492,7 +492,242 @@
         <button id="enBtn" class="btn btn-sm active">EN</button>
         <button id="hiBtn" class="btn btn-sm">हिंदी</button>
     </div>
+<div id="ws-invite-module">
+    <style>
+        /* ISOLATION STRATEGY: 
+           1. We use a unique ID (#ws-invite-module) for everything.
+           2. We reset 'all' properties to stop parent CSS from bleeding in.
+        */
 
+        #ws-invite-module {
+            /* Critical Isolation Reset */
+            all: initial; 
+            display: block; /* restore block display after reset */
+            width: 100%;
+            height: auto;
+            
+            /* Re-apply font specifically for this module */
+            font-family: 'Playfair Display', serif;
+            
+            /* Center the card within the parent container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: transparent; /* Or match your site bg */
+        }
+
+        /* Enforce box-sizing only inside this module */
+        #ws-invite-module * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- INTERNAL STYLES --- */
+
+        #ws-invite-module .card-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            /* Maintain Aspect Ratio 2:3 */
+            aspect-ratio: 2/3;
+            background-color: #fdfbf7;
+            /* Background pattern svg data URI */
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e6e2d8' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 4px;
+        }
+
+        #ws-invite-module .graphics-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* SVG Classes */
+        #ws-invite-module .gold-stroke {
+            fill: none;
+            stroke: #c5a059;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+        }
+        #ws-invite-module .floral-detail {
+            fill: none;
+            stroke: #d4af37;
+            stroke-width: 1;
+            opacity: 0.6;
+        }
+
+        /* Content Layer */
+        #ws-invite-module .content-layer {
+            z-index: 20;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #ws-invite-module .top-badge {
+            margin-top: 8%; /* % for responsiveness */
+            width: 80px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #c5a059;
+            font-family: 'Tiro Devanagari Hindi', serif;
+            font-size: 14px;
+            position: relative;
+            opacity: 0; /* JS handles fade in */
+        }
+
+        #ws-invite-module .names {
+            margin-top: 5%;
+            font-size: clamp(24px, 6vw, 38px); /* Responsive font size */
+            color: #1a1a1a;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        #ws-invite-module .image-frame {
+            position: relative;
+            margin-top: 4%;
+            width: 56%; /* Relative width */
+            aspect-ratio: 280/380;
+            opacity: 0;
+        }
+
+        #ws-invite-module .couple-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            clip-path: ellipse(50% 50% at 50% 50%);
+            filter: contrast(1.1);
+        }
+
+        #ws-invite-module .date-section {
+            margin-top: auto;
+            margin-bottom: 10%;
+            font-family: 'Montserrat', sans-serif;
+            color: #8c7335;
+            font-size: clamp(10px, 3vw, 12px);
+            letter-spacing: 2px;
+            font-weight: 600;
+            opacity: 0;
+        }
+
+        /* Initial states for GSAP */
+        #ws-invite-module .corner-deco, 
+        #ws-invite-module .fade-in-anim {
+            opacity: 0;
+        }
+    </style>
+
+    <div class="card-container">
+        <svg class="graphics-layer" viewBox="0 0 500 750" preserveAspectRatio="xMidYMid slice">
+            <defs>
+                <pattern id="crosshatch" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <path d="M0 10L10 0" stroke="#c5a059" stroke-width="0.5" opacity="0.3"/>
+                </pattern>
+            </defs>
+
+            <rect class="gold-stroke border-anim" x="20" y="20" width="460" height="710" rx="30" stroke-width="2"/>
+            <rect class="gold-stroke border-anim" x="35" y="35" width="430" height="680" rx="20" stroke-width="1" opacity="0.6"/>
+
+            <ellipse cx="250" cy="60" rx="40" ry="20" class="gold-stroke border-anim" stroke-width="1" fill="none"/>
+
+            <g class="corner-deco" transform="translate(20, 20)"><path d="M0 80 Q 0 0 80 0" class="gold-stroke" fill="none"/><path d="M10 80 Q 10 10 80 10" class="gold-stroke" fill="none" opacity="0.5"/></g>
+            <g class="corner-deco" transform="translate(480, 20) scale(-1, 1)"><path d="M0 80 Q 0 0 80 0" class="gold-stroke" fill="none"/><path d="M10 80 Q 10 10 80 10" class="gold-stroke" fill="none" opacity="0.5"/></g>
+            <g class="corner-deco" transform="translate(20, 730) scale(1, -1)"><path d="M0 80 Q 0 0 80 0" class="gold-stroke" fill="none"/><path d="M10 80 Q 10 10 80 10" class="gold-stroke" fill="none" opacity="0.5"/></g>
+            <g class="corner-deco" transform="translate(480, 730) scale(-1, -1)"><path d="M0 80 Q 0 0 80 0" class="gold-stroke" fill="none"/><path d="M10 80 Q 10 10 80 10" class="gold-stroke" fill="none" opacity="0.5"/></g>
+
+            <ellipse cx="250" cy="430" rx="145" ry="195" class="gold-stroke border-anim" stroke-width="2" fill="none" />
+            
+            <g class="floral-group" transform="translate(250, 430)">
+                <path d="M-150 -50 Q -170 -100 -140 -150" class="floral-detail floral-anim"/>
+                <path d="M-150 50 Q -180 0 -150 -50" class="floral-detail floral-anim"/>
+                <path d="M-140 100 Q -160 150 -130 180" class="floral-detail floral-anim"/>
+                <path d="M150 -50 Q 170 -100 140 -150" class="floral-detail floral-anim"/>
+                <path d="M150 50 Q 180 0 150 -50" class="floral-detail floral-anim"/>
+                <path d="M140 100 Q 160 150 130 180" class="floral-detail floral-anim"/>
+            </g>
+
+            <rect x="20" y="100" width="15" height="550" fill="url(#crosshatch)" class="fade-in-anim" opacity="0"/>
+            <rect x="465" y="100" width="15" height="550" fill="url(#crosshatch)" class="fade-in-anim" opacity="0"/>
+        </svg>
+
+        <div class="content-layer">
+            <div class="top-badge fade-in-anim">शुभ विवाह</div>
+            <div class="names">Yash & Shrishti</div>
+            <div class="image-frame">
+                <img src="couple.png" alt="Yash and Shrishti" class="couple-img">
+            </div>
+            <div class="date-section">10TH FEBRUARY 2026 • TUESDAY</div>
+        </div>
+    </div>
+
+    <script>
+        // Self-executing function to avoid polluting global namespace
+        (function() {
+            // Wait for GSAP to load if it hasn't yet
+            const initAnimation = () => {
+                const scope = document.querySelector("#ws-invite-module");
+                
+                // Use gsap.context for proper scoping and cleanup capability
+                let ctx = gsap.context(() => {
+                    const tl = gsap.timeline();
+                    const borderPaths = document.querySelectorAll('#ws-invite-module .border-anim');
+                    
+                    // Setup Stroke drawing
+                    borderPaths.forEach(path => {
+                        const length = path.getTotalLength();
+                        path.style.strokeDasharray = length;
+                        path.style.strokeDashoffset = length;
+                    });
+                    
+                    document.querySelectorAll('#ws-invite-module .floral-anim').forEach(path => {
+                        const len = path.getTotalLength();
+                        path.style.strokeDasharray = len;
+                        path.style.strokeDashoffset = len;
+                    });
+
+                    // Animation Sequence
+                    tl.to(borderPaths, { strokeDashoffset: 0, duration: 2.5, ease: "power2.out", stagger: 0.2 })
+                      .to(".corner-deco", { opacity: 1, scale: 1, duration: 1, ease: "back.out(1.7)" }, "-=1.5")
+                      .to(".fade-in-anim", { opacity: 1, duration: 1 }, "-=1")
+                      .to(".names", { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.5")
+                      .to(".image-frame", { opacity: 1, duration: 0.1 })
+                      .from(".couple-img", { scale: 1.2, opacity: 0, duration: 1.5, ease: "power2.out" })
+                      .to(".floral-anim", { strokeDashoffset: 0, duration: 1.5 }, "-=1")
+                      .to(".date-section", { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "-=0.5");
+                      
+                }, scope);
+            };
+
+            // Check if GSAP is loaded, if not wait a moment
+            if (typeof gsap !== "undefined") {
+                initAnimation();
+            } else {
+                window.addEventListener("load", initAnimation);
+            }
+        })();
+    </script>
+                </div>
     <!-- HERO SECTION -->
     <section class="hero position-relative overflow-hidden">
         
