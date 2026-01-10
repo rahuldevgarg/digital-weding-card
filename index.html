@@ -77,7 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-    
+    <script>
+  if (window.location.search.includes("print")) {
+    setTimeout(() => window.print(), 600);
+  }
+    </script>
     
 <style>
 :root{
@@ -107,9 +111,6 @@ body{
   margin-top: 0;
 }
 
-.invocation-inner > * + * {
-  margin-top: 20px;
-    }
 /* Language handling */
 [data-lang]{display:none;transition: opacity .2s ease;}
 body.en [data-lang="en"]{display:block}
@@ -327,6 +328,16 @@ body.hi [data-lang="hi"]{display:block}
 .shloka-en{
   font-size: 18px;
 }
+    @media (max-width: 600px) {
+  .invocation {
+    padding-top: 48px;
+    padding-bottom: 40px;
+  }
+
+  .invocation-names {
+    margin-top: 8px;
+  }
+    }
 
 /* MOBILE TIGHTENING */
 @media (max-width:768px){
@@ -340,9 +351,14 @@ body.hi [data-lang="hi"]{display:block}
     font-size: 18px;
   }
 }
-    .invocation-inner{
-  max-width:720px;
-  margin:0 auto;
+.invocation-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 14px; /* controlled spacing */
+}
+
+.invocation-date {
+  margin-bottom: 16px; /* was 40px */
 }
 
 .invocation-kicker{
@@ -367,7 +383,6 @@ body.hi [data-lang="hi"]{display:block}
 .invocation-date{
   font-size:18px;
   color:#7a6a4a;
-  margin-bottom:40px;
 }
 
 .invocation-body{
@@ -795,7 +810,7 @@ footer{
       परिवार के आशीर्वाद और ईश्वर की कृपा से,
       हम अपने नए जीवन की शुरुआत कर रहे हैं।
     </div>
-<br/>
+
     <h2 class="invocation-names">Yash & Shrishti</h2>
 
     <p class="invocation-sub" data-lang="en">
