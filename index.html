@@ -118,373 +118,226 @@
     <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
     
     <style>
-        :root {
-            --green: #0f3b32;
-            --paper: #f7f0e4;
-            --gold: #d4a74f;
-            --soft: #f1d48a;
-            --ink: #1e1e1e;
-        }
         
-        * { box-sizing: border-box; }
-        
-        body {
-            margin: 0;
-            font-family: "Cormorant Garamond", serif;
-            background: var(--paper);
-            color: var(--ink);
-            overflow-x: hidden;
-        }
-        
-        /* Language handling */
-        [data-lang] { display: none; transition: opacity .2s ease; }
-        body.en [data-lang="en"] { display: block; }
-        body.hi [data-lang="hi"] { display: block; }
-        
-        /* Lang Toggle - Bootstrap positioned */
-        .lang-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 1060;
-            background: #fff;
-            border-radius: 50rem;
-            box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.2);
-        }
-        .lang-toggle .btn {
-            border: 0;
-            padding: .5rem 1rem;
-            font-size: .875rem;
-        }
-        .lang-toggle .active {
-            background: var(--gold) !important;
-            color: #fff !important;
-        }
-        
-        /* Petals */
-        #petal-layer {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 20;
-        }
-        .petal {
-            position: fixed;
-            top: -12%;
-            width: 1.375rem;
-            height: 2rem;
-            background: radial-gradient(ellipse at 30% 30%, #ffd6d6, #e36a6a 60%, #b94b4b 100%);
-            border-radius: 70% 30% 60% 40%;
-            opacity: .85;
-            z-index: 30;
-            transform: rotate(0deg);
-            filter: blur(.0125rem);
-        }
-        
-        /* HERO - Bootstrap Fullscreen */
-        .hero {
-            height: 100svh;
-            background: url("assets/texture.png");
-            overflow: hidden;
-            position: relative;
-        }
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url("assets/texture.png");
-            opacity: .15;
-        }
-        .birds {
-            position: absolute;
-            inset: 0;
-            background: url("assets/birds.svg") center/28rem repeat;
-            opacity: .18;
-        }
-        @media (max-width: 768px) { .birds { background-size: 20rem; } }
-        
-        .mountains {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: clamp(16vh, 24vh, 24vh);
-            background: url("assets/mountains.svg") bottom center/cover no-repeat;
-        }
-        
-        /* Mandala - FIXED POSITIONING */
-        .mandala {
-            position: absolute !important;
-            top: 50% !important;
-            left: 50% !important;
-            width: clamp(200px, 25vw, 420px) !important;
-            height: clamp(200px, 25vw, 420px) !important;
-            transform: translate(-50%, -50%) !important;
-            opacity: .14;
-            z-index: 3;
-        }
-        .mandala circle {
-            fill: none;
-            stroke: var(--soft);
-            stroke-width: 1;
-            stroke-dasharray: 600;
-            stroke-dashoffset: 600;
-        }
-        
-        /* Diya - FIXED */
-        .diya {
-            position: absolute !important;
-            bottom: 22% !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: clamp(180px, 22vw, 260px) !important;
-            height: clamp(180px, 22vw, 260px) !important;
-            z-index: 5;
-        }
-        .diya-aura {
-            position: absolute;
-            inset: -45%;
-            background: radial-gradient(circle, rgba(255,200,120,.35), transparent 70%);
-            filter: blur(clamp(1.5rem, 3vw, 2.8rem));
-            z-index: 5;
-        }
-        .diya-glow {
-            position: absolute;
-            inset: 12%;
-            background: radial-gradient(circle, rgba(255,170,80,.9), transparent 65%);
-            filter: blur(1.5rem);
-            z-index: 6;
-        }
-        .diya-flame {
-            position: absolute;
-            left: 50%;
-            top: 32%;
-            width: 1.75rem;
-            height: 2.75rem;
-            transform: translateX(-50%);
-            background: radial-gradient(ellipse, #fff3c4, #ffae42 60%, transparent 70%);
-            border-radius: 50% 50% 60% 60%;
-            z-index: 7;
-        }
-        
-        /* Couple Image - FIXED */
-        .couple {
-            position: absolute !important;
-            bottom: clamp(15%, 20%, 20%) !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: clamp(200px, 28vw, 300px) !important;
-            z-index: 8 !important;
-        }
-        .couple img {
-            width: 100% !important;
-            height: auto;
-        }
-        
-        /* Hero Text */
-        .hero-text {
-            position: absolute !important;
-            top: clamp(8%, 12%, 12%) !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: 90%;
-            max-width: 40rem;
-            text-align: center;
-            color: var(--gold);
-            z-index: 9 !important;
-        }
-        .hero-text h1 {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            margin: 0;
-            font-weight: 600;
-        }
-        .hero-text p {
-            letter-spacing: .22em;
-            margin: .375rem 0;
-            font-size: clamp(.875rem, 2vw, 1rem);
-            font-family: "Hind", sans-serif;
-        }
-        
-        /* INVOCATION */
-        .invocation {
-            padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 3vw, 2rem);
-            background: radial-gradient(circle at center, rgba(212,167,79,.10), transparent 70%), url("assets/texture.png");
-            background-blend-mode: multiply;
-        }
-        
-        .om-symbol {
-            width: clamp(100px, 18vw, 160px);
-            height: clamp(100px, 18vw, 160px);
-            margin: 0 auto 1rem;
-            display: block;
-        }
-        
-        .shubh-vivah {
-            margin: clamp(1rem, 2vw, 1.75rem) 0;
-            font-size: clamp(1.75rem, 4vw, 2.25rem);
-            letter-spacing: .22em;
-            color: var(--gold);
-            font-weight: 600;
-        }
-        
-        .shloka {
-            max-width: 40rem;
-            margin: .75rem auto;
-            font-size: clamp(1.125rem, 3vw, 1.375rem);
-            line-height: 1.75;
-            color: var(--ink);
-        }
-        .shloka-sa { opacity: .75; font-size: clamp(.875rem, 2.5vw, 1rem); }
-        .shloka-hi { font-family: "Hind", sans-serif; }
-        .shloka-en { font-size: clamp(1rem, 2.5vw, 1.125rem); }
-        
-        .invocation-inner {
-            display: flex;
-            flex-direction: column;
-            gap: clamp(.5rem, 1.5vw, 1rem);
-            max-width: 45rem;
-            margin: 0 auto;
-        }
-        
-        .invocation-kicker {
-            font-family: "Hind", sans-serif;
-            font-size: clamp(.6875rem, 1.75vw, .875rem);
-            letter-spacing: .32em;
-            color: var(--gold);
-        }
-        
-        .invocation-names {
-            font-size: clamp(2.25rem, 7vw, 3.5rem);
-            margin: 0;
-        }
-        
-        .invocation-sub {
-            font-family: "Hind", sans-serif;
-            letter-spacing: .28em;
-            font-size: clamp(.875rem, 2vw, 1rem);
-        }
-        
-        .invocation-date {
-            font-size: clamp(1rem, 2.5vw, 1.125rem);
-            color: #7a6a4a;
-        }
-        
-        /* CEREMONY */
-        .ceremony-combined {
-            padding: clamp(2.5rem, 8vw, 4rem) clamp(1rem, 3vw, 2rem);
-            background: var(--paper);
-            position: relative;
-        }
-        .ceremony-combined::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url("assets/texture.png");
-            opacity: .12;
-        }
-        
-        .ceremony-inner {
-            max-width: 45rem;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .family-sep { 
-            font-size: clamp(1.25rem, 3vw, 1.75rem); 
-            color: var(--gold);
-            margin: clamp(2rem, 5vw, 3rem) 0; 
-        }
-        
-        .family-person {
-            font-size: clamp(1rem, 2.5vw, 1.125rem);
-            line-height: 1.8;
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-        }
-        
-        .event-block h3 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-bottom: .75rem;
-        }
-        
-        .event-time {
-            font-family: "Hind", sans-serif;
-            letter-spacing: .22em;
-            font-size: clamp(.8125rem, 2vw, 1rem);
-        }
-        
-        .venue-block {
-            margin-top: clamp(2.5rem, 6vw, 4rem);
-            padding-top: clamp(2rem, 4vw, 3rem);
-            border-top: 1px solid rgba(0,0,0,.08);
-        }
-        
-        .venue-eyebrow {
-            font-family: "Hind", sans-serif;
-            font-size: clamp(.6875rem, 1.75vw, .875rem);
-            letter-spacing: .32em;
-            color: var(--gold);
-        }
-        
-        .venue-name {
-            font-size: clamp(1.375rem, 3.5vw, 1.75rem);
-            margin: .75rem 0;
-        }
-        
-        .venue-address {
-            font-size: clamp(1rem, 2.5vw, 1.125rem);
-            line-height: 1.6;
-        }
-        
-        .map-button {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: .875rem 1.75rem;
-            border-radius: 50rem;
-            background: var(--gold);
-            color: #fff;
-            text-decoration: none;
-            font-family: "Hind", sans-serif;
-            letter-spacing: .18em;
-            font-size: clamp(.875rem, 2vw, 1rem);
-            transition: all .2s ease;
-        }
-        .map-button:hover { 
-            background: #c49542; 
-            transform: translateY(-1px);
-            box-shadow: 0 .25rem 1rem rgba(212,167,79,.4);
-        }
-        
-        .qr-wrap {
-            margin-top: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .qr-frame {
-            padding: 1rem;
-            background: linear-gradient(145deg, #fff, #efe6d6);
-            border-radius: 1.125rem;
-            box-shadow: inset 0 .125rem .25rem rgba(255,255,255,.6), 0 .5rem 1.25rem rgba(0,0,0,.08);
-        }
-        .qr-frame canvas {
-            width: clamp(120px, 24vw, 160px) !important;
-            height: clamp(120px, 24vw, 160px) !important;
-            display: block;
-        }
-        .qr-caption {
-            margin-top: .75rem;
-            font-family: "Hind", sans-serif;
-            font-size: clamp(.6875rem, 1.75vw, .8125rem);
-            letter-spacing: .24em;
-            color: var(--gold);
-        }
-        
-        footer {
-            padding: clamp(2.5rem, 6vw, 4rem) clamp(1rem, 3vw, 2rem);
-            text-align: center;
-            font-size: clamp(.8125rem, 2vw, .875rem);
-        }
+ :root {
+        --royal-gold: #d4a74f;
+        --royal-cream: #f7f0e4;
+        --royal-deep: #1a1a1a;
+        --royal-accent: #b8973e;
+        --paper-glow: #fff8e1;
+    }
+    
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        font-family: "Cormorant Garamond", serif;
+        background: var(--royal-cream);
+        color: var(--royal-deep);
+        overflow-x: hidden;
+    }
+    
+    /* Language */
+    [data-lang] { display: none; }
+    body.en [data-lang="en"] { display: block; }
+    body.hi [data-lang="hi"] { display: block; }
+    
+    /* Lang Toggle */
+    .lang-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1060;
+        background: #fff;
+        border-radius: 50rem;
+        box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.2);
+    }
+    .lang-toggle .btn {
+        border: 0;
+        padding: .5rem 1rem;
+        font-size: .875rem;
+    }
+    .lang-toggle .active {
+        background: var(--royal-gold) !important;
+        color: #fff !important;
+    }
+    
+    /* Petals - Royal Red */
+    #petal-layer {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 20;
+    }
+    .petal {
+        position: fixed;
+        top: -12%;
+        width: 1.375rem;
+        height: 2rem;
+        background: radial-gradient(ellipse at 30% 30%, #ffd6d6, #e36a6a 60%, #b94b4b 100%);
+        border-radius: 70% 30% 60% 40%;
+        opacity: .85;
+        z-index: 30;
+        filter: blur(.0125rem);
+    }
+    
+    /* ROYAL HERO - NO GREEN/BIRDS/MOUNTAINS */
+    .hero {
+        height: 100svh;
+        /* ROYAL GOLDEN GRADIENT */
+        background: linear-gradient(135deg, #2c1810 0%, #4a2c1a 30%, #f5e8c7 70%, #fffaf0 100%);
+        overflow: hidden;
+        position: relative;
+    }
+    
+    /* Royal texture overlay */
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(212,167,79,.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(248,231,192,.06) 0%, transparent 50%),
+            url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a74f' fill-opacity='0.03'%3E%3Ccircle cx='10' cy='10' r='1'/%3E%3Ccircle cx='60' cy='20' r='0.8'/%3E%3Ccircle cx='40' cy='60' r='1.2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        background-size: 100% 100%, 80px 80px;
+    }
+    
+    /* LARGER COUPLE IMAGE - FIXED */
+    .couple {
+        position: absolute !important;
+        bottom: 18% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: clamp(280px, 35vw, 380px) !important; /* BIGGER */
+        z-index: 8 !important;
+    }
+    .couple img {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    
+    /* Mandala */
+    .mandala {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        width: clamp(220px, 28vw, 420px) !important;
+        height: clamp(220px, 28vw, 420px) !important;
+        transform: translate(-50%, -50%) !important;
+        opacity: .12;
+        z-index: 3;
+    }
+    .mandala circle {
+        fill: none;
+        stroke: var(--royal-gold);
+        stroke-width: 1.2;
+        stroke-dasharray: 600;
+        stroke-dashoffset: 600;
+    }
+    
+    /* Royal Diya */
+    .diya {
+        position: absolute !important;
+        bottom: 25% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: clamp(200px, 25vw, 280px) !important;
+        height: clamp(200px, 25vw, 280px) !important;
+        z-index: 5;
+    }
+    .diya-aura {
+        position: absolute;
+        inset: -45%;
+        background: radial-gradient(circle, rgba(255,220,150,.4), transparent 70%);
+        filter: blur(clamp(2rem, 4vw, 3rem));
+        z-index: 5;
+    }
+    .diya-glow {
+        position: absolute;
+        inset: 12%;
+        background: radial-gradient(circle, rgba(255,200,120,.95), transparent 65%);
+        filter: blur(1.8rem);
+        z-index: 6;
+    }
+    .diya-flame {
+        position: absolute;
+        left: 50%;
+        top: 32%;
+        width: 2rem;
+        height: 3rem;
+        transform: translateX(-50%);
+        background: radial-gradient(ellipse, #fff8dc, #ffd700 60%, transparent 70%);
+        border-radius: 50% 50% 60% 60%;
+        z-index: 7;
+    }
+    
+    /* Hero Text - Royal Gold */
+    .hero-text {
+        position: absolute !important;
+        top: clamp(10%, 14%, 14%) !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90%;
+        max-width: 40rem;
+        text-align: center;
+        color: #2c1810;
+        z-index: 9 !important;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .hero-text h1 {
+        font-size: clamp(2.5rem, 7vw, 4rem);
+        margin: 0;
+        font-weight: 700;
+        background: linear-gradient(45deg, #d4a74f, #fff3cd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    /* Sections */
+    .invocation {
+        padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 3vw, 2rem);
+        background: 
+            radial-gradient(circle at center, rgba(212,167,79,.08), transparent 70%),
+            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f7f0e4' fill-opacity='0.4'%3E%3Ccircle cx='5' cy='5' r='1'/%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: 100% 100%, 60px 60px;
+        background-blend-mode: overlay;
+    }
+    
+    /* Rest of your existing styles unchanged */
+    .om-symbol { width: clamp(100px, 18vw, 160px); height: clamp(100px, 18vw, 160px); margin: 0 auto 1rem; display: block; }
+    .shubh-vivah { margin: clamp(1rem, 2vw, 1.75rem) 0; font-size: clamp(1.75rem, 4vw, 2.25rem); letter-spacing: .22em; color: var(--royal-gold); font-weight: 600; }
+    .shloka { max-width: 40rem; margin: .75rem auto; font-size: clamp(1.125rem, 3vw, 1.375rem); line-height: 1.75; }
+    .shloka-sa { opacity: .75; font-size: clamp(.875rem, 2.5vw, 1rem); }
+    .shloka-hi { font-family: "Hind", sans-serif; }
+    .shloka-en { font-size: clamp(1rem, 2.5vw, 1.125rem); }
+    .invocation-inner { display: flex; flex-direction: column; gap: clamp(.5rem, 1.5vw, 1rem); max-width: 45rem; margin: 0 auto; }
+    .invocation-kicker { font-family: "Hind", sans-serif; font-size: clamp(.6875rem, 1.75vw, .875rem); letter-spacing: .32em; color: var(--royal-gold); }
+    .invocation-names { font-size: clamp(2.25rem, 7vw, 3.5rem); margin: 0; }
+    .invocation-sub { font-family: "Hind", sans-serif; letter-spacing: .28em; font-size: clamp(.875rem, 2vw, 1rem); }
+    .invocation-date { font-size: clamp(1rem, 2.5vw, 1.125rem); color: #7a6a4a; }
+    
+    /* Ceremony styles unchanged */
+    .ceremony-combined { padding: clamp(2.5rem, 8vw, 4rem) clamp(1rem, 3vw, 2rem); background: var(--royal-cream); position: relative; }
+    .ceremony-combined::before { content: ""; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f7f0e4' fill-opacity='0.2'%3E%3Ccircle cx='5' cy='5' r='1'/%3E%3C/g%3E%3C/svg%3E"); opacity: .12; }
+    .ceremony-inner { max-width: 45rem; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+    .family-sep { font-size: clamp(1.25rem, 3vw, 1.75rem); color: var(--royal-gold); margin: clamp(2rem, 5vw, 3rem) 0; }
+    .family-person { font-size: clamp(1rem, 2.5vw, 1.125rem); line-height: 1.8; }
+    .event-block h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
+    .event-time { font-family: "Hind", sans-serif; letter-spacing: .22em; font-size: clamp(.8125rem, 2vw, 1rem); }
+    .venue-block { margin-top: clamp(2.5rem, 6vw, 4rem); padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid rgba(0,0,0,.08); }
+    .venue-eyebrow { font-family: "Hind", sans-serif; font-size: clamp(.6875rem, 1.75vw, .875rem); letter-spacing: .32em; color: var(--royal-gold); }
+    .venue-name { font-size: clamp(1.375rem, 3.5vw, 1.75rem); }
+    .venue-address { font-size: clamp(1rem, 2.5vw, 1.125rem); line-height: 1.6; }
+    .map-button { display: inline-block; margin-top: 1.5rem; padding: .875rem 1.75rem; border-radius: 50rem; background: var(--royal-gold); color: #fff; text-decoration: none; font-family: "Hind", sans-serif; letter-spacing: .18em; font-size: clamp(.875rem, 2vw, 1rem); }
+    .qr-wrap { margin-top: 2.5rem; }
+    .qr-frame { padding: 1rem; background: linear-gradient(145deg, #fff, #efe6d6); border-radius: 1.125rem; box-shadow: inset 0 .125rem .25rem rgba(255,255,255,.6), 0 .5rem 1.25rem rgba(0,0,0,.08); }
+    .qr-frame canvas { width: clamp(120px, 24vw, 160px) !important; height: clamp(120px, 24vw, 160px) !important; }
+    .qr-caption { margin-top: .75rem; font-family: "Hind", sans-serif; font-size: clamp(.6875rem, 1.75vw, .8125rem); letter-spacing: .24em; color: var(--royal-gold); }
+    footer { padding: clamp(2.5rem, 6vw, 4rem) clamp(1rem, 3vw, 2rem); text-align: center; font-size: clamp(.8125rem, 2vw, .875rem); }
+    
+
         
         /* Print */
          @media print {
