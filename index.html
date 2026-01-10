@@ -681,6 +681,17 @@ footer{
     break-after: avoid;
   }
     }
+    @media print {
+  .hero,
+  .lang-toggle,
+  .petal {
+    display: none !important;
+  }
+
+  section {
+    break-inside: avoid;
+  }
+      }
    @media print {
   #petal-layer {
     display: none !important;
