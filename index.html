@@ -77,15 +77,21 @@ gsap.fromTo(
   stroke-width: 7;
 }
 
-.w-hero-stroke-left{ left:28px; }
+.w-hero-stroke-left{ left:56px; opacity: 0.45;}
 .w-hero-stroke-right{
-  right:28px;
+  right: 56px;
+  opacity: 0.45;
   transform: scaleX(-1);
 }
 @media (min-width: 900px){
-  .w-hero-stroke-left{ left: 42px; }
-  .w-hero-stroke-right{ right: 42px; }
+  .w-hero-stroke-left{ left: 56px; }
+  .w-hero-stroke-right{ right: 56px; }
 }
+    @media(max-width:768px){
+  .w-hero-stroke{
+    opacity: 0.35;
+  }
+    }
     .w-hero-heritage{
   position:absolute;
   inset:14px;
@@ -136,6 +142,7 @@ gsap.fromTo(
 
 /* Text */
 .w-hero-names{
+  margin-top: 32px;
   font-family:"Cormorant Garamond",serif;
   font-size:48px;
   font-weight:600;
@@ -164,18 +171,19 @@ gsap.fromTo(
 .w-hero-media{
   display:flex;
   justify-content:center;
-  margin-top: 16px;
+  margin-top: 28px;
   }
     .w-hero-media::before{
   content:"";
   position:absolute;
   width:380px;
   height:380px;
+  opacity: 0.35;
   background:
     radial-gradient(circle,
       rgba(201,162,77,.25),
       transparent 70%);
-  filter: blur(40px);
+  filter: blur(56px);
   z-index:-1;
     }
 .w-hero-oval{
@@ -205,9 +213,11 @@ gsap.fromTo(
 }
 /* Mountains */
 .w-hero-mountains{
-  height:26vh;
+  height: 18vh;
+  bottom: -2px;
+  opacity: 0.95;
   color:#143c32;
-  filter: drop-shadow(0 -6px 12px rgba(0,0,0,.25));
+  filter: drop-shadow(0 -10px 24px rgba(0,0,0,.25));
 }
     .w-hero-emboss{
   position:absolute;
@@ -230,7 +240,10 @@ gsap.fromTo(
   :root{
     --royal-gold: #b08a2e; /* deeper foil tone */
   }
-
+.w-hero-crest,
+.w-hero-heritage g[transform]{
+  transform: translate(500px, 120px);
+}
   /* Foil simulation */
   .w-hero-names,
   .w-hero-date,
@@ -275,6 +288,11 @@ gsap.fromTo(
     opacity:0.65;
   }
   }
+.w-hero-heritage{ z-index:1; }
+.w-hero-stroke{ z-index:2; }
+.w-hero-copy{ z-index:4; }
+.w-hero-media{ z-index:5; }
+.w-hero-mountains{ z-index:6; }
   </style>
   <script>
 gsap.fromTo(
@@ -349,7 +367,12 @@ gsap.timeline({ delay: 0.2 })
       <stop offset="50%" stop-color="#c9a24d"/>
       <stop offset="100%" stop-color="#9f7c2f"/>
     </linearGradient>
-
+<linearGradient id="jaaliFade" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-opacity="0"/>
+  <stop offset="20%" stop-opacity="0.5"/>
+  <stop offset="80%" stop-opacity="0.5"/>
+  <stop offset="100%" stop-opacity="0"/>
+</linearGradient>
     <!-- Jaali pattern -->
     <pattern id="jaaliPattern" width="28" height="28" patternUnits="userSpaceOnUse">
       <path d="M14 0 L28 14 L14 28 L0 14 Z"
@@ -377,11 +400,13 @@ gsap.timeline({ delay: 0.2 })
   <!-- SIDE JAALI PANELS -->
   <rect x="60" y="220" width="48" height="960"
         fill="url(#jaaliPattern)"
-        opacity="0.55"/>
+        mask="url(#jaaliFade)"
+        opacity="0.5"/>
 
   <rect x="892" y="220" width="48" height="960"
         fill="url(#jaaliPattern)"
-        opacity="0.55"/>
+        mask="url(#jaaliFade)"
+        opacity="0.5"/>
 
   <!-- MANDALA CORNER PETALS -->
   <g stroke="url(#heritageGold)" fill="none" stroke-width="1.8" opacity="0.7">
