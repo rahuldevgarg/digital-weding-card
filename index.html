@@ -260,85 +260,7 @@ body.hi [data-lang="hi"]{display:block}
   letter-spacing:.22em;
   margin:6px 0;
 }
-/* ========================= */
-/* EDITORIAL INTRO BLOCK */
-/* ========================= */
 
-.editorial-intro{
-  position:relative;
-  background:var(--paper);
-  padding:96px 16px 88px;
-}
-
-.editorial-intro::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url("assets/texture.png");
-  opacity:.12;
-  pointer-events:none;
-}
-
-.editorial-inner{
-  max-width:720px;
-  margin:0 auto;
-  text-align:center;
-}
-
-.editorial-eyebrow{
-  font-family:"Hind",sans-serif;
-  font-size:12px;
-  letter-spacing:.36em;
-  color:var(--gold);
-  margin-bottom:18px;
-}
-
-.editorial-names{
-  font-size:42px;
-  font-weight:600;
-  margin:0 0 10px;
-}
-
-.editorial-sub{
-  font-family:"Hind",sans-serif;
-  font-size:13px;
-  letter-spacing:.24em;
-  margin-bottom:26px;
-}
-
-.editorial-date{
-  font-family:"Hind",sans-serif;
-  font-size:14px;
-  letter-spacing:.14em;
-  margin-bottom:42px;
-}
-
-.editorial-copy{
-  font-size:22px;
-  line-height:1.9;
-  max-width:560px;
-  margin:0 auto;
-}
-
-/* Hindi tuning */
-body.hi .editorial-copy{
-  font-family:"Hind",sans-serif;
-  font-size:21px;
-  line-height:2;
-}
-
-/* Mobile discipline */
-@media(max-width:768px){
-  .editorial-intro{
-    padding:72px 16px 68px;
-  }
-  .editorial-names{
-    font-size:34px;
-  }
-  .editorial-copy{
-    font-size:20px;
-  }
-}
 /* SECTIONS */
 .section{
   position:relative;
@@ -389,97 +311,7 @@ body.hi .editorial-copy{
   font-size:24px;
   margin:24px 0;
 }
-.venue-card{
-  max-width:640px;
-  margin:0 auto;
-  padding:48px 32px;
-  background:#fff;
-  border-radius:24px;
-  box-shadow:0 20px 40px rgba(0,0,0,.06);
-}
 
-.venue-kicker{
-  font-family:"Hind",sans-serif;
-  font-size:12px;
-  letter-spacing:.32em;
-  color:var(--gold);
-}
-
-.venue-address{
-  font-size:18px;
-  line-height:1.6;
-}
-
-.map-button{
-  display:inline-block;
-  margin-top:24px;
-  padding:14px 28px;
-  border-radius:999px;
-  background:var(--gold);
-  color:#fff;
-  text-decoration:none;
-  font-family:"Hind",sans-serif;
-  letter-spacing:.18em;
-}
-.invocation-inner{
-  max-width:720px;
-  margin:0 auto;
-}
-
-.invocation-kicker{
-  font-family:"Hind",sans-serif;
-  font-size:12px;
-  letter-spacing:.32em;
-  color:var(--gold);
-  margin-bottom:24px;
-}
-
-.invocation-names{
-  font-size:42px;
-  margin:0;
-}
-
-.invocation-sub{
-  font-family:"Hind",sans-serif;
-  letter-spacing:.28em;
-  margin:12px 0 24px;
-}
-
-.invocation-date{
-  font-size:18px;
-  color:#7a6a4a;
-  margin-bottom:40px;
-}
-
-.invocation-body{
-  font-size:22px;
-  line-height:1.8;
-  margin:0 auto;
-      }
-.qr-wrap{
-  margin-top:36px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-.event-time{
-  font-family:"Hind",sans-serif;
-  letter-spacing:.22em;
-  font-size:14px;
-  color:#6f6a5c;
-      }
-.qr-wrap canvas{
-  width:140px;
-  height:140px;
-}
-
-.qr-caption{
-  margin-top:12px;
-  font-family:"Hind",sans-serif;
-  font-size:12px;
-  letter-spacing:.24em;
-  color:var(--gold);
-}
 /* EVENT */
 .event h2{
   font-size:32px;
@@ -586,83 +418,23 @@ footer{
 
   <div class="mountains"></div>
 </section>
-<!-- EDITORIAL INTRO -->
-<section class="editorial-intro">
-  <div class="editorial-inner">
 
-    <div class="editorial-eyebrow" data-lang="en">
-      WITH DIVINE GRACE AND FAMILY BLESSINGS
-    </div>
-    <div class="editorial-eyebrow" data-lang="hi">
-      परिवार के आशीर्वाद के साथ
-    </div>
+<!-- INVOCATION -->
+<section class="section invocation">
+  <svg class="om" viewBox="0 0 200 200">
+    <path d="M40 110 C40 40 160 40 160 110 C160 150 110 160 80 140 C100 170 60 180 40 150"/>
+  </svg>
 
-    <h1 class="editorial-names">
-      Yash &amp; Shrishti
-    </h1>
+  <div class="shubh-title">शुभ विवाह</div>
 
-    <div class="editorial-sub" data-lang="en">
-      ARE UNITING THEIR LIVES
-    </div>
-    <div class="editorial-sub" data-lang="hi">
-      अपने जीवन का आरंभ कर रहे हैं
-    </div>
-
-    <div class="editorial-date" data-lang="en">
-      10th February 2026
-    </div>
-    <div class="editorial-date" data-lang="hi">
-      10 फ़रवरी 2026
-    </div>
-
-    <p class="editorial-copy" data-lang="en">
-      With the blessings of our families and the grace of the mountains,
-      we invite you to witness the beginning of our forever.
-    </p>
-
-    <p class="editorial-copy" data-lang="hi">
-      परिवार के आशीर्वाद और पर्वतों की छाया में,<br>
-      हम अपने नए जीवन की शुरुआत कर रहे हैं।
-    </p>
-
+  <div class="shloka" data-lang="en">
+    With sacred lamps aglow and blessings all around,<br>
+    we invite you to celebrate the beginning of our forever.
   </div>
-</section>
-<section class="section invocation fade-in">
-  <div class="invocation-inner">
 
-    <p class="invocation-kicker" data-lang="en">
-      WITH DIVINE GRACE AND FAMILY BLESSINGS
-    </p>
-    <p class="invocation-kicker" data-lang="hi">
-      ईश्वर की कृपा एवं परिवार के आशीर्वाद से
-    </p>
-
-    <h2 class="invocation-names">Yash & Shrishti</h2>
-
-    <p class="invocation-sub" data-lang="en">
-      are uniting their lives
-    </p>
-    <p class="invocation-sub" data-lang="hi">
-      अपने जीवन का आरंभ कर रहे हैं
-    </p>
-
-    <p class="invocation-date" data-lang="en">
-      10th February 2026
-    </p>
-    <p class="invocation-date" data-lang="hi">
-      10 फ़रवरी 2026
-    </p>
-
-    <p class="invocation-body" data-lang="en">
-      With the blessings of our families and the grace of the mountains,
-      we invite you to witness the beginning of our forever.
-    </p>
-
-    <p class="invocation-body" data-lang="hi">
-      परिवार के आशीर्वाद और पर्वतों की छाया में,
-      हम अपने नए जीवन की शुरुआत कर रहे हैं।
-    </p>
-
+  <div class="shloka" data-lang="hi">
+    दीपों की पावन ज्योति और परिवार के आशीर्वाद के साथ,<br>
+    हम आपको हमारे नए जीवन के आरंभ का साक्षी बनने हेतु आमंत्रित करते हैं।
   </div>
 </section>
 
@@ -687,17 +459,6 @@ footer{
 </section>
 
 <!-- EVENT -->
-      <section class="section event fade-in">
-  <h2 data-lang="en">Bharat & Dinner</h2>
-  <h2 data-lang="hi">भारत एवं रात्रि भोज</h2>
-
-  <p class="event-time" data-lang="en">
-    10 February 2026 · From 7:00 PM onwards
-  </p>
-  <p class="event-time" data-lang="hi">
-    10 फ़रवरी 2026 · सायं 7 बजे से
-  </p>
-      </section>
 <section class="section event compact">
   <h2 data-lang="en">Bharat & Dinner</h2>
   <h2 data-lang="hi">भारत एवं रात्रि भोज</h2>
@@ -706,34 +467,20 @@ footer{
 </section>
 
 <!-- VENUE -->
-<section class="section venue fade-in">
+<section class="section venue">
+  <h2 data-lang="en">Venue</h2>
+  <h2 data-lang="hi">स्थान</h2>
 
-  <div class="venue-card">
-
-    <p class="venue-kicker" data-lang="en">Venue</p>
-    <p class="venue-kicker" data-lang="hi">स्थान</p>
-
-    <h3>Singhal Banquet & Farms</h3>
-
-    <p class="venue-address">
-      Near Shri Dronacharya Degree College · F1 Race Track<br>
-      Dankaur · Greater Noida
-    </p>
-
-    <a class="map-button"
-       href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8"
-       target="_blank">
+  <p>
+    Singhal Banquet & Farms<br>
+    Near Shri Dronacharya Degree College<br>
+    F1 Race Track · Dankaur · Greater Noida
+  </p>
+  <p>
+    <a href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">
       📍 Open in Google Maps
     </a>
-
-    <!-- QR -->
-    <div class="qr-wrap">
-      <canvas id="venueQR"></canvas>
-      <p class="qr-caption" data-lang="en">Scan for directions</p>
-      <p class="qr-caption" data-lang="hi">दिशा हेतु स्कैन करें</p>
-    </div>
-
-  </div>
+  </p>
 </section>
 
 <footer>
@@ -790,4 +537,4 @@ for(let i=0;i<18;i++){
 </script>
 
 </body>
-</html>
+      </html>
