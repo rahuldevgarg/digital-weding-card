@@ -263,8 +263,63 @@ body.hi [data-lang="hi"]{display:block}
   }
                              }
 /* Invocation */
+/* INVOCATION BLOCK */
 .invocation{
-  background:radial-gradient(circle, rgba(212,167,79,.12), transparent 70%);
+  padding: 72px 16px 64px; /* reduced – no dead air */
+  background:
+    radial-gradient(circle at center,
+      rgba(212,167,79,.10),
+      transparent 70%),
+    url("assets/texture.png");
+  background-blend-mode: multiply;
+}
+
+/* SHUBH VIVAH */
+.shubh-vivah{
+  margin: 18px 0 28px;
+  font-size: 30px;
+  letter-spacing: .22em;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* SHLOKA */
+.shloka{
+  max-width: 640px;
+  margin: 12px auto;
+  font-size: 22px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+/* Sanskrit slightly lighter */
+.shloka-sa{
+  opacity: .75;
+  font-size: 20px;
+}
+
+/* Hindi uses Hind */
+.shloka-hi{
+  font-family: "Hind", sans-serif;
+  font-size: 20px;
+}
+
+/* English slightly larger */
+.shloka-en{
+  font-size: 22px;
+}
+
+/* MOBILE TIGHTENING */
+@media (max-width:768px){
+  .invocation{
+    padding: 56px 16px 48px;
+  }
+  .shubh-vivah{
+    font-size: 26px;
+  }
+  .shloka{
+    font-size: 18px;
+  }
 }
     .invocation-inner{
   max-width:720px;
@@ -626,6 +681,45 @@ footer{
 
 
 <section class="section invocation fade-in">
+
+  <!-- OM -->
+  <svg class="om" viewBox="0 0 200 220" aria-label="Om Symbol">
+    <path class="om-body"
+      d="M40 120
+         C40 70 110 60 130 95
+         C150 130 110 155 85 145
+         C110 175 70 190 50 160
+         C35 140 40 130 40 120"/>
+    <path class="om-crescent"
+      d="M105 40
+         C130 35 150 50 155 70"/>
+    <circle class="om-bindu" cx="160" cy="35" r="5"/>
+  </svg>
+
+  <!-- SHUBH VIVAH -->
+  <div class="shubh-vivah">
+    <span>शुभ विवाह</span>
+  </div>
+
+  <!-- SHLOKA : SANSKRIT -->
+  <div class="shloka shloka-sa">
+    दीपज्योतिर्मंगलं दिव्यं<br>
+    जीवनारम्भकारकम्
+  </div>
+
+  <!-- SHLOKA : HINDI -->
+  <div class="shloka shloka-hi" data-lang="hi">
+    दीपों की दिव्य ज्योति से मंगलमय<br>
+    जीवन का शुभ आरंभ हो
+  </div>
+
+  <!-- SHLOKA : ENGLISH -->
+  <div class="shloka shloka-en" data-lang="en">
+    With sacred lamps aglow and blessings all around,<br>
+    we invite you to witness the beginning of our forever.
+  </div>
+
+
   <div class="invocation-inner">
 
     <p class="invocation-kicker" data-lang="en">
@@ -826,6 +920,17 @@ gsap.timeline()
     duration: 0.4,
     ease: "power1.out"
   }, "-=0.2");
+        gsap.from(".invocation > *", {
+  scrollTrigger: {
+    trigger: ".invocation",
+    start: "top 75%",
+  },
+  opacity: 0,
+  y: 16,
+  duration: 0.8,
+  stagger: 0.12,
+  ease: "power1.out"
+});
     </script>
 <script>
 const enBtn=document.getElementById("enBtn");
