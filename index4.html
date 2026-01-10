@@ -12,7 +12,23 @@
     /* ========================= */
 /* WEDDING HERO — ISOLATED */
 /* ========================= */
+:root {
+      --bg: #f6f1e7;
+      --gold: #d3a64b;
+      --green: #1f3f34;
+      --text: #1a1a1a;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 .w-hero{
   position: relative;
   min-height: 100svh;
@@ -26,7 +42,7 @@
 .w-hero-bg{
   position:absolute;
   inset:0;
-  background:url("assets/texture.png");
+  background:url("assets/texture.jpg");
   opacity:.12;
   pointer-events:none;
 }
