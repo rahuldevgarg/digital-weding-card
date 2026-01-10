@@ -97,12 +97,31 @@ body{
   color:var(--ink);
   overflow-x:hidden;
 }
+.section,
+.invocation,
+.ceremony-combined {
+  min-height: unset;
+  height: auto;
+}
+    .invocation-inner > * {
+  margin-top: 0;
+}
 
+.invocation-inner > * + * {
+  margin-top: 20px;
+    }
 /* Language handling */
-[data-lang]{display:none}
+[data-lang]{display:none;transition: opacity .2s ease;}
 body.en [data-lang="en"]{display:block}
 body.hi [data-lang="hi"]{display:block}
+#petal-layer { z-index: 20; }
+#petal-layer {
+  pointer-events: none;
+}
+.hero,
+.section { z-index: 1; }
 
+.lang-toggle { z-index: 100; }
 /* Toggle */
 .lang-toggle{
   position:fixed;
@@ -365,7 +384,7 @@ body.hi [data-lang="hi"]{display:block}
 .om-stroke{
   fill: none;
   stroke: var(--gold);
-  stroke-width: 10;
+  stroke-width: 5;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: 1600;
@@ -628,7 +647,30 @@ footer{
   color:var(--gold);
   text-align:center;
 }
+    #petal-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+                            }
+@media (max-width: 768px){
+  .ceremony-names { font-size: 36px; }
+  .ceremony-prose { font-size: 20px; }
+    }
+    @media print {
+  section {
+    break-inside: avoid;
+  }
 
+  h1, h2, h3 {
+    break-after: avoid;
+  }
+    }
+   @media print {
+  #petal-layer {
+    display: none !important;
+  }
+   }
 /* Mobile */
 @media(max-width:768px){
   .ceremony-combined{
@@ -645,7 +687,7 @@ footer{
 </head>
 
 <body class="en">
-
+<div id="petal-layer"></div>
 <div class="lang-toggle">
   <button id="enBtn" class="active">EN</button>
   <button id="hiBtn">हिंदी</button>
@@ -872,8 +914,7 @@ for(let i=0;i<PETAL_COUNT;i++){
   petal.style.left = Math.random() * 100 + "vw";
   petal.style.transform = `rotate(${Math.random()*360}deg)`;
 
-  document.body.appendChild(petal);
-
+  document.getElementById("petal-layer").appendChild(petal);
   gsap.to(petal,{
     y: "120vh",
     x: () => gsap.utils.random(-140,140),
@@ -902,8 +943,8 @@ window.addEventListener("scroll",()=>{
 gsap.set("#om-stroke path", { strokeDasharray: 1, strokeDashoffset: 1 });
 
 gsap.timeline()
-  .to("#om-stroke path:first-child", { strokeDashoffset: 0, duration: 1.4 })
-  .to("#om-stroke path:last-child", { strokeDashoffset: 0, duration: 2.6 }, "-=0.2")
+  .to("#om-stroke path:first-child", { strokeDashoffset: 0, duration: 1.1 })
+  .to("#om-stroke path:last-child", { strokeDashoffset: 0, duration: 2.2 }, "-=0.15")
   .to("#om-fill", { opacity: 1, duration: 0.5 })
   .to("#om-stroke", { opacity: 0, duration: 0.3 });
         gsap.from(".invocation > *", {
