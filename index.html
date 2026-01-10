@@ -1,524 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Yash & Shrishti | Shubh Vivah</title>
-<!-- ========================= -->
-<!-- BASIC META -->
-<!-- ========================= -->
-<meta charset="utf-8">
-      <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" sizes="any">
-      <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" sizes="any" >
-            <link rel="icon" href="/assets/safari-pinned-tab.svg" type="image/svg+xml">
-            <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-            <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#1f4f43">
-            <!-- Android / PWA -->
-            <link rel="manifest" href="/site.webmanifest">
-
-            <!-- Windows -->
-            <meta name="msapplication-config" content="/browserconfig.xml">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-
-            <title>Yash & Shrishti • Shubh Vivah • 10 February 2026</title>
-
-            <meta name="description"
-                  content="With divine grace and family blessings, we invite you to celebrate the Shubh Vivah of Yash & Shrishti on 10th February 2026 at Singhal Banquet & Farms, Greater Noida.">
-
-                  <meta name="author" content="Yash Goyal & Shrishti Tayal">
-                  <meta name="theme-color" content="#1f4f43">
-                  <meta name="color-scheme" content="light">
-
-                  <link rel="canonical" href="https://yashwithshrishti.xeniosrahi.com/">
-
-                  <!-- ========================= -->
-                  <!-- OPEN GRAPH (WHATSAPP / FB / LINKEDIN) -->
-                  <!-- ========================= -->
-                  <meta property="og:type" content="website">
-                  <meta property="og:site_name" content="Yash & Shrishti • Shubh Vivah">
-                  <meta property="og:title" content="Yash & Shrishti • Shubh Vivah • 10 February 2026">
-                  <meta property="og:description"
-                        content="With sacred lamps aglow and blessings all around, we invite you to celebrate the beginning of our forever.">
-                        <meta property="og:url" content="https://yashwithshrishti.xeniosrahi.com/">
-
-                        <meta property="og:image" content="https://yashwithshrishti.xeniosrahi.com/assets/og-image.jpg">
-                        <meta property="og:image:type" content="image/jpeg">
-                        <meta property="og:image:width" content="1200">
-                        <meta property="og:image:height" content="630">
-                        <meta property="og:image:alt" content="Yash & Shrishti Shubh Vivah Invitation">
-
-                        <meta property="og:locale" content="en_IN">
-                        <meta property="og:locale:alternate" content="hi_IN">
-
-                        <!-- ========================= -->
-                        <!-- TWITTER / X -->
-                        <!-- ========================= -->
-                        <meta name="twitter:card" content="summary_large_image">
-                        <meta name="twitter:title" content="Yash & Shrishti • Shubh Vivah">
-                        <meta name="twitter:description"
-                              content="Join us with divine grace and family blessings to celebrate our wedding.">
-                              <meta name="twitter:image"
-                                    content="https://yashwithshrishti.xeniosrahi.com/assets/og-image.jpg">
-
-                                    <!-- ========================= -->
-                                    <!-- APPLE / iOS / SAFARI -->
-                                    <!-- ========================= -->
-                                    <meta name="apple-mobile-web-app-capable" content="yes">
-                                    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-                                    <meta name="apple-mobile-web-app-title" content="Shubh Vivah">
-
-                                    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-                                    <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#1f4f43">
-
-                                    <!-- ========================= -->
-                                    <!-- ANDROID / CHROME -->
-                                    <!-- ========================= -->
-                                    <meta name="mobile-web-app-capable" content="yes">
-                                    <meta name="application-name" content="Yash & Shrishti Wedding">
-
-                                    <!-- ========================= -->
-                                    <!-- WINDOWS / MOZILLA -->
-                                    <!-- ========================= -->
-                                    <meta name="msapplication-TileColor" content="#1f4f43">
-                                    <meta name="msapplication-TileImage" content="/assets/mstile-150x150.png">="og:type" content="website">
-
-                                    <!-- Fonts -->
-                                    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
-
-                                    <!-- GSAP -->
-                                    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-                                    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-                                    <style>
-                                    :root{
-                                      --green:#0f3b32;
-                                        --paper:#f7f0e4;
-                                          --gold:#d4a74f;
-                                            --soft:#f1d48a;
-                                              --ink:#1e1e1e;
-                                              }
-
-                                              *{box-sizing:border-box}
-                                              body{
-                                                margin:0;
-                                                  font-family:"Cormorant Garamond",serif;
-                                                    background:var(--paper);
-                                                      color:var(--ink);
-                                                        overflow-x:hidden;
-                                                        }
-
-                                                        /* LANGUAGE VISIBILITY */
-                                                        [data-lang]{display:none}
-                                                        body.en [data-lang="en"]{display:block}
-                                                        body.hi [data-lang="hi"]{display:block}
-
-                                                        /* TOGGLE */
-                                                        .lang-toggle{
-                                                          position:fixed;
-                                                            top:12px;
-                                                              right:12px;
-                                                                z-index:100;
-                                                                  background:#fff;
-                                                                    border-radius:999px;
-                                                                      display:flex;
-                                                                        box-shadow:0 8px 24px rgba(0,0,0,.2);
-                                                                        }
-                                                                        .lang-toggle button{
-                                                                          border:0;
-                                                                            background:none;
-                                                                              padding:8px 14px;
-                                                                                font-size:14px;
-                                                                                  cursor:pointer;
-                                                                                  }
-                                                                                  .lang-toggle .active{
-                                                                                    background:var(--gold);
-                                                                                      color:#fff;
-                                                                                      }
-
-                                                                                      /* HERO */
-                                                                                      .hero{
-                                                                                        position:relative;
-                                                                                          height:100svh;
-                                                                                            background:linear-gradient(#0e3a31,#134a3e);
-                                                                                              overflow:hidden;
-                                                                                              }
-                                                                                              .hero::after{
-                                                                                                content:"";
-                                                                                                  position:absolute;
-                                                                                                    inset:0;
-                                                                                                      background:url("assets/texture.png");
-                                                                                                        opacity:.15;
-                                                                                                          mix-blend-mode:multiply;
-                                                                                                          }
-
-                                                                                                          .birds{
-                                                                                                            position:absolute;
-                                                                                                              inset:0;
-                                                                                                                background:url("assets/birds.svg") center/1200px repeat;
-                                                                                                                  opacity:.18;
-                                                                                                                  }
-
-                                                                                                                  .mountains{
-                                                                                                                    position:absolute;
-                                                                                                                      bottom:0;
-                                                                                                                        width:100%;
-                                                                                                                          height:24vh;
-                                                                                                                            background:url("assets/mountains.svg") bottom center/cover no-repeat;
-                                                                                                                            }
-
-                                                                                                                            /* MANDALA */
-                                                                                                                            .mandala{
-                                                                                                                              position:absolute;
-                                                                                                                                top:50%;
-                                                                                                                                  left:50%;
-                                                                                                                                    width:420px;
-                                                                                                                                      height:420px;
-                                                                                                                                        transform:translate(-50%,-50%);
-                                                                                                                                          opacity:.16;
-                                                                                                                                          }
-                                                                                                                                          .mandala circle{
-                                                                                                                                            fill:none;
-                                                                                                                                              stroke:var(--soft);
-                                                                                                                                                stroke-width:1;
-                                                                                                                                                  stroke-dasharray:600;
-                                                                                                                                                    stroke-dashoffset:600;
-                                                                                                                                                    }
-
-                                                                                                                                                    /* DIYA */
-                                                                                                                                                    .diya{
-                                                                                                                                                      position:absolute;
-                                                                                                                                                        bottom:22%;
-                                                                                                                                                          left:50%;
-                                                                                                                                                            transform:translateX(-50%);
-                                                                                                                                                              width:260px;
-                                                                                                                                                                height:260px;
-                                                                                                                                                                }
-                                                                                                                                                                .diya-aura{
-                                                                                                                                                                  position:absolute;
-                                                                                                                                                                    inset:-45%;
-                                                                                                                                                                      background:radial-gradient(circle,rgba(255,200,120,.35),transparent 70%);
-                                                                                                                                                                        filter:blur(45px);
-                                                                                                                                                                        }
-                                                                                                                                                                        .diya-glow{
-                                                                                                                                                                          position:absolute;
-                                                                                                                                                                            inset:12%;
-                                                                                                                                                                              background:radial-gradient(circle,rgba(255,170,80,.9),transparent 65%);
-                                                                                                                                                                                filter:blur(24px);
-                                                                                                                                                                                }
-                                                                                                                                                                                .diya-flame{
-                                                                                                                                                                                  position:absolute;
-                                                                                                                                                                                    left:50%;
-                                                                                                                                                                                      top:32%;
-                                                                                                                                                                                        width:28px;
-                                                                                                                                                                                          height:44px;
-                                                                                                                                                                                            transform:translateX(-50%);
-                                                                                                                                                                                              background:radial-gradient(ellipse,#fff3c4,#ffae42 60%,transparent 70%);
-                                                                                                                                                                                                border-radius:50% 50% 60% 60%;
-                                                                                                                                                                                                }
-
-                                                                                                                                                                                                /* COUPLE */
-                                                                                                                                                                                                .couple{
-                                                                                                                                                                                                  position:absolute;
-                                                                                                                                                                                                    bottom:20%;
-                                                                                                                                                                                                      left:50%;
-                                                                                                                                                                                                        transform:translateX(-50%);
-                                                                                                                                                                                                          width:300px;
-                                                                                                                                                                                                            z-index:4;
-                                                                                                                                                                                                            }
-                                                                                                                                                                                                            .couple img{width:100%}
-
-                                                                                                                                                                                                            /* HERO TEXT */
-                                                                                                                                                                                                            .hero-text{
-                                                                                                                                                                                                              position:absolute;
-                                                                                                                                                                                                                top:12%;
-                                                                                                                                                                                                                  width:100%;
-                                                                                                                                                                                                                    text-align:center;
-                                                                                                                                                                                                                      color:#fff;
-                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                      .hero-text h1{
-                                                                                                                                                                                                                        font-size:42px;
-                                                                                                                                                                                                                          margin:0;
-                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                          .hero-text p{
-                                                                                                                                                                                                                            letter-spacing:.22em;
-                                                                                                                                                                                                                              margin:6px 0;
-                                                                                                                                                                                                                              }
-
-                                                                                                                                                                                                                              /* SECTIONS */
-                                                                                                                                                                                                                              .section{
-                                                                                                                                                                                                                                position:relative;
-                                                                                                                                                                                                                                  padding:120px 16px;
-                                                                                                                                                                                                                                    text-align:center;
-                                                                                                                                                                                                                                    }
-
-                                                                                                                                                                                                                                    /* INVOCATION */
-                                                                                                                                                                                                                                    .invocation{
-                                                                                                                                                                                                                                      background:radial-gradient(circle at center, rgba(212,167,79,.12), transparent 70%);
-                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                      .om{
-                                                                                                                                                                                                                                        width:140px;
-                                                                                                                                                                                                                                          margin:0 auto 24px;
-                                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                                          .om path{
-                                                                                                                                                                                                                                            fill:none;
-                                                                                                                                                                                                                                              stroke:var(--gold);
-                                                                                                                                                                                                                                                stroke-width:3;
-                                                                                                                                                                                                                                                  stroke-dasharray:600;
-                                                                                                                                                                                                                                                    stroke-dashoffset:600;
-                                                                                                                                                                                                                                                    }
-
-                                                                                                                                                                                                                                                    .shubh-title{
-                                                                                                                                                                                                                                                      font-size:32px;
-                                                                                                                                                                                                                                                        letter-spacing:.18em;
-                                                                                                                                                                                                                                                          color:var(--gold);
-                                                                                                                                                                                                                                                          }
-
-                                                                                                                                                                                                                                                          .shloka{
-                                                                                                                                                                                                                                                            max-width:640px;
-                                                                                                                                                                                                                                                              margin:40px auto 0;
-                                                                                                                                                                                                                                                                font-size:22px;
-                                                                                                                                                                                                                                                                  line-height:1.8;
-                                                                                                                                                                                                                                                                    transition:opacity .6s ease, transform .6s ease;
-                                                                                                                                                                                                                                                                    }
-
-                                                                                                                                                                                                                                                                    /* FAMILY */
-                                                                                                                                                                                                                                                                    .family h2{
-                                                                                                                                                                                                                                                                      font-size:30px;
-                                                                                                                                                                                                                                                                        margin-bottom:32px;
-                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                        .family .person{
-                                                                                                                                                                                                                                                                          margin:28px 0;
-                                                                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                                                                          .family .divider{
-                                                                                                                                                                                                                                                                            color:var(--gold);
-                                                                                                                                                                                                                                                                              font-size:24px;
-                                                                                                                                                                                                                                                                                margin:24px 0;
-                                                                                                                                                                                                                                                                                }
-
-                                                                                                                                                                                                                                                                                /* EVENT */
-                                                                                                                                                                                                                                                                                .event h2{
-                                                                                                                                                                                                                                                                                  font-size:32px;
-                                                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                                                  .event p{
-                                                                                                                                                                                                                                                                                    letter-spacing:.14em;
-                                                                                                                                                                                                                                                                                    }
-
-                                                                                                                                                                                                                                                                                    /* VENUE */
-                                                                                                                                                                                                                                                                                    .venue a{
-                                                                                                                                                                                                                                                                                      color:var(--gold);
-                                                                                                                                                                                                                                                                                        text-decoration:none;
-                                                                                                                                                                                                                                                                                        }
-
-                                                                                                                                                                                                                                                                                        /* PETALS */
-                                                                                                                                                                                                                                                                                        .petal{
-                                                                                                                                                                                                                                                                                          position:fixed;
-                                                                                                                                                                                                                                                                                            top:-10%;
-                                                                                                                                                                                                                                                                                              width:22px;
-                                                                                                                                                                                                                                                                                                height:34px;
-                                                                                                                                                                                                                                                                                                  background:linear-gradient(135deg,#c94c4c,#f27d7d);
-                                                                                                                                                                                                                                                                                                    border-radius:60% 40% 60% 40%;
-                                                                                                                                                                                                                                                                                                      opacity:.9;
-                                                                                                                                                                                                                                                                                                        z-index:50;
-                                                                                                                                                                                                                                                                                                        }
-
-                                                                                                                                                                                                                                                                                                        /* FOOTER */
-                                                                                                                                                                                                                                                                                                        footer{
-                                                                                                                                                                                                                                                                                                          padding:60px 16px;
-                                                                                                                                                                                                                                                                                                            text-align:center;
-                                                                                                                                                                                                                                                                                                              font-size:14px;
-                                                                                                                                                                                                                                                                                                              }
-
-                                                                                                                                                                                                                                                                                                              /* ===== MOBILE SPACING FIX ===== */
-                                                                                                                                                                                                                                                                                                              @media (max-width: 768px) {
-
-                                                                                                                                                                                                                                                                                                                .section{
-                                                                                                                                                                                                                                                                                                                    padding: 64px 16px; /* was 120px */
-                                                                                                                                                                                                                                                                                                                      }
-
-                                                                                                                                                                                                                                                                                                                        .family .person{
-                                                                                                                                                                                                                                                                                                                            margin: 16px 0;
-                                                                                                                                                                                                                                                                                                                              }
-
-                                                                                                                                                                                                                                                                                                                                .family .divider{
-                                                                                                                                                                                                                                                                                                                                    margin: 12px 0;
-                                                                                                                                                                                                                                                                                                                                      }
-
-                                                                                                                                                                                                                                                                                                                                        .event{
-                                                                                                                                                                                                                                                                                                                                            padding-top: 48px;
-                                                                                                                                                                                                                                                                                                                                                padding-bottom: 48px;
-                                                                                                                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                                                                                                                    .section.compact{
-                                                                                                                                                                                                                                                                                                                                                      padding-top: 48px;
-                                                                                                                                                                                                                                                                                                                                                        padding-bottom: 48px;
-                                                                                                                                                                                                                                                                                                                                                          }
-
-                                                                                                                                                                                                                                                                                                                                                            footer{
-                                                                                                                                                                                                                                                                                                                                                                padding: 32px 16px;
-                                                                                                                                                                                                                                                                                                                                                                  }
-
-                                                                                                                                                                                                                                                                                                                                                                    /* tighten Hindi text blocks */
-                                                                                                                                                                                                                                                                                                                                                                      [data-lang="hi"]{
-                                                                                                                                                                                                                                                                                                                                                                          line-height: 1.6;
-                                                                                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                                                                                            </style>
-                                                                                                                                                                                                                                                                                                                                                                            </head>
-
-                                                                                                                                                                                                                                                                                                                                                                            <body class="en">
-
-                                                                                                                                                                                                                                                                                                                                                                            <div class="lang-toggle">
-                                                                                                                                                                                                                                                                                                                                                                              <button id="enBtn" class="active">EN</button>
-                                                                                                                                                                                                                                                                                                                                                                                <button id="hiBtn">हिंदी</button>
-                                                                                                                                                                                                                                                                                                                                                                                </div>
-
-                                                                                                                                                                                                                                                                                                                                                                                <!-- HERO -->
-                                                                                                                                                                                                                                                                                                                                                                                <section class="hero">
-                                                                                                                                                                                                                                                                                                                                                                                  <div class="birds"></div>
-
-                                                                                                                                                                                                                                                                                                                                                                                    <svg class="mandala" viewBox="0 0 200 200">
-                                                                                                                                                                                                                                                                                                                                                                                        <circle cx="100" cy="100" r="80"/>
-                                                                                                                                                                                                                                                                                                                                                                                            <circle cx="100" cy="100" r="60"/>
-                                                                                                                                                                                                                                                                                                                                                                                                <circle cx="100" cy="100" r="40"/>
-                                                                                                                                                                                                                                                                                                                                                                                                  </svg>
-
-                                                                                                                                                                                                                                                                                                                                                                                                    <div class="diya">
-                                                                                                                                                                                                                                                                                                                                                                                                        <div class="diya-aura"></div>
-                                                                                                                                                                                                                                                                                                                                                                                                            <div class="diya-glow"></div>
-                                                                                                                                                                                                                                                                                                                                                                                                                <div class="diya-flame"></div>
-                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="hero-text">
-                                                                                                                                                                                                                                                                                                                                                                                                                        <p data-lang="en">SAVE THE DATE</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                            <p data-lang="hi">तिथि सुरक्षित रखें</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                <h1>Yash & Shrishti</h1>
-                                                                                                                                                                                                                                                                                                                                                                                                                                    <p data-lang="en">10 February 2026</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                        <p data-lang="hi">10 फ़रवरी 2026</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                          </div>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="couple">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                <img src="assets/couple.png" alt="">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="mountains"></div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    </section>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    <!-- INVOCATION -->
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    <section class="section invocation">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      <svg class="om" viewBox="0 0 200 200">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                          <path d="M40 110 C40 40 160 40 160 110 C160 150 110 160 80 140 C100 170 60 180 40 150"/>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            </svg>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                              <div class="shubh-title">शुभ विवाह</div>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="shloka" data-lang="en">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    With sacred lamps aglow and blessings all around,<br>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        we invite you to celebrate the beginning of our forever.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </div>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="shloka" data-lang="hi">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                दीपों की पावन ज्योति और परिवार के आशीर्वाद के साथ,<br>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    हम आपको हमारे नए जीवन के आरंभ का साक्षी बनने हेतु आमंत्रित करते हैं।
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </section>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <!-- FAMILY -->
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <section class="section family compact">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <h2 data-lang="en">With the blessings of our families</h2>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <h2 data-lang="hi">परिवार के स्नेह एवं आशीर्वाद के साथ</h2>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="person">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <strong>Yash Goyal</strong><br>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span data-lang="en">Son of Shri Pawan Goyal & Smt. Archna Goyal</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <span data-lang="hi">श्री पवन गोयल एवं श्रीमती अर्चना गोयल के सुपुत्र</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </div>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="divider">❦</div>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <div class="person">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <strong>Shrishti Tayal</strong><br>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <span data-lang="en">Daughter of Shri Sanjay Tayal & Smt. Manju Tayal</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <span data-lang="hi">श्री संजय तायल एवं श्रीमती मंजू तायल की सुपुत्री</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </section>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <!-- EVENT -->
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <section class="section event compact">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <h2 data-lang="en">Bharat & Dinner</h2>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <h2 data-lang="hi">भारत एवं रात्रि भोज</h2>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <p data-lang="en">10 February 2026 · From 7:00 PM onwards</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <p data-lang="hi">10 फ़रवरी 2026 · सायं 7 बजे से</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </section>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <!-- VENUE -->
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <section class="section venue">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <h2 data-lang="en">Venue</h2>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <h2 data-lang="hi">स्थान</h2>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Singhal Banquet & Farms<br>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Near Shri Dronacharya Degree College<br>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      F1 Race Track · Dankaur · Greater Noida
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <a href="https://maps.app.goo.gl/QQESQLd4RyqDg1LF8" target="_blank">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    📍 Open in Google Maps
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </a>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </section>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <footer>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <span data-lang="en">With love · Shubh Vivah · Yash & Shrishti</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <span data-lang="hi">स्नेह सहित · शुभ विवाह · यश एवं सृष्टि</span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </footer>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              /* LANGUAGE SWITCH WITH ANIMATION */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              const enBtn=document.getElementById("enBtn");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              const hiBtn=document.getElementById("hiBtn");
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              function switchLang(lang){
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                const current=document.querySelectorAll("[data-lang]");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  gsap.to(current,{opacity:0,y:10,duration:.3,onComplete:()=>{
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      document.body.className=lang;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          gsap.fromTo(current,{opacity:0,y:-10},{opacity:1,y:0,duration:.4});
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }});
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              localStorage.setItem("lang",lang);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                enBtn.classList.toggle("active",lang==="en");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  hiBtn.classList.toggle("active",lang==="hi");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  enBtn.onclick=()=>switchLang("en");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  hiBtn.onclick=()=>switchLang("hi");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  switchLang(localStorage.getItem("lang")||"en");
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  /* MANDALA DRAW */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  gsap.to(".mandala circle",{strokeDashoffset:0,duration:5,stagger:.6});
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  gsap.to(".mandala",{rotation:360,repeat:-1,duration:90,ease:"none"});
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  /* OM DRAW */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  gsap.to(".om path",{strokeDashoffset:0,duration:4});
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  /* DIYA ANIMATION */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  gsap.to(".diya-glow",{scale:1.15,yoyo:true,repeat:-1,duration:5});
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  gsap.to(".diya-flame",{scaleY:1.15,yoyo:true,repeat:-1,duration:1.4});
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  /* PETALS */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  for(let i=0;i<18;i++){
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    const p=document.createElement("div");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      p.className="petal";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        p.style.left=Math.random()*100+"vw";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          document.body.appendChild(p);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            gsap.to(p,{
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                y:"120vh",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    x:()=>gsap.utils.random(-120,120),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        rotation:()=>gsap.utils.random(180,540),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            duration:gsap.utils.random(22,36),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                repeat:-1,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    delay:Math.random()*12,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ease:"sine.inOut"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </script>
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </body>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </html>
+
+    <!-- ========================= -->
+    <!-- CORE META -->
+    <!-- ========================= -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Yash & Shrishti • Shubh Vivah • 10 February 2026</title>
+
+    <meta name="description"
+        content="With divine grace and family blessings, we invite you to celebrate the Shubh Vivah of Yash & Shrishti on 10th February 2026 at Singhal Banquet & Farms, Greater Noida.">
+    <meta name="author" content="Yash Goyal & Shrishti Tayal">
+    <meta name="theme-color" content="#1f4f43">
+    <meta name="color-scheme" content="light">
+    <link rel="canonical" href="https://yashwithshrishti.xeniosrahi.com/">
+
+    <!-- ========================= -->
+    <!-- ICONS -->
+    <!-- ========================= -->
+    <link rel="icon" href="/assets/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#1f4f43">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+
+    <!-- ========================= -->
+    <!-- OPEN GRAPH -->
+    <!-- ========================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Yash & Shrishti • Shubh Vivah">
+    <meta property="og:title" content="Yash & Shrishti • Shubh Vivah • 10 February 2026">
+    <meta property="og:description"
+        content="With sacred lamps aglow and blessings all around, we invite you to celebrate the beginning of our forever.">
+    <meta property="og:url" content="https://yashwithshrishti.xeniosrahi.com/">
+    <meta property="og:image" content="https://yashwithshrishti.xeniosrahi.com/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Yash & Shrishti Shubh Vivah Invitation">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:locale:alternate" content="hi_IN">
+
+    <!-- ========================= -->
+    <!-- TWITTER -->
+    <!-- ========================= -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yash & Shrishti • Shubh Vivah">
+    <meta name="twitter:description" content="Join us with divine grace and family blessings to celebrate our wedding.">
+    <meta name="twitter:image" content="https://yashwithshrishti.xeniosrahi.com/assets/og-image.jpg">
+
+    <!-- ========================= -->
+    <!-- FONTS -->
+    <!-- ========================= -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Hind:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- ========================= -->
+    <!-- GSAP -->
+    <!-- ========================= -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root {
+            --green: #0f3b32;
+            --paper: #f7f0e4;
+            --gold: #d4a74f;
+            --ink: #1f1f1f;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: "Cormorant Garamond", serif;
+            background: var(--paper);
+            color: var(--ink);
+            overflow-x: hidden;
+        }
+
+        /* ========================= */
+        /* LANGUAGE */
+        /* ========================= */
+        [data-lang] {
+            display: none
+        }
+
+        body.en [data-lang="en"] {
+            display: block
+        }
+
+        body.hi [data-lang="hi"] {
+            display: block
+        }
+
+        .lang-toggle {
+            position: fixed;
+            top: 14px;
+            right: 14px;
+            z-index: 99;
+            display: flex;
+            background: #fff;
+            border-radius: 999px;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .25);
+        }
+
+        .lang-toggle button {
+            border: 0;
+            background: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .lang-toggle .active {
+            background: var(--gold);
+            color: #fff;
+        }
+
+        /* ========================= */
+        /* HERO */
+        /* ========================= */
+        .hero {
+            position: relative;
+            height: 100svh;
+            background: linear-gradient(#0e3a31, #134a3e);
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("/assets/texture.png");
+            opacity: .15;
+        }
+
+        .birds {
+            position: absolute;
+            inset: 0;
+            background: url("/assets/birds.svg") center/1200px repeat;
+            opacity: .18;
+        }
+
+        .mandala {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 420px;
+            opacity: .16;
+        }
+
+        .mandala circle {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 1;
+            stroke-dasharray: 600;
+            stroke-dashoffset: 600;
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 12%;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            z-index: 3;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(36px, 6vw, 48px);
+            margin: 0;
+        }
+
+        .hero-text p {
+            letter-spacing: .22em;
+            margin: 8px 0;
+        }
+
+        .diya {
+            position: absolute;
+            bottom: 22%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 260px;
+            z-index: 2;
+        }
+
+        .diya::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background: radial-gradient(circle, rgba(255, 190, 90, .35), transparent 70%);
+            filter: blur(48px);
+        }
+
+        .couple {
+            position: absolute;
+            bottom: 18%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            z-index: 4;
+        }
+
+        .couple img {
+            width: 100%
+        }
+
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 22vh;
+            background: url("/assets/mountains.svg") bottom center/cover no-repeat;
+        }
+
+        /* ========================= */
+        /* SECTIONS */
+        /* ========================= */
+        .section {
+            padding: 80px 16px;
+            text-align: center;
+        }
+
+        .invocation {
+            background: radial-gradient(circle at center, rgba(212, 167, 79, .12), transparent 70%);
+        }
+
+        .shubh {
+            font-size: 28px;
+            letter-spacing: .18em;
+            color: var(--gold);
+        }
+
+        .shloka {
+            max-width: 640px;
+            margin: 32px auto 0;
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        /* FAMILY */
+        .family .person {
+            margin: 20px 0
+        }
+
+        .family .divider {
+            color: var(--gold);
+            font-size: 24px;
+            margin: 16px 0;
+        }
+
+        /* EVENT */
+        .event p {
+            letter-spacing: .12em
+        }
+
+        /* VENUE */
+        .venue a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 48px 16px;
+            font-size: 14px;
+            opacity: .7;
+        }
+
+        /* MOBILE */
+        @media(max-width:768px) {
+            .section {
+                padding: 56px 16px
+            }
+
+            .hero-text {
+                top: 14%
+            }
+        }
+    </style>
+</head>
+
+<body class="en">
+
+    <div class="lang-toggle">
+        <button id="enBtn" class="active">EN</button>
+        <button id="hiBtn">हिंदी</button>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="birds"></div>
+
+        <svg class="mandala" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="80" />
+            <circle cx="100" cy="100" r="60" />
+            <circle cx="100" cy="100" r="40" />
+        </svg>
+
+        <div class="hero-text">
+            <p data-lang="en">SAVE THE DATE</p>
+            <p data-lang="hi">तिथि सुरक्षित रखें</p>
+            <h1>Yash & Shrishti</h1>
+            <p data-lang="en">10 February 2026</p>
+            <p data-lang="hi">10 फ़रवरी 2026</p>
+        </div>
+
+        <div class="diya"></div>
+
+        <div class="couple">
+            <img src="/assets/couple.png" alt="">
+        </div>
+
+        <div class="mountains"></div>
+    </section>
+
+    <!-- INVOCATION -->
+    <section class="section invocation">
+        <div class="shubh">शुभ विवाह</div>
+
+        <div class="shloka" data-lang="en">
+            With sacred lamps aglow and blessings all around,<br>
+            we invite you to celebrate the beginning of our forever.
+        </div>
+
+        <div class="shloka" data-lang="hi">
+            दीपों की पावन ज्योति और परिवार के आशीर्वाद के साथ,<br>
+            हम आपको हमारे नए जीवन के आरंभ का साक्षी बनने हेतु आमंत्रित करते हैं।
+        </div>
+    </section>
+
+    <!-- FAMILY -->
+    <section class="section family">
+        <h2 data-lang="en">With the blessings of our families</h2>
+        <h2 data-lang="hi">परिवार के स्नेह एवं आशीर्वाद के साथ</h2>
+
+        <div class="person">
+            <strong>Yash Goyal</strong><br>
+            <span data-lang="en">Son of Shri Pawan Goyal & Smt. Archna Goyal</span>
+            <span data-lang="hi">श्री पवन गोयल एवं श्रीमती अर्चना गोयल के सुपुत्र</span>
+        </div>
+
+        <div class="divider">❦</div>
+
+        <div class="person">
+            <strong>Shrishti Tayal</strong><br>
+            <span data-lang="en">Daughter of Shri Sanjay Tayal & Smt. Manju Tayal</span>
+            <span data-lang="hi">श्री संजय तायल एवं श्रीमती मंजू तायल की सुपुत्री</span>
+        </div>
+    </section>
+
+    <!-- EVENT -->
+    <section class="section event">
+        <h2 data-lang="en">Bharat & Dinner</h2>
+        <h2 data-lang="hi">भारत एवं रात्रि भोज</h2>
+        <p data-lang="en">10 February 2026 · From 7:00 PM onwards</p>
+        <p data-lang="hi">10 फ़रवरी 2026 · सायं 7 बजे से</p>
+    </section>
+
+    <!-- VENUE -->
+    <section class="section venue">
+        <h2 data-lang="en">Venue</h2>
+        <h2 data-lang="hi">स्थान</h2>
+        <p>
+            Singhal Banquet & Farms<br>
+            Near Shri Dronacharya Degree College · F1 Race Track<br>
+            Dankaur · Greater Noida
+        </p>
+        <a href="https://maps.app.goo.gl/QQESQLd4RyqD1LF8" target="_blank">
+            📍 Open in Google Maps
+        </a>
+    </section>
+
+    <footer>
+        <span data-lang="en">With love · Shubh Vivah · Yash & Shrishti</span>
+        <span data-lang="hi">स्नेह सहित · शुभ विवाह · यश एवं सृष्टि</span>
+    </footer>
+
+    <script>
+                                                                                                                                                                                                                                                                                                                                                                        const enBtn=document.getElementById("enBtn");
+                                                                                                                                                                                                                                                                                                                                                                        const hiBtn=document.getElementById("hiBtn");
+
+                                                                                                                                                                                                                                                                                                                                                                        function setLang(l){
+                                                                                                                                                                                                                                                                                                                                                                          document.body.className=l;
+                                                                                                                                                                                                                                                                                                                                                                            enBtn.classList.toggle("active",l==="en");
+                                                                                                                                                                                                                                                                                                                                                                              hiBtn.classList.toggle("active",l==="hi");
+                                                                                                                                                                                                                                                                                                                                                                                localStorage.setItem("lang",l);
+                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                enBtn.onclick=()=>setLang("en");
+                                                                                                                                                                                                                                                                                                                                                                                hiBtn.onclick=()=>setLang("hi");
+                                                                                                                                                                                                                                                                                                                                                                                setLang(localStorage.getItem("lang")||"en");
+
+                                                                                                                                                                                                                                                                                                                                                                                gsap.to(".mandala circle",{strokeDashoffset:0,stagger:.6,duration:4});
+                                                                                                                                                                                                                                                                                                                                                                                gsap.to(".mandala",{rotation:360,repeat:-1,duration:120,ease:"none"});
+    </script>
+
+</body>
+
+</html>
